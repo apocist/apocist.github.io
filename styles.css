@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
+body{
+	margin: 0;
+	height: 100vh;
+	width: 100%;
+	font-family: 'Gloria Hallelujah', sans-serif;
+	color: white;
+	font-size: 1.5rem;
+	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(81, 12, 34, 0.35)), url('https://pbs.twimg.com/profile_banners/622649670/1613596685/1500x500');
+	background-attachment: fixed;
+	background-position: center top;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+}
+#mainContent {
+	display: table;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+}
+.flex-container {
+    /*display: flex;*/
+    justify-content: center;
+    text-align: center;
+	padding: 20px;
+	/* Center vertically*/
+	display: table-cell;
+	vertical-align: middle;
+}
+.card {
+	/*width: 40%;*/
+	max-width: 710px;
+	margin: auto;
+	padding: 5px;
+	box-shadow: 2px 8px 10px 2px rgba(0,0,0,0.78);
+	transition: 0.3s;
+	border-radius: 30px;/*rounded corners*/
+	background-color: #943097;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.container {
+	padding: 2px 16px;
+}
+/* Add rounded corners to the top left and the top right corner of the image*/ 
+img {
+	border-radius: 20%;
+	margin: 5px;
+}
+#profile-image {
+	margin-top: 0.5em;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+}
+hr.divider {
+	border-top: 1px solid white;
+	border-bottom: 0px;
+	width: 50%;
+	margin: 20px auto;
+}
+#username{
+	margin: 0;
+	font-weight: bolder;
+	text-shadow: 3px 3px 4px #065321, -3px -2px 6px #0E0E75;
+}
+.subtitle {
+	margin: 0 auto;
+	text-shadow: 0px 0px 3px #000;
+}
+.subtitle.main {
+	font-size: .8em;
+}
+.social-icons{
+	margin: 20px;
+}
+.social-icons a {
+	margin: 5px;
+}
+.fa-custom-style {
+	display: inline-block;
+	padding: 20px;
+	font-size: 48px; /* Size of icon */
+	text-decoration: none; /* remove underline */
+	border-radius: 50%;
+	overflow: hidden;
+	color: #000;
+	background: #ffe8fc;
+}
+.fa-custom-style:hover {
+	opacity: 0.7;
+}
+.fa-twitch {
+	color: #9146FF;
+}
+.fa-twitter {
+	color: #1DA1F2;
+}
+.fa-github {
+	color: #1B1F22;
+}
+
+/*art*/
+.art{
+  margin: 0px 0px;
+}
+.square{
+  padding: 0 8px;
+  object-fit: cover;
+  width: 133px;
+  height: 133px;
+  /*border-radius: 20px;*/
+}
+.square:hover{opacity: 0.7;}
+@media screen and (max-width: 1920px) {
+  .art {
+    margin: 0px;
+  }
+}
+@media screen and (max-width:760px) {
+  .square{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+  }
+}
+@media screen and (max-width:440px) {
+  .square{
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+}
+/* Style the Image Used to Trigger the Modal */
+.artImg {
+	/*border-radius: 5px;*/
+	cursor: pointer;
+	transition: 0.3s;
+}
+.artImg:hover {
+	opacity: 0.5;
+}
+
+@keyframes zoom {
+	from {transform:scale(0)}
+	to {transform:scale(1)}
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 800px){
+	.modal-content {
+		width: 100%;
+	}
+}
+  
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+  
+/* Add animation to "page content" */
+.animate-flip1 {
+	position: relative;
+	-webkit-animation-name: animateflip;
+	-webkit-animation-duration: 1s;
+	animation-name: animateflip;
+	animation-duration: 1s
+}
+@-webkit-keyframes animateflip {
+	from { -webkit-transform: rotateX(90deg); transform: rotateX(90deg); opacity:0} 
+	to { -webkit-transform: rotateX(0deg); transform: rotateX(0deg); opacity:1}
+}
+
+@keyframes animateflip { 
+	from{ -webkit-transform: rotateX(90deg); transform: rotateX(90deg); opacity:0} 
+	to{ -webkit-transform: rotateX(0deg); transform: rotateX(0deg); opacity:1}
+}
