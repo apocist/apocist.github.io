@@ -178,7 +178,7 @@ hr.divider {
 	-webkit-animation-name: animateflip;
 	-webkit-animation-duration: 1s;
 	animation-name: animateflip;
-	animation-duration: 1s
+	animation-duration: 1s;
 }
 @-webkit-keyframes animateflip {
 	from { -webkit-transform: rotateX(90deg); transform: rotateX(90deg); opacity:0} 
@@ -196,27 +196,14 @@ hr.divider {
   -webkit-column-gap:5px; /* give it a 5px gap between columns */
   -moz-column-count:4;
   -moz-column-gap:5px;
-  column-count:4;
+  column-count:3;
   column-gap:5px;
 }
 .art.gallery img {
-  width: 100% !important;
-  height: auto !important;
-  margin-bottom:5px; /* to match column gap */
-}
-/*@media (max-width: 1200px) {
-  .art.gallery {
-     -moz-column-count:    4;
-     -webkit-column-count: 4;
-     column-count:         4;
-  }
-}*/
-@media (max-width: 1000px) {
-   .art.gallery {
-    -moz-column-count:    3;
-    -webkit-column-count: 3;
-    column-count:         3;
-   }
+  width: 100%;
+  height: auto;
+  margin: 0 0 5px 0; /* to match column gap */
+  border-radius: 5px;
 }
 @media (max-width: 800px) {
    .art.gallery {
@@ -225,7 +212,7 @@ hr.divider {
     column-count:         2;
    }
 }
-@media (max-width: 400px) {
+@media (max-width: 550px) {
    .art.gallery {
     -moz-column-count:    1;
     -webkit-column-count: 1;
