@@ -4,7 +4,7 @@
 			"frames": ["closed","part","full"],
 			"closed": "apocist/closed.png",
 			"part": "apocist/open-part.png",
-			"full": "apocist/open-full.png",
+			"full": "apocist/open-full.png"
 		}
 	}
 }
