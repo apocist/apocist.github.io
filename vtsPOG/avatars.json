@@ -1,10 +1,11 @@
 {
-	"users": {
-		"apocist": {
-			"frames": ["closed","part","full"],
-			"closed": "apocist/closed.png",
-			"part": "apocist/open-part.png",
-			"full": "apocist/open-full.png"
-		}
-	}
+"users": {
+	"apocist": {"frames":["closed","part","full"]},
+	"EEL_System": {"frames":["closed","part","full"]},
+	"fukamasongs": {"frames":["closed","part","full"]},
+	"hazlbun": {"frames":["closed","full"]},
+	"lily_magic": {"frames":["closed","part","full"]},
+	"ozmthole": {"frames":["closed","part","full"]},
+	"wattabunny": {"frames":["closed","part","full"]}
+}
 }
