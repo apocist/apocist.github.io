@@ -2,11 +2,12 @@
 "default": [0,1,2,3,4,5,6,7,8,9],
 "users": {
 	"apoWulf": {"frames":["closed","part","full"]},
+	"bunamine": {"frames":["closed","full"]},
 	"EEL_System": {"frames":["closed","part","full"]},
 	"fukamasongs": {"frames":["closed","part","full"]},
-	"bunamine": {"frames":["closed","full"]},
 	"lily_magic": {"frames":["closed","part","full"]},
 	"ozmthole": {"frames":["closed","part","full"]},
+	"puppypotion": {"frames":["closed","part","full"]},
 	"WattaBunny": {"frames":["closed","part","full"]},
 	"WuffWoof": {"frames":["closed","part","full"]}
 }
