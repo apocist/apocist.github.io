@@ -9,9 +9,9 @@
 	"lily_magic": {"frames":["closed","part","full"]},
 	"neverblameme": {"frames":["closed","part","full"]},
 	"ozmthole": {"frames":["closed","part","full"]},
-	"paradoxic_mouse": {"frames":["closed","part","full"]},
-	"paradoxic_mouse": {"frames":["closed","part","full"]},
-	"pavlovsmoocow": {"frames":["closed","part","full"]},
+	"Paradoxic_Mouse": {"frames":["closed","part","full"]},
+	"PavlovsMooCow": {"frames":["closed","part","full"]},
+	"puppypotion": {"frames":["closed","part","full"]},
 	"WattaBunny": {"frames":["closed","part","full"]},
 	"WuffWoof": {"frames":["closed","part","full"]}
 }
