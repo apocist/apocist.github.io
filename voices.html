@@ -101,7 +101,7 @@
         const voiceList = document.getElementById("voice-list");
         voiceList.innerHTML = ''; // Clear out this element first
         Object.keys(voiceNames).forEach((voiceId) => {
-            voiceList.innerHTML += `<div>${voiceNames[voiceId]}<audio controls><source src="${voiceId}.mp3" type="audio/mpeg"></audio></div><br>`;
+            voiceList.innerHTML += `<div>${voiceNames[voiceId]}<audio controls><source src="/voiceSamples/${voiceId}.mp3" type="audio/mpeg"></audio></div><br>`;
         })
       }
     </script>
