@@ -94,14 +94,14 @@
         "en_us_c3po": "C3PO",
         "en_us_ghostface": "Scream", // updated
         "en_us_rocket": "Rocket",
-        "en_us_stitch": "Stitch",
+        // "en_us_stitch": "Stitch",
         "en_us_stormtrooper": "Stormtrooper"
       };
       function displayVoiceNames() {
         const voiceList = document.getElementById("voice-list");
         voiceList.innerHTML = ''; // Clear out this element first
         Object.keys(voiceNames).forEach((voiceId) => {
-            voiceList.innerHTML += `<div>${voiceNames[voiceId]}<audio controls><source src="/voiceSamples/${voiceId}.mp3" type="audio/mpeg"></audio></div><br>`;
+            voiceList.innerHTML += `<div><name class="voice-name">${voiceNames[voiceId]}</name><audio controls><source src="/voiceSamples/${voiceId}.mp3" type="audio/mpeg"></audio></div>`;
         })
       }
     </script>
@@ -114,10 +114,10 @@
 				<img src="images/classic.jpg" id="profile-image" alt="Purple wolf with red hair and spiked collar" property="image">
 				<div class="container">
 					<h1 id="username" property="name title">ApoWulf TTS Voice List</h4>
-          <description>While <b>Live</b>, you may change your voice at any time by entering in chat <snippet>!voice SomeVoiceNameHere</snippet>, replacing SomeVoiceNameHere with one of teh samples below:</description>
-          <section id="voice-list">
-            <button onclick="displayVoiceNames()">Display Voices</button>
-          </section>
+          				<description>While <b>LIVE</b>, you may change your voice at any time by entering in chat <code>!voice SomeVoiceNameHere</code>, replacing <code>SomeVoiceNameHere</code> with one of the samples below:</description>
+				        <section id="voice-list">
+				        	<button onclick="displayVoiceNames()">Display Voices</button>
+				        </section>
 				</div>     
 			</div>
 		</div>
