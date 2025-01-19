@@ -223,4 +223,5 @@ hr.divider {
 /* Voice List page */
 .voice-name {
 	vertical-align: super;
+	margin-right: 10px;
 }
