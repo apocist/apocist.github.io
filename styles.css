@@ -219,3 +219,8 @@ hr.divider {
     column-count:         1;
    }
 }
+
+/* Voice List page */
+.voice-name {
+	vertical-align: super;
+}
