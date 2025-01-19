@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  	<title>ApoWulf - TTS Voice List</title>
+  	<link href="./styles.css" rel="stylesheet">
+  	<link rel="canonical" href="https://apocist.pet/voices">
+  	<link rel="icon" type="image/png" href="images/icon.png">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  	<meta name="title" content="ApoWulf - TTS Voice List">
+  	<meta name="description" content="ApoWulf TTS Voice List">
+  	<meta name="keywords" content="apocist,gallery">
+  	<meta name="robots" content="index, follow">
+  	<meta name="language" content="English">
+  	<meta name="author" content="Apocist">
+  	<meta name="contact" content="apocist@inverseinnovations.com">
+  	<meta property="og:title" content="ApoWulf - TTS Voice List">
+  	<meta property="og:site_name" content="Apocist">
+  	<meta property="og:url" content="https://apocist.pet/voices">
+  	<meta property="og:description" content="ApoWulf TTS Voice List">
+  	<meta property="og:type" content="website">
+  	<meta property="og:locale" content="en_US">
+  	<meta property="og:image" content="https://apocist.pet/images/classic.jpg">
+  	<meta property="og:image:secure_url" content="https://apocist.pet/images/classic.jpg">
+  	<meta property="og:image:type" content="image/jpeg">
+  	<meta property="og:image:width" content="400">
+  	<meta property="og:image:height" content="400">
+  	<meta property="og:image:alt" content="Purple wolf with red hair and spiked collar">
+  	<meta property="profile:first_name" content="Apocist">
+  	<meta property="profile:last_name" content="Estel">
+  	<meta property="profile:gender" content="wulf">
+  	<meta property="profile:username" content="apocist">
+  	<meta name="twitter:card" content="summary">
+  	<meta name="twitter:site" content="@apocist">
+  	<meta name="twitter:title" content="Apocist - TTS Voice List">
+  	<meta name="twitter:description" content="ApoWulf TTS Voice List">
+  	<meta name="twitter:image" content="https://apocist.pet/images/classic.jpg">
+  	<meta name="twitter:image:alt" content="Purple wolf with red hair and spiked collar">
+  	<!-- Google only closely support 'Organization' -->
+  	<script type="application/ld+json">
+  		{
+  		  "@context": "https://schema.org",
+  		  "@type": "Organization",
+  		  "url": "https://apocist.pet",
+  		  "name": "Apocist",
+  		  "logo": "https://apocist.pet/images/classic.jpg",
+  		  "image": "https://apocist.pet/images/classic.jpg",
+  		  "description": "Messy Gay Trash Wulf",
+  		  "knowsAbout": [
+  			"https://twitch.tv/apocist",
+  			"https://twitter.com/apocist",
+  			"https://github.com/apocist"
+  		  ]
+  		}
+  	</script>
+    <script>
+      const voiceNames = {
+        "en_us_001": "Jessie", // duplicate of en_us_002
+        "en_us_006": "Joey", // updated
+        "en_us_007": "Professor", // updated
+        "en_us_009": "Scientist", // updated
+        "en_us_010": "Confidence", // updated
+        "en_uk_001": "Narrator", // updated
+        "en_uk_003": "MaleEnglishUK", // updated
+        "en_au_001": "Metro", // updated
+        "en_au_002": "Smooth", // updated
+        "en_female_betty": "Bae", // new
+        "en_female_emotional": "Peaceful",
+        "en_female_grandma": "Granny", // new
+        "en_female_madam_leota": "MadameLeota",
+        "en_female_makeup": "BeautyGuru", // new
+        "en_female_pansino": "Varsity", // new
+        "en_female_richgirl": "Bestie", // new
+        "en_female_samc": "Empathetic", // new
+        "en_female_shenna": "Debutante", // new
+      
+        "en_male_ashmagic": "ashmagic", // new
+        "en_male_cody": "Serious",
+        "en_male_cupid": "Cupid", // new
+        "en_male_deadpool": "MrGoodGuy", // new
+        "en_male_funny": "Wacky",
+        "en_male_ghosthost": "GhostHost", // new
+        "en_male_grinch": "Trickster", // new
+        "en_male_jarvis": "Alfred", // new
+        "en_male_jomboy": "GameOn", // new
+        "en_male_narration": "StoryTeller", // updated
+        "en_male_olantekkers": "olantekkers", // new
+        "en_male_pirate": "Pirate",
+        "en_male_trevor": "Marty", // new
+        "en_male_ukbutler": "MrMeticulous", // new
+        "en_male_ukneighbor": "LordCringe", // new
+        "en_male_wizard": "Magician", // new
+      
+        "en_us_c3po": "C3PO",
+        "en_us_ghostface": "Scream", // updated
+        "en_us_rocket": "Rocket",
+        "en_us_stitch": "Stitch",
+        "en_us_stormtrooper": "Stormtrooper"
+      };
+      function displayVoiceNames() {
+        const voiceList = document.getElementById("voice-list");
+        voiceList.innerHTML = ''; // Clear out this element first
+        Object.keys(voiceNames).forEach((voiceId) => {
+            voiceList.innerHTML += `<div>${voiceNames[voiceId]}<audio controls><source src="${voiceId}.mp3" type="audio/mpeg"></audio></div><br>`;
+        })
+      }
+    </script>
+    
+  </head>
+  <body>
+    <div id="mainContent" class="animate-flip1">
+        <div class="flex-container">
+			<div class="card" vocab="https://schema.org/" typeof="ProfilePage">
+				<img src="images/classic.jpg" id="profile-image" alt="Purple wolf with red hair and spiked collar" property="image">
+				<div class="container">
+					<h1 id="username" property="name title">ApoWulf TTS Voice List</h4>
+          <description>While <b>Live</b>, you may change your voice at any time by entering in chat <snippet>!voice SomeVoiceNameHere</snippet>, replacing SomeVoiceNameHere with one of teh samples below:</description>
+          <section id="voice-list">
+            <button onclick="displayVoiceNames()">Display Voices</button>
+          </section>
+				</div>     
+			</div>
+		</div>
+    </div>
+  </body>
+ </html>
