@@ -7,7 +7,7 @@ body{
 	color: white;
 	font-size: 1.5rem;
 	/*background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(81, 12, 34, 0.35)), url('https://cdn.discordapp.com/attachments/983596436379807744/983619280128053268/1500x500.jpg');*/
-	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(81, 12, 34, 0.35)), url('//images/eyes1500x500.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(81, 12, 34, 0.35)), url('/images/eyes1500x500.jpg');
 	background-attachment: fixed;
 	background-position: center top;
 	background-repeat: no-repeat;
