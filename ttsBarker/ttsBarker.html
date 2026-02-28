@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="ttsBarker.css">
+		<!--link rel="stylesheet" href="avatars.css"-->
+		<script src="ttsBarker.js"></script>
+	</head>
+	<body>
+		<container class="place-bottom">
+			<rotation>
+				<popup class="test">
+					<avatar id="avatar"/>
+				</popup>
+			</rotation>
+		</container>
+		<preloader>
+			<avatar class="closed"></avatar>
+			<avatar class="open-part"></avatar>
+			<avatar class="open-closed"></avatar>
+		</preloader>
+		<script>document.vtsPOG = new ttsBarker('screen', 'ws://localhost:4689')</script>
+	</body>
+</html>

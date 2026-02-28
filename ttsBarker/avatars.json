@@ -1,0 +1,28 @@
+{
+"default": [0,1,2,3,4,5,6,7,8,9],
+"users": {
+	"apoWulf": {"frames":["closed","part","full"]},
+	"bunamine": {"frames":["closed","full"]},
+	"crowpandemonia": {"frames":["closed","part","full"]},
+	"Drifter_Klopps": {"frames":["closed","part","full"]},
+	"EEL_System": {"frames":["closed","part","full"]},
+	"fukamasongs": {"frames":["closed","part","full"]},
+	"kajstrife": {"frames":["closed","part","full"]},
+	"lily_magic": {"frames":["closed","part","full"]},
+	"murder_fox": {"frames":["closed","part","full"]},
+	"NeverBlameMe": {"frames":["closed","part","full"]},
+	"ozmthole": {"frames":["closed","part","full"]},
+	"Paradoxic_Mouse": {"frames":["closed","part","full"]},
+	"PavTheMooCow": {"frames":["closed","part","full"]},
+	"PonPonTheBonBon": {"frames":["closed","part","full"]},
+	"PredatorXIII": {"frames":["closed","part","full"]},
+	"puppypotion": {"frames":["closed","part","full"]},
+	"queenwucy": {"frames":["closed","part","full"]},
+	"Shalands": {"frames":["closed","part","full"]},
+	"UltiTheBard": {"frames":["closed","part","full"]},
+	"WattaBunny": {"frames":["closed","part","full"]},
+	"WuffWoof": {"frames":["closed","part","full"]},
+	"yanossnow": {"frames":["closed","part","full"]},
+	"Yuuma_Raging_Bull": {"frames":["closed","part","full"]}
+}
+}
