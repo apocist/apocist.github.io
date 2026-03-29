@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lilith Odyssey</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Lilith Odyssey</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>3h 59m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-12/20/2025">12/20/2025</a> 20:26:42</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:19:03</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-11/5/2022">11/5/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1450800" target="_blank">Steam</a><br/><a href="https://www.lilithodyssey.com" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/Lilith%20Odyssey" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/89b005ee4ff61d13758e858a6342a707.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>The Great Nacho Wars have ended. </strong>A corrupt galactic government saps life and resources from the many war-weary planets it controls. Your alien family risks everything across an open-world galactic odyssey to find a mysterious land of new beginnings. And they’re all aware of their simulated nature.<br></li><li><strong>Choose how you’ll survive a harrowing space journey.</strong> Purchase and outfit your space sailer for galactic travel. Chart a course along solar highways and navigate deadly space storms and raiding zones. Beam your family down to planets, moons and asteroids to harvest fuel and resources, but prepare to fend off strange creatures and hostile inhabitants. Explore an immersive galaxy brimming with oddball culture and trade.</li></ul><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/fc07259f4a7063fcbf07535cea52944d.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Sail the cosmos</strong> with realistic flight controls and a knowable level of galactic distance and scale.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/8a8b4333038dd5fa65ceb1d91755eabe.poster.avif?t=1669514438"></span><br><br></li><li><strong>Strategize a path to Lilith</strong> using the Galacto Powerscan™ program, your tool for navigating among the stars and reaping their solar energy to power your space sails.<br></li><li><strong>Tracking capabilities</strong> let you target far-away areas as large as star systems and as small as space stations and asteroids, in addition to other points of interest.<br></li><li><strong>Upgrade antennas</strong> to gain more navigation functions, including a space storm doppler, raider and dead zone identification, and ad-free radio.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/33180e81a5c95ade280700774bce54e6.avif?t=1669514438"></span><br><br></li><li><strong>Punch it to warp speed</strong> when you need to avoid dangers or get to your destination in a blink. But beware of the fuel costs.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/baa4f2a87fff93817aa4515559e913f7.avif?t=1669514438"></span></li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/4c8ea38dbc8a95f63704a0d92be14570.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Spu</strong> are the aliens that have populated the Mugalo Galaxy for nearly three millennia (check out their history). Many are average Joes and Janes – anything but hardened space explorers. Packing their entire lives into whatever space sailer they can afford, they become your motley crew and rely on your leadership to get them to Lilith.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/fb072daaaf469f9faea255a8152009f5.poster.avif?t=1669514438"></span><br><br></li><li><strong>Define the level</strong> of challenge you want for your space journey by the Spu family you select – the wealthier, younger and the more of them there are, the easier the game. Though challenging family selections yield higher scores.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/f64b29ff62af43966495bae86aeb5ab3.avif?t=1669514438"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/2037dedf00d167500c76b1aaccf78fa4.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Beam down to planets, moons and asteroids</strong> to gather resources, drill for fuel and grow food for rations. Keep your journey stocked by making strategic stops among the stars.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/e9697b4cbdbd0a12f6bf2ae06e21cf68.poster.avif?t=1669514438"></span><br><br></li><li><strong>Explore more than 1000 unique worlds</strong> that hold distinct biomes, atmospheres and living creatures. No two places are like, with varying levels of danger and reward.<br></li><li><strong>Encounter alien creatures and beasts</strong> that can be hunted for resources. Tougher animals yield more items, but always beware of the deadly Jazgore.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/a9994d0040d18108e9ef5185341fe469.poster.avif?t=1669514438"></span><br><br></li><li><strong>Interact with galactic civilizations</strong> that include cities, gang towns, raider hideouts and tribal villages and more. Discover seven different cultural regions of the galaxy that hold their own distinct architecture and history.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/3e035c6f38c6851da205026c5ba1b097.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Your space sailer is your home base,</strong> carrying your family, resources, and gear. Upgrading fuel tanks, escape pods, antennas, solar sails, and stabilizers equips you to handle the dangers and distances of galactic travel.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/b4403d2057abf04c470e545b5fc931dd.poster.avif?t=1669514438"></span><br><br></li><li><strong>Choose one of many unique ship models</strong> – from refurbished police hulls to salvaged freight carriers, each ship type has its own strategic advantages.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/856dcdf88da124e651f500dd20de0da0.avif?t=1669514438"></span><br><br></li><li><strong>Defend your ship from space raiders</strong> by rigging it with a variety of defenses – turrets, traps, false compartments, noxious gas. Remaining unprepared for the worst leaves resources, gear and family members exposed to pillaging.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/73108f4732265886fb1a03ca5fd65b3c.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Beautiful star malls and space businesses</strong> populate the most well-traveled areas of the galaxy.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/3878d682486a3bf23639dc5fd00b30cd.avif?t=1669514438"></span><br><br></li><li><strong>Stations hold resources, fuel, and various services</strong> that assist your journey:<br><ul class="bb_ul"><li>Repair your ship<br></li><li>Heal / treat space diseases and conditions<br></li><li>Buy ammo / weapons<br></li><li>Contract / invest with businesses<br></li><li>Discover a range of specialty items with unique boosts</li></ul><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/08b408eb10c83a7d53c0a35e0a279d53.poster.avif?t=1669514438"></span><br><br></li><li><strong>Uncover galactic lore</strong> by visiting giant space monuments dedicated to historic moments and beings. On the ground, learn about galactic cultures by examining their art.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/68b815db71422fd2b67c917423fb6631.avif?t=1669514438"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/e6d1f306c4a2c24654dd44b279c53319.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Upgrade your farms and fuel rigs</strong> to yield higher quality foods that create more rations, and finely-processed fuels that give more boom to your zoom.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/ada8aa42d7c176de7456ae0fc4a6d967.avif?t=1669514438"></span><br><br></li><li><strong>Expand your arsenal</strong> by learning how to make pistols, rifles machine guns and grenades for ground-level exploration. Improve resistance to ruthless raiders by researching various ship defenses.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/d164fd4c01a3950651c683c73c790e8e.avif?t=1669514438"></span><br><br></li><li><strong>Enhance your space sailer</strong> with upgraded fuel tanks, solar sails, antennas, stabilizers and pods. Turn a dinky refurbished ship into a warp-class galactic cruiser.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/ff41d5de7cb6e50893bdf52b643a17b1.avif?t=1669514438"></span></li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/2ed163da7152fc7a220647b19e0e1393.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Take on hostile forces and aggressive animals</strong> in top-down combat mechanics. Utiilize a range of weapons and defenses, from simple spears and spike traps to grenades and the destructive Shred-X Minigun™.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/f94e8cbf03992b19743d82a466ad3cc4.poster.avif?t=1669514438"></span><br><br></li><li><strong>Rig your ship into a death trap</strong> by outfitting it with defenses, false compartments and snares. Investing in “home protection” helps keep your family safe and hard-earned money and resources intact.<br></li><li><strong>Are you a spu of peace and diplomacy?</strong> Will you slaughter a tribal village for resources? Do you try your luck at looting galactic military bases or gang towns? Choose how aggressively you play.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/fc3f28773be108429e2993322665af04.avif?t=1669514438"></span><br><ul class="bb_ul"><li><strong>Space diseases, ailments, and psychosis</strong> can affect you and your family across the long journey to LILITH. Proper gear and supplies help as much as readiness to treat a sudden onset of Space Madness or [add ailments].<br></li><li><strong>Monitor and improve your health</strong> by adjusting your character’s exercise routines, caffeine intake and other health habits.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/45875b476b6892dbdf7a3377c2889b5a.avif?t=1669514438"></span><br><br></li><li><strong>Manipulate your stats</strong> with a range of items you can ingest, wear or use on yourself. Some may offer effective boosts to strength and speed, while others may alter your capacities in strange ways.<br></li><li><strong>Space hospitals</strong> specialize in healing a range of mental and physical health issues you may not be equipped to handle. And they have the supplies you need for self-treatment.</li></ul><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1450800/extras/a1ad7cb782bfdc328a69c88e875dd2d1.avif?t=1669514438"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Critter Cove</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Critter Cove</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>15h 35m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-10/20/2025">10/20/2025</a> 19:07:00</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:13:44</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/10/2024">9/10/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Gentleman Rat">Gentleman Rat</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Gentleman Rat">Gentleman Rat</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.youtube.com/channel/UCP_DKpt9b1joFUcKu0mF67w" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/crittercovegame" target="_blank">Facebook</a><br/><a href="https://twitter.com/CritterCoveGame" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/crittercove_game" target="_blank">Instagram</a><br/><a href="https://discord.gg/QtUafGf" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/CritterCove" target="_blank">Subreddit</a><br/><a href="https://store.steampowered.com/app/1631470" target="_blank">Steam</a><br/><a href="https://www.visitcrittercove.com/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/category/critter-cove" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/p/critter-cove-cf753c" target="_blank">Epic</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/d60e94d9621b91d0ce3ab536bc3a32bb.poster.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">The town of Critter Cove used to attract visitors from all over the world. Now it’s mostly known for dirty streets and trash-strewn beaches. Can you help us turn things around?</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center">Critter Cove is a life sim and town builder game with a <strong>beautiful, handcrafted open world to explore.</strong> </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/23822c6f7d42488458f9fdee64199fc5.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">Spend your doubloons to upgrade buildings and explore the world to discover new blueprints and gather resources to grow your town. More upgrades will improve Critter Cove’s tourist rating. <br><br>The greater your tourist rating, the more new tourists will visit. The more new tourists, the more money in your pockets to upgrade the town!</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/7d517b15cdc5d5914109b8153011b877.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/8d9e14e63687d3122bc18bba2e014e18.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">Venture out into the mysterious tropical archipelago peppered with the ruins of a long-destroyed civilization. Dive beneath the waves to salvage the treasures of the old world. Rescue shipwrecked critters. Unearth exotic ingredients. It’s a wondrous world of mysterious ruins, shipwrecks and ancient technology waiting to be discovered. </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/73263184a4ed34a2cf95b0b55eec0a65.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/fd4b9db08759ebf51693fcd34385dc09.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">As you explore, you’ll find resources to craft hundreds of different items, discover new construction blueprints and bring home unique plants to grow on your farm. Turn mundane salvage into something new and unique, and improve your tourism rating by offering your freshly grown food to visitors.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/fd2ddb33e866fe64796af608968a890b.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/a6b6aef7ba2686a98929b4e65941a5c9.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">Use tourist money and salvaged items to restore rundown buildings and open up entirely new stores and venues for tourists and townsfolk. Craft decorations and interactive objects that will improve the town and make it uniquely yours. You can even decorate your very own home with hand-crafted (or hand-looted) furniture! </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/329c879d0febb39e88182884a18eb395.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/cd4d34aa2c96a3f673709e0171b39ccd.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">You’ll need help to restore the town, and luckily the world of Critter Cove is filled with many colorful characters. Some are easy-going and friendly… others might need some convincing! Rescue Critters across the world, assist them in building a home and help them find the perfect job in your community. Their happiness is the key to your success. </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/00a12b1ff8e4c8394563456aa8ccfeeb.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/c27ecc87263aeb4227574f237182d7a2.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">Embark on quests to find hidden treasures or ancient relics scattered throughout the world. Donate these artifacts to the Museum of Mystery to uncover the secrets of the long, long ago - and then charge tourists a small fee to the museum so they can absorb some local culture!</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/65c46b21f407b34d485475212efded71.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/d519b5ac0134eacce1ca9e2053137fa0.avif?t=1774546614"></span></p><p class="bb_paragraph" style="text-align: center">Create your perfect island persona with our robust customization system. Human or animal? Mammal or reptile? The head of a parrot and the tail of a monkey? It’s entirely up to you! Mix and match your physical attributes to your heart's content and discover that perfect tropical drip with hundreds of outfit combinations to craft and discover. </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/3d526455700dca0d943bd54de0f2ddbd.poster.avif?t=1774546614"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/d79c0c9e68f2703fd450b051b7c2fd6c.avif?t=1774546614"></span></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">Discover abandoned attractions and rebuild them in your town </p></li><li><p class="bb_paragraph"> Explore weird and wonderful locations such as a sunken city, and a wild botanical garden </p></li><li><p class="bb_paragraph"> Catch some post-apocalyptic fish and discover the best and most unique fishing spots around the world </p></li><li><p class="bb_paragraph"> Dismantle items in the open-world to discover new crafting recipes </p></li><li><p class="bb_paragraph"> Watch tourists launch themselves into the ocean for entertainment </p></li><li><p class="bb_paragraph"> Assign townsfolk careers they’ll love (or hate) depending on their personalities </p></li><li><p class="bb_paragraph"> Watch Critters use gifts or wear clothes you make for them </p></li><li><p class="bb_paragraph"> Hunt for new residents shipwrecked after storms </p></li><li><p class="bb_paragraph"> Cook powerful food items that affect your stamina and exploration prowess </p></li><li><p class="bb_paragraph"> Run advertising campaigns to attract more tourists to your island </p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"> </p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1631470/extras/9c26444268ec0a739bccbf272185e77a.poster.avif?t=1774546614"></span></p><p class="bb_paragraph">Wishlist us to stay up-to-date, and head over to our Discord to be the first to hear about giveaways, and the latest Critter Cove news and gossip!</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

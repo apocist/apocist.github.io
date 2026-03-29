@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Conan Exiles</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Conan Exiles</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>1d 3h 46m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-9/3/2017">9/3/2017</a> 23:04:38</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:00:41</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-5/8/2018">5/8/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Fighting">Fighting</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Funcom">Funcom</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Funcom">Funcom</a><br/><a href="#quicklink-Koch Media">Koch Media</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.conanexiles.com/" target="_blank">Official Website</a><br/><a href="http://conanexiles.gamepedia.com/Conan_Exiles_Wiki" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Conan_Exiles" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/conanexiles" target="_blank">Facebook</a><br/><a href="https://twitter.com/conanexiles" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/conanexiles" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/Funcom" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/440900" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/store/p/conan-exiles" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/game/Conan%20Exiles" target="_blank">Twitch</a><br/><a href="https://www.xbox.com/en-us/games/store/conan-exiles/C2X6ZCNKN2WR" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/231261" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">Conan Exiles is an online multiplayer survival game, now with sorcery, set in the lands of Conan the Barbarian. Enter a vast, open-world sandbox and play together with friends and strangers as you build your own home or even a shared city. Survive freezing cold temperatures, explore loot-filled dungeons, develop your character from scavenging survivor to mighty barbarian and powerful sorcerer, and fight to dominate your enemies in epic siege wars. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Conan Exiles can be played in full single-player, co-op, or persistent online multiplayer.</strong></p><p class="bb_paragraph"></p><p class="bb_paragraph">After Conan himself saves your life by cutting you down from the corpse tree, you must quickly learn to survive. Weather scouring sandstorms, shield yourself from intense temperatures and hunt animals for food and resources. Explore a vast and seamless world, from the burning desert in the south to the snow-capped mountains of the north.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Forge the legacy of your clan as you fight to reclaim and dominate the Exiled Lands. Use the powerful building system to create anything from a small home to entire cities piece by piece. Wage war using swords, sorcery, bows, and siege weapons, even taking control of giant avatars of the gods to crush the homes of your enemies in epic battles.</p><p class="bb_paragraph"></p><h2 class="bb_tag">SURVIVE IN A SAVAGE LAND</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/0d17156081f379064f7f0737867afd86.avif?t=1766090090"></span>Dress well or light a campfire to stay warm and make sure to cool yourself down in the heat. Hunt, cook, eat, and drink to stay alive. Build a shelter to weather scouring sandstorms. Be careful when exploring darkened ruins or you might become corrupted by foul sorcery.</p><p class="bb_paragraph"></p><h2 class="bb_tag">BUILD A HOME AND A KINGDOM</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/3c21c31cf498e0b93e705b216a72fec6.avif?t=1766090090"></span>Harvest resources to craft tools and weapons, then build anything from a small home to entire cities piece by piece using a powerful building system. Place traps, elevators, and defenses, then deck out your creations with furniture, crafting stations, and more.</p><p class="bb_paragraph"></p><h2 class="bb_tag">DOMINATE THE EXILED LANDS</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/00cb2c0f82bdcaf9c42973f757b7de8e.avif?t=1766090090"></span>Carve out your piece of the Exiled Lands, taking it from other players if you must! Build siege weapons and use explosives to break down the walls of your enemy’s city. Place traps, recruit thralls, and build defenses to keep your enemies from invading you.</p><p class="bb_paragraph"></p><h2 class="bb_tag">CORRUPT YOURSELF TO WIELD DARK SORCERY</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/a0c0622e7acff3e44646b674a9d9d42b.avif?t=1766090090"></span>Discover insidious sorceries and corrupt your body to wield them. Special perks are awarded to those who give up a portion of their life force. Sacrifice thralls to summon demons and the undead and bend them to your will. Conjure darkness, soar the skies on winged monstrosities, and call down lightning to strike your foes.</p><p class="bb_paragraph"></p><h2 class="bb_tag">AGES ARRIVE IN THE EXILES LANDS</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/59aa7aef3f931bf16fce211936e110ed.avif?t=1766090090"></span>Updates in Conan Exiles now come in Ages. Each Age has its own theme, free gameplay updates, and Battle Passes. This model allows us to add features and improvements for free, while providing an easy way for any player to support the game’s growth and receive exclusive themed cosmetics.</p><p class="bb_paragraph"></p><h2 class="bb_tag">EXPLORE A VAST, OPEN WORLD</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/671c82f6113fb954097d057bb6599cd2.avif?t=1766090090"></span>Journey through a massive and seamless open world, from the rolling sand dunes of the southern desert to the mysterious eastern swamp and the snow-capped mountains of the frozen north. Climb anywhere and experience full freedom of exploration.</p><p class="bb_paragraph"></p><h2 class="bb_tag">BRUTAL, BLOODY COMBAT</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/5aa770e7e2c8223701eaba93d39ffc20.avif?t=1766090090"></span>Fight vicious monsters and other players using an action-oriented, combo-based combat system. Dodge, block, and learn to master the true art of combat to become the greatest fighter in the Exiled Lands. Slay using bows, daggers, swords, axes, and more.</p><p class="bb_paragraph"></p><h2 class="bb_tag">ENSLAVE THRALLS TO DO YOUR BIDDING</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/f8cf26baf133cdc5993dc1c55df3d86b.avif?t=1766090090"></span>Enslave the criminals of the Exiled Lands and make them join your cause and defend your territory. Put them through the grueling Wheel of Pain to break their will, then turn them into archers, fighters, crafters, entertainers, and more.</p><p class="bb_paragraph"></p><h2 class="bb_tag">DISCOVER THE RUINS OF ANCIENT CIVILIZATIONS</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/d8dbcbaed106952c206af6adf9e0a9d0.avif?t=1766090090"></span>From the Black Keep in the north to the Dregs along the southern river, discover the ruins of ancient civilizations and solve their mysteries to gain access to their treasure. Uncover the history of the Exiled Lands you as you explore, uncover lore, and meet NPCs.</p><p class="bb_paragraph"></p><h2 class="bb_tag">BECOME A TOWERING GOD</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/af56a437c6f63a21f3ab57d1acde9327.avif?t=1766090090"></span>Alight yourself with one of four deities such as Derketo, the goddess of lust and death. Bring your sacrifices to the altar of your god then summon and take control of their huge, towering avatar. Crush enemies and entire buildings under your avatar’s feet.</p><p class="bb_paragraph"></p><h2 class="bb_tag">PLAY TOGETHER OR ALONE</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/608ef9b371f1549edf8051122469ea0e.avif?t=1766090090"></span>Play alone locally or fight for survival and dominance in persistent multiplayer on public servers. You can also host your own server and invite others to join you in a world where you have full control of the rules and settings. Want to play with just handful of friends? Try co-op mode!</p><p class="bb_paragraph"></p><h2 class="bb_tag">CONTROL YOUR EXPERIENCE</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/276cc46094c74b0b06d721d0ec109394.avif?t=1766090090"></span>When playing alone locally or on a server you are the administrator of your world, with access to a range of in-game tools. Change your progression speed, spawn monsters, turn yourself invisible, deactivate avatars, and much more. Be the dungeon master of your own server.</p><p class="bb_paragraph"></p><h2 class="bb_tag">PLAY WITH MODS</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/440900/extras/654e6e8f3d303915285b83fe65ad190f.avif?t=1766090090"></span>Download Conan Exiles mods directly from the Steam workshop to customize your game experience. You can also download the custom Conan Exiles Unreal Editor and start creating your own. Countless mods await your discovery!</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

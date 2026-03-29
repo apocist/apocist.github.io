@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vacation Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Vacation Simulator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:11:08</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-4/9/2019">4/9/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-71">71</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Owlchemy Labs">Owlchemy Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Owlchemy Labs">Owlchemy Labs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://vacationsimulatorgame.com/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/726830" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Vacation%20Simulator" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/232369" target="_blank">Playstation</a><br/><a href="https://www.facebook.com/OwlchemyLabs/" target="_blank">Facebook</a><br/><a href="https://x.com/OwlchemyLabs" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/owlchemylabs/" target="_blank">YouTube</a><br/><a href="https://discord.com/invite/owlchemylabs" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					A brand new VR experience from Owlchemy Labs, creators of the platinum hit Job Simulator!<br><br>Visit the vibrant world of Vacation Island and make real memories of a simulated vacation. Explore activity-rich destinations filled with a colorful cast of Bots and endless interactions. Reallocate your bandwidth and get ready to splash, s’more, snowball, and selfie your way to optimal relaxation!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/9b0c74ae7128bb2119ba2300dfb987c2.avif?t=1710255671"></span><br><br><i>“An engaging gaming experience that had me smiling ear-to-ear throughout” – VR Scout</i><br><br><i>“Unparalleled grasps on interactions in VR… Owlchemy’s staple humor out in full force” – UploadVR</i><br><br><i>“Should you buy it? Yes. In fact, hell yes. … Owlchemy Labs has outdone themselves in every possible way” – Windows Central</i><h2 class="bb_tag">Rediscover the True Meaning of ‘Time Off’</h2>Following record enrollment in the Job Simulator, robots set out to uncover what else humans did besides ‘job’. After years of balancing buoyancy levels, cataloging campfire chronicles, and securing ski slope safety protocols, their research led to the creation of a rough approximation of ‘not jobbing’: the Vacation Simulator!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/a9a6deff6668f883cdc2a90cd8699d13.poster.avif?t=1710255671"></span><br><br><strong>Amenities Include:</strong><br>🏝️ Experience Vacation Island, your destination for optimal relaxation and/or efficient memory-making!<br>📸 Customize a virtual YOU for picture-perfect selfies!<br>🤖 Wave to interact with a colorful cast of Bots!<br>🤽 Enjoy RECREATION beyond the theoretical limit in immersion-inspiring destinations!<br>🌊 Splash in the silicon sea and bask in simulated sunlight, all without getting sand in your… hands!<br>⛰️ Get lost connecting with your roots, nodes, and branches... then get actually lost on a hike!<br>❄️ Elevate your ice-sculpting skills to new heights and reach peak cozy by knitting mittens for a snowhuman!<br>❣️ Exist in a comfortable, all-inclusive VR experience— free of motion sickness AND seasickness!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/a3ef2dd8cb20c60a520394c9cbf2d569.avif?t=1710255671"></span><br><strong>Sea Your Personal Paradise:</strong> Come to glorious Vacation Beach to indulge in simulated sand and our painstakingly-researched rough approximations of human BEACH activities. Splash in the silicon sea and bask in simulated sunlight, all without getting sand in your… hands! Relax your CIRCUITS with a T-pose doing yoga, join in classic human sport, or visit the Dock Shop for the latest in leisurely avatar accessories.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/c3e8683427eba246927835d357eb1fa9.avif?t=1710255671"></span><br><strong>Branch Out And Explore:</strong> Need a little more TREE in your life? Look no further than Vacation Forest! With over five unique trees copy-pasted across acres of artificial space, you’re sure to feel enveloped in the true sensation of NATURE. Discover the EMOTION of painting happy little trees, then share that EMOTION with Your Very Own Fish—and so much more! (*this simulation is not Actual Nature. Restrictions Apply.) <br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/4ea800bd3e435b8c811a10cdf0ff247d.avif?t=1710255671"></span><br><strong>Elevate Your Vacation:</strong> Reach peak cozy atop the fabulous Vacation Mountain! Our premium lodge features HOT LIQUID, HOT TUB, and HOT AIR to help you recalibrate after a cold day in the snow. Whether crafting ice sculptures, chucking snowballs, or customizing your very own snowhuman, Vacation Mountain offers mostly authentic simulations of both cozy AND cold!<h2 class="bb_tag">Includes Free Expansion!</h2>Welcome to the Gig Economy, Human! Provide 5-Star service and enjoy endless challenges in our new expansion, Vacation Simulator: Back to Job!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/bfea9d544451305b56352957639e9c9d.avif?t=1710255671"></span><h2 class="bb_tag">VR for Everyone - No Exceptions!</h2>Owlchemy Labs is an XR studio with a passion for polished, playful VR games and experiences. We love building experiences for everyone: oozing with style, absurdly funny, and with ground-breaking accessibility to bring more joy to more people.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/343ac80f0d0f8229cbc46d3b8efe0909.poster.avif?t=1710255671"></span><br><br>We strive to create interactions that feel natural, and we understand that not all players may be able to use two arms simultaneously. We now fully support one handed play for 100 percent of the game!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/df03d11c2be77ae50ed97649608dba7f.poster.avif?t=1710255671"></span><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/11a7630689fe0eddcc1a3ed70161d3e8.poster.avif?t=1710255671"></span><br><br>We love filling our worlds with humorous dialogue and text, and we want our players to not have to rely on speech or text to be able to enjoy the game. So, we’ve gone through the game and found places where we relied on text or speech as the only way to communicate critical gameplay information. We worked to modify those places to use icons and other visuals to better help all players understand the game.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/726830/extras/919c125ae5229e691961ac8e1e2c2e53.poster.avif?t=1710255671"></span><br><br>Being completely immersed in VR is a truly magical experience, and we want all our players to feel comfortable while playing the game. We heard it can be uncomfortable for some if they have to turn all the way around to go backwards, so we worked to reduce this as much as possible.<br><br><br><i>Created for you by your friends at Owlchemy Labs. Thanks for playing our games and letting us know what you think!</i>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

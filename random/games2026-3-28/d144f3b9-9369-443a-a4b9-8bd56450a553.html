@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Life is Feudal: MMO</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Life is Feudal: MMO</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:53:14</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-1/12/2018">1/12/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-30">30</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-65">65</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-BITBOX Ltd.">BITBOX Ltd.</a><br/><a href="#quicklink-Long Tale Games">Long Tale Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Long Tale Games">Long Tale Games</a><br/><a href="#quicklink-Xsolla">Xsolla</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://lifeisfeudal.gamepedia.com/Life_is_Feudal_Wiki" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Life_Is_Feudal:_MMO" target="_blank">Wikipedia</a><br/><a href="https://lifeisfeudalmmo.com/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/@longtalegames" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/LiF.MMO" target="_blank">Facebook</a><br/><a href="https://twitter.com/lifeisfeudalmmo" target="_blank">Twitter</a><br/><a href="https://discord.gg/invite/QDrMBsvGMg" target="_blank">Discord</a><br/><a href="https://store.steampowered.com/app/700030" target="_blank">Steam</a><br/><a href="https://store.epicgames.com/en-US/p/life-is-feudal-mmo-241b81" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/category/life-is-feudal-mmo" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Life is Feudal: MMO is a subscription-based MMO set in a medieval world of thrilling risks and unyielding realism. From intense PvP combat and large-scale guild wars to politics and diplomacy, the game is alive with possibilities. With unique crafting mechanics and professions, players can master their domain, build formidable fortresses, and dive deep into guild life for an immersive experience. The return of this legendary game opens the vast lands of Abella once more, offering players the chance to ascend through skillful swordplay or masterful wealth accumulation.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/847f7f50d6a7480411a8ba3a8f493567.webp?t=1719250150"></span><br>With limitless terraforming and free construction systems, transform any territory into a haven, or construct sky-high fortresses, prosperous villages, and grand fortresses in any configuration. Your creativity is your only limit.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/9e935952f7df75f305c615011d9bed12.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/b3e90d640cc85361cebbc8cee7b8b41c.webp?t=1719250150"></span><br>Life is Feudal: MMO offers unparalleled sandbox freedom on an MMO scale. Engage in intense political maneuvering, thrilling battles, and immerse yourself in the complexity of medieval professions. Discover the depth of the crafting system, and shape your own destiny in this expansive world.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/0282f482df06753fc763ebbc10d67156.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/9a3117ea6c2d4d024fcc57e6bf56ad9e.webp?t=1719250150"></span><br>Life is Feudal: MMO takes you beyond battle and politics, offering immersive experiences like planting, harvesting crops, hunting or breeding a variety of different animals. Survival has never been this real.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/730e7996dc43b62d9275feff5662cb3f.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/7a98110755d2e92755a9b8461c221ec8.webp?t=1719250150"></span><br>The combat in Life is Feudal: MMO is visceral and real. Weapons must physically hit to cause damage and physics parameters are considered. Stand with your allies in prearranged battles, or test your mettle in solo survival arenas. Victory rewards the spoils of war: claim everything your fallen enemy possessed.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/45e6e16ce4b2c17c94756c020c88ad40.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/68988d5548626616d58639ce227b8286.webp?t=1719250150"></span><br>Immerse yourself in true political sandbox gameplay. Engage in authentic, large-scale sieges, guild wars, alliances, and real map land control tactics. Victory means the power to conquer, tax other players' guilds, and even rule whole kingdoms.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/570f1aec2ed7efcf72793652252db0ad.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/e16da800637367840460aba1567b89b1.webp?t=1719250150"></span><br>In Life is Feudal: MMO, you're never alone. Join one of the hundreds of guilds and shape the beautiful 36x36 km map alongside other players. Every corner of the world is yours to discover.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/1d5b174d2d424eba8cd775c0311f5056.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/50cf4d8078c0cd288b562d5baa357f6d.webp?t=1719250150"></span><br>Life is Feudal: MMO offers complete character customization, from appearance to equipment. Choose your medieval profession and develop it in a way that suits your playstyle. Discover and unlock hundreds of blueprints to enhance your crafting skills, creating a unique experience tailored just for you.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/422decd8d8a25d6649edb40ba69c6d4a.poster.avif?t=1719250150"></span><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/199d8d74acd2767d7c331e44d5671673.webp?t=1719250150"></span><br>In Life is Feudal: MMO, player feedback is paramount. We value the community's insights, regularly host Q&amp;A sessions, and are always open to suggestions and critique. Players have the opportunity to shape the game's development, directly influencing the evolution of the game world.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/700030/extras/4db5d59420cabc9db558f7ca9dd85ad8.poster.avif?t=1719250150"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

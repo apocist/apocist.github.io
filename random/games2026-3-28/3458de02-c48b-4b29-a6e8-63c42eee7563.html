@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>EmoteLab</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> EmoteLab</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>11h 33m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-2/25/2026">2/25/2026</a> 22:01:44</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:56:44</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-"></a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">EmoteLab is a  utility tool for creating customized characters and animated emotes. The exported emotes can be used on platforms such as Discord, Twitch, and various social media or chat applications. Whether you’re a content creator, a VTuber, or simply someone who enjoys using expressive emotes and emojis in daily conversations with friends and family, EmoteLab provides a simple and approachable way to sprinkle some cuteness into your chats and drive community engagement.</p><p class="bb_paragraph"></p><p class="bb_paragraph">A built-in customizable character model featuring a variety of preset parts and animation clips is included. You can combine hairstyles, facial features, clothing, and accessories to create original characters, personal avatars, or fun chat emotes. Character size and other properties can be adjusted to meet the upload requirements of different platforms.</p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Key Features</strong></h2><ul class="bb_ul"><li><p class="bb_paragraph">Beginner-friendly interface for character customization</p></li><li><p class="bb_paragraph">Real-time preview of changes</p></li><li><p class="bb_paragraph">Flexible export settings for common platforms</p></li><li><p class="bb_paragraph">Save and reuse character presets</p></li><li><p class="bb_paragraph">Supports third-party Spine2D models (Version 4.3 required; specific naming conventions apply to enable the built-in customization interface)</p></li></ul><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>What You Can Do</strong></h2><p class="bb_paragraph"><strong>🎨 Create Custom Characters</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">Mix and match available character parts such as hair, facial features, clothing, and accessories</p></li><li><p class="bb_paragraph">Adjust parts using intuitive sliders</p></li><li><p class="bb_paragraph">Apply color tints to individual character parts</p></li><li><p class="bb_paragraph">Save character presets and load them later</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>💫 Preview &amp; Test Animations</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">Browse and play animations from the built-in animation library</p></li><li><p class="bb_paragraph">Preview how your character appears in different animations</p></li><li><p class="bb_paragraph">Zoom, rotate, and reposition characters in the viewport</p></li><li><p class="bb_paragraph">Try different combinations before exporting</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>🎞️ Export Animated GIFs</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">Export animations as animated GIFs</p></li><li><p class="bb_paragraph">Control output size, frame rate, and quality</p></li><li><p class="bb_paragraph">Use presets optimized for platforms like Discord and Twitch</p></li><li><p class="bb_paragraph">Export with transparent backgrounds</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>🗃️ Manage Your Characters&nbsp;</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">Save multiple character variations</p></li><li><p class="bb_paragraph">Switch between saved characters easily</p></li><li><p class="bb_paragraph">Delete characters you no longer need</p></li><li><p class="bb_paragraph">Export character settings in a shareable format to exchange presets with others</p><p class="bb_paragraph"></p></li></ul><h2 class="bb_tag">Perfect For</h2><ul class="bb_ul"><li><p class="bb_paragraph">Creating animated emojis and emotes for Discord, Twitch, and social media</p></li><li><p class="bb_paragraph">Adding personalized emotes to everyday chats with friends and family</p></li><li><p class="bb_paragraph">Generating short character animations for casual content creation</p><p class="bb_paragraph"></p></li></ul><h2 class="bb_tag">Important Notes Before Purchasing</h2><ul class="bb_ul"><li><p class="bb_paragraph">EmoteLab uses a premade, customizable character model. While it offers a variety of parts and animations, it is not possible to create every type of character. The available parts and animation clips are limited to what is included in the current version of the software.</p></li><li><p class="bb_paragraph">The developer may add new parts and animation clips over time based on user feedback, but it is not guaranteed that all requests can be fulfilled.</p></li><li><p class="bb_paragraph">Please review the documentation website to see the full list of currently available character parts and animation clips. Purchasing decisions should be based on the current features and contents, rather than expectations of future updates.</p></li><li><p class="bb_paragraph">EmoteLab is designed for general users with no background in animation or content creation. It is not a professional animation tool and does not support keyframing or manual editing of individual part movements.</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

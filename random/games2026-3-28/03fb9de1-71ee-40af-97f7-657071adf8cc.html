@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shadowrun: Dragonfall - Director&#39;s Cut</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Shadowrun: Dragonfall - Director&#39;s Cut</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 17m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-12/25/2014">12/25/2014</a> 22:50:35</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:13:24</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/18/2014">9/18/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Strategy">Strategy</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Harebrained Schemes">Harebrained Schemes</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Harebrained Schemes">Harebrained Schemes</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://harebrained-schemes.com/shadowrun/dragonfall/" target="_blank">Official Website</a><br/><a href="http://shadowrun.gamepedia.com/Shadowrun:_Dragonfall" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Shadowrun:_Dragonfall" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/300550" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/shadowrun_dragonfall_directors_cut" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/product/shadowrun-dragonfall" target="_blank">Epic</a><br/><a href="https://www.nintendo.com/games/detail/shadowrun-dragonfall-directors-cut-switch/" target="_blank">Nintendo</a><br/><a href="https://www.xbox.com/en-us/games/store/shadowrun-dragonfall---director's-cut/9PKJTP6DTND3" target="_blank">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<i>Shadowrun: Dragonfall - Director’s Cut</i> is a standalone release of Harebrained Schemes' critically-acclaimed <i>Dragonfall</i> campaign, which first premiered as a major expansion for <i>Shadowrun Returns</i>. The Director's Cut adds a host of new content and enhancements to the original game: 5 all-new missions, alternate endings, new music, a redesigned interface, team customization options, a revamped combat system, and more - making it the definitive version of this one-of-a-kind cyberpunk RPG experience. <br><br>NOTE: The <i>Director’s Cut</i> is free to existing owners of the <i>Dragonfall</i> expansion for <i>Shadowrun Returns</i>. It will be automatically added to your Steam Library when the game is released.<h2 class="bb_tag">Man Meets Magic &amp; Machine</h2>In 2012, magic returned to our world, awakening powerful creatures of myth and legend. Among them was the Great Dragon Feuerschwinge, who emerged without warning from the mountains of Germany, unleashing fire, death, and untold destruction across the countryside. It took German forces nearly four months to finally shoot her down - and when they did, their victory became known as The Dragonfall. <br><br><br>It’s 42 years later - 2054 - and the world has changed. Unchecked advances in technology have blurred the line between man and machine. Elves and trolls walk among us, ruthless corporations bleed the world dry, and Feuerschwinge’s reign of terror is just a distant memory. Germany is splintered - a stable anarchy known as the “Flux State” controls the city of Berlin. It’s a place where power is ephemeral, almost anything goes, and the right connections can be the difference between success and starvation. For you and your team of battle-scarred shadowrunners, there’s no better place to earn a quick payday. <br><br>Now, a new threat is rising, one that could mean untold chaos and devastation. One that soon has you and your team caught on the wrong side of a deadly conspiracy. The only clue: whispers of the Dragonfall. Rumors that the Great Dragon Feuerschwinge may still be alive, waiting for the right moment to return…<h2 class="bb_tag"><i>Shadowrun: Dragonfall - Director’s Cut</i> Features</h2><strong>A Classic, Story-Driven cRPG: <i>Dragonfall</i> hearkens back to the golden age of computer RPG’s with a novel-like branching narrative full of sharp prose and deep character development. Immerse yourself in a smart, 20+ hour campaign with a diverse cast of all-too-human characters.<br><br><strong>A One-of-a-Kind Cyberpunk Setting:</strong> Experience the unique “Tech meets Magic” dystopian future of Shadowrun, a fan-favorite game setting now celebrating it’s 25th anniversary. <i>Shadowrun: Dragonfall - Director’s Cut</i> is the perfect entry point to the setting for those with no prior Shadowrun experience, while providing plenty of classic Shadowrun characters and tech for veteran players to sink their teeth into.<br><br><strong>Command Your Team:</strong> Lead a small team of shadowrunners - each with their own outlook, motivations, and backstory. The members of your team are designed to play contrasting roles during missions, and each has a distinct set of skills, abilities, strengths, and weaknesses. But it’s not all about the mission - each team member also has challenges to face in their own lives, which you can choose to brush aside or play an important part in.<br><br><strong>Gripping, Turn-Based Tactical Combat:</strong> When you’re running the shadows, every turn matters. Choose your actions wisely - move to better cover, charge into melee, or lob a fireball into a crowd of enemies. With over 200 weapons and spells at your disposal, every turn is filled with meaningful choices.<br><br><strong>Skill-Based Character Progression:</strong> Choose a starting character archetype and build from there! Street Samurai and Physical Adepts use advanced combat skills to dominate the battlefield, Shamans and Mages summon powerful allies and cast deadly spells, while Riggers and Deckers provide critical technological support, projecting their consciousness directly into drones and computer systems. Shadowrun: Dragonfall’s classless skill system allows you to grow your character in any direction you choose.<h2 class="bb_tag">New in the <i>Director’s Cut</i></h2><strong>Standalone: </strong>Due to popular demand, <i>Dragonfall</i> is now a completely standalone title!<br><br><strong>Five All-New Missions:</strong> The <i>Director’s Cut</i> features five all-new original missions, including three related directly to the personal stories of your team members. These missions take you to previously-unseen locales - both within the Flux State and beyond - where you’ll have to face challenging enemies and make tough choices in order to help your team members prevail.<br><br><strong>Revamped Combat System:</strong> The <i>Dragonfall</i> combat system has received a major overhaul. An all-new armor system adds another tactical layer to the experience, while refined cover and damage mechanics emphasize the importance of battlefield positioning. Complementing these improvements is an upgraded AI system which reacts more intelligently and accurately to your actions.<br><br><strong>Redesigned Interface:</strong> The <i>Dragonfall</i> in-game interface has also been rebuilt. Spells, items and abilities are now much easier to access, while improved combat feedback allows you to fully understand the tactical situation in any given encounter.<br><br><strong>Customize Your Team:</strong> Guide your team members as they progress in each of their unique roles, choosing between different focus options to grant them new items and abilities. In addition, if you don’t like a team member’s default spell, item or weapon loadout, you can now customize what they bring on each mission.<br><br><strong>Ten New Pieces of Original Music:</strong> Fan-favorite composer Jon Everist brings ten new tracks of moody cyberpunk music to the <i>Dragonfall</i> experience, including compositions based on the stories of individual members of your team.<br><br><strong>The Complete Dragonfall Soundtrack:</strong> As a free bonus, the <i>Director’s Cut</i> includes the entire soundtracks from both <i>Dragonfall</i> AND our previous title, <i>Shadowrun Returns</i>. This also includes the brand new tracks exclusive to the <i>Director’s Cut</i>. Featuring music from the composers of the classic Shadowrun SEGA and SNES games, this exciting cyberpunk soundtrack pays homage to the past with a modern sentiment. <br><br><strong>And Much More:</strong><br><ul class="bb_ul"><li>Steam Achievements!</li></ul><ul class="bb_ul"><li>Steam Trading Cards - collect your favorite Dragonfall characters</li></ul><ul class="bb_ul"><li>All-new alternate endings to the main campaign</li></ul><ul class="bb_ul"><li>Enhanced visual effects including splatter and dismemberment, improved animations, and optional post-processing effects</li></ul><ul class="bb_ul"><li>New bioware augmentations provide an extra edge on the battlefield… if you’ve got the nuyen</li></ul><ul class="bb_ul"><li>A variety of new items, cyberware &amp; spells</li></ul><ul class="bb_ul"><li>Additional player customization options</li></ul><ul class="bb_ul"><li>Expanded character development for several side characters</li></ul><ul class="bb_ul"><li>Writing and design tweaks and polish throughout!</li></ul></strong>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

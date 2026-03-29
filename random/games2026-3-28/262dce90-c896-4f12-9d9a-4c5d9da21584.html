@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cooking Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Cooking Simulator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:53:00</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-6/6/2019">6/6/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-71">71</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Arcade">Arcade</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Big Cheese Studio">Big Cheese Studio</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Big Cheese Studio">Big Cheese Studio</a><br/><a href="#quicklink-Forever Entertainment S.A.">Forever Entertainment S.A.</a><br/><a href="#quicklink-PlayWay">PlayWay</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/641320" target="_blank">Steam</a><br/><a href="https://twitter.com/cookingsim" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/CookingSimulator" target="_blank">Facebook</a><br/><a href="https://www.gog.com/game/cooking_simulator" target="_blank">GOG</a><br/><a href="https://en.wikipedia.org/wiki/Cooking_Simulator" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Cooking%20Simulator" target="_blank">Twitch</a><br/><a href="https://www.reddit.com/r/CookingSimulator/" target="_blank">Subreddit</a><br/><a href="https://cooking-simulator.fandom.com/wiki/Cooking_Simulator_Wiki" target="_blank">Community Wiki</a><br/><a href="https://www.nintendo.com/games/detail/cooking-simulator-switch/" target="_blank">Nintendo</a><br/><a href="https://www.xbox.com/en-us/games/store/cooking-simulator/9N3DKKRHSJBT" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/10001366" target="_blank">Playstation</a><br/><a href="https://www.youtube.com/bigcheesestudio/" target="_blank">YouTube</a><br/><a href="https://discord.gg/bigcheesestudio" target="_blank">Discord</a><br/><a href="https://www.instagram.com/bigcheesestudio/" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/641320/extras/c79118901f4baca91469d5872dde4d63.avif?t=1774696997"></span></p><p class="bb_paragraph"><strong>Welcome to the ultimate kitchen playground for players who want skill, freedom, and a little bit of chaos.</strong> </p><p class="bb_paragraph">Cooking Simulator gives you full control of a pro-level kitchen packed with tools, ingredients, and physics-driven systems that make every action feel alive. Learn the craft, chase perfection, or set everything on fire just to see what happens.&nbsp;</p><h2 class="bb_tag" style="text-align: center"><strong>YOUR KITCHEN, YOUR RULES</strong></h2><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/641320/extras/cef2281adf1419cc267748d0cd3472d3.poster.avif?t=1774696997"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph">This is your full chef arsenal: ovens, grills, gas burners, pots, pans, plates, knives, blenders, mixers, and more. Stock your pantry with over&nbsp;<strong>140 ingredients</strong>&nbsp;including meats, fish, veggies, fruits, dairy, oils, liquids, herbs, and spices.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">Everything reacts to your hands.&nbsp;<strong>Heat it, cool it, slice it, spill it, burn it, break it.</strong>&nbsp;If you can try it in a real kitchen, you can pull it off here.&nbsp;</p><h2 class="bb_tag" style="text-align: center"><strong>REAL PHYSICS. REAL COOKING. REAL CHAOS.</strong>&nbsp;</h2><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/641320/extras/b694794bc8eb21e2b123480c2c2ad56a.poster.avif?t=1774696997"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph">Every move matters. Pouring soup, flipping steaks, cutting vegetables, tossing ingredients, or knocking something off the counter all play out with real physics.&nbsp;</p><p class="bb_paragraph">Go for perfect execution&nbsp;or create the kind of disasters only a videogame kitchen can survive.&nbsp;</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><strong>CHOOSE YOUR PLAYSTYLE</strong></h2><h2 class="bb_tag" style="text-align: center">Career Mode</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/641320/extras/64ecd8226b5d39f2e169fdc691ab5631.poster.avif?t=1774696997"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph">Build your reputation from the ground up. Learn techniques, unlock&nbsp;<strong>80+ recipes,</strong> improve your timing, speed, and consistency, and grow your restaurant’s fame. Pick&nbsp;<strong>perks&nbsp;and skills</strong>&nbsp;that fit your cooking style and become a kitchen legend.&nbsp;</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center">Sandbox Mode&nbsp;</h2><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/641320/extras/9436bafb983650cda15fbe2551795ca9.poster.avif?t=1774696997"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>No pressure. No rules. Infinite freedom.</strong>&nbsp;</p><p class="bb_paragraph">Mess around with every tool, recipe, and ingredient right away. Build dishes, run experiments, or push the physics engine to absolute chaos.&nbsp;</p><p class="bb_paragraph">Stack cutting boards like dominoes, throw knives, light the kitchen on fire, blow up the oven, then save the day with a fire extinguisher.&nbsp;It’s&nbsp;your playground.&nbsp;</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><strong>KEY FEATURES</strong></h2><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Career and Sandbox modes</strong>&nbsp;for structured progression or full creative freedom</p></li><li><p class="bb_paragraph"><strong>80+ recipes</strong>&nbsp;ranging from beginner-friendly to chef-tier&nbsp;</p></li><li><p class="bb_paragraph"><strong>140+ realistic ingredients</strong>&nbsp;with real-time reactions&nbsp;</p></li><li><p class="bb_paragraph"><strong>Advanced cooking mechanics</strong>&nbsp;based on temperature, timing, and precision&nbsp;</p></li><li><p class="bb_paragraph"><strong>Perks&nbsp;and skills</strong>&nbsp;to boost speed, stability, and control&nbsp;</p></li><li><p class="bb_paragraph"><strong>A fully interactive kitchen</strong>&nbsp;loaded with pro tools&nbsp;</p></li><li><p class="bb_paragraph"><strong>Physics-driven fun</strong>&nbsp;that rewards skill - and hilariously punishes chaos&nbsp;</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph">Master the craft, break the rules, or burn the whole place down.&nbsp;<strong>It’s&nbsp;your kitchen. Your call.</strong>&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

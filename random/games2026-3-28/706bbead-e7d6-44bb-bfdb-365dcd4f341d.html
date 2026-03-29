@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>In Stars And Time</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> In Stars And Time</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:17:15</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-11/20/2023">11/20/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-83">83</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-insertdisc5">insertdisc5</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Armor Games Studios">Armor Games Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1677310/In_Stars_And_Time" target="_blank">Steam</a><br/><a href="https://instarsandtime.com/" target="_blank">Official Website</a><br/><a href="https://twitter.com/ISAT_game" target="_blank">Twitter</a><br/><a href="https://armor-games-studios.itch.io/in-stars-and-time" target="_blank">Itch</a><br/><a href="https://discord.gg/rJ8xvdUvYD" target="_blank">Discord</a><br/><a href="https://www.gog.com/en/game/in_stars_and_time" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/In%20Stars%20And%20Time" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/in-stars-and-time-37ebff" target="_blank">Epic</a><br/><a href="https://en.wikipedia.org/wiki/In_Stars_and_Time" target="_blank">Wikipedia</a><br/><a href="https://bsky.app/profile/isat-game.bsky.social" target="_blank">Bluesky</a><br/><a href="https://instarsandtime.wiki.gg/wiki/In_Stars_and_Time" target="_blank">Community Wiki</a><br/><a href="https://www.nintendo.com/us/store/products/in-stars-and-time-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10007419" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>What would you do if you were forced to relive your failures over and over again?</strong><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677310/extras/ef35490f4316616f19f83a471d2202a2.poster.avif?t=1754400017"></span><br><br><strong>In Stars and Time</strong> tells the story of Siffrin and their adventurer friends—a found family bound together by fate in order to end the tyrannical reign of an evil king. But as victory is just within the party’s grasp, a tragedy occurs, the clock resets, and <strong>they have to do it all again</strong>. <br><br>As Siffrin’s the only one who notices this loop, each new start wears away at his cheerful veneer, yet he keeps going in hopes he can end this temporal tragedy once and for all.<br><br><strong>In Stars and Time</strong> is a <strong>time-looping RPG adventure</strong>. With each loop, Siffrin gains a new perspective on the world around them, opening up new solutions to puzzles and allowing them to make better choices in conversation. Equip memories as armor, pray to the Change God to improve your team’s capabilities each loop, and challenge deadly foes to Rock, Paper, Scissors as Siffrin seeks the truth.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677310/extras/68ee8de12b222abcea2f3ddb43d57809.poster.avif?t=1754400017"></span><h2 class="bb_tag">✦ Our Adventurers</h2><ul class="bb_ul"><li><strong>Siffrin (he/they):</strong> Stressed, depressed, and under duress. (Don’t worry about it. They’re doing fine.) The punmaster protagonist of our neverending tale.<br></li><li><strong>Mirabelle (she/her):</strong> A caring and nervous housemaiden mysteriously blessed by the god she so ardently follows.<br></li><li><strong>Isabeau (he/him):</strong> Defender with a heart of gold. Cares dearly for his people and his friends.<br></li><li><strong>Odile (she/her):</strong> The mature and nonsensical researcher studying…something. (No, she will not tell you what it is.)<br></li><li><strong>Bonnie (they/them):</strong> Wait a minute, who brought this kid along???</li></ul><h2 class="bb_tag">✦ Features</h2><ul class="bb_ul"><li>Save the world through the power of Rock, Paper, Scissors in <strong>strategic turn-based RPG</strong> combat encounters.<br></li><li>Ignore the limits of time and space to <strong>fix your past mistakes</strong> by repeating the same two days over and over again.<br></li><li>Equip the <strong>memories you have of your friends</strong> to make your party stronger in combat. <br></li><li><strong>Watch the fate of this world unfold</strong> as you escape the twists and turns of this endless(???) loop.<br></li><li>Eat <strong>samossas</strong> with your friends!<br></li><li>Get heckled by a <strong>cheeky ethereal being of infinite starlight</strong>.<br></li><li>Pray to a god for good luck in your travels. <strong>You’re gonna need it.</strong></li></ul><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1677310/extras/45dceab6328b48deea455255da5a7425.poster.avif?t=1754400017"></span><br><br>If any of this interests you, you might also want to play the game’s initial prototype, <strong>START AGAIN START AGAIN START AGAIN: A Prologue</strong>. While you don’t need to play it to understand In Stars and Time, it’s fun to see the game’s roots!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Amazing Cultivation Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Amazing Cultivation Simulator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 56m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-3/18/2025">3/18/2025</a> 18:36:08</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:58:11</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-1/11/2019">1/11/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-GSQ Games">GSQ Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Gamirror Games">Gamirror Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/955900" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/amazing_cultivation_simulator" target="_blank">GOG</a><br/><a href="https://discord.gg/F4cWJPf" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Amazing%20Cultivation%20Simulator" target="_blank">Twitch</a><br/><a href="https://tieba.baidu.com/f?kw=%E4%BA%86%E4%B8%8D%E8%B5%B7%E7%9A%84%E4%BF%AE%E4%BB%99%E6%A8%A1%E6%8B%9F%E5%99%A8" target="_blank">Official Website</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/5fae229b43b5918f02d8adf192152287.avif?t=1774513735"></span><br>In a world of myth and magic, those who aspire to immortality devote their lives to the sacred path of cultivation. They gather around sects, institutions which train their bodies, minds and souls to be worth eternal life. But in return for such great power, you must be willing to guard the balance between good and evil -- no matter the cost.<br><br>Unfortunately, greed is inherent to human nature, so it also blinds cultivators. Your master didn’t realize until it was too late, and the Taiyi Sect burnt to the ground for his mistake. Your brothers and sisters will never come back, but the Taiyi Sect can still be reborn from its ashes. Its seeds are scattered around Tiancang, waiting for you to find them. This is what your grandmaster would have wanted. You must do it for him ─ and for all those we sworn to protect.<br><br>Set in the fictional Tiancang era, Amazing Cultivation Simulator brings to you the magic of Asian mythology through a strategy game with strong xianxia nuances, a Chinese literary genre which is deeply influenced by Taoist and Buddhist concepts, as well as folklore and traditional knowledge on medicine and martial arts. Its gameplay is inspired by famous games like Rimworld and Dwarf Fortress, as well as The Legend of Shushan Swordsman and Martial Kingdoms.<br><br>As a grandmaster, you’ll bring the Taiyi Sect back to its glory days by training new apprentices, gathering knowledge and expand your domain through commerce and political alliances to gain influence over other sects. Also, you must protect people from supernatural dangers such as bad spirits, monsters and enchanted artifacts.<h2 class="bb_tag">KEY FEATURES</h2><ul class="bb_ul"><li><strong>Design your own Cultivation sect</strong>&nbsp;from scratch until it becomes a huge spiritual center.<br></li><li><strong>Manage your school and students</strong>&nbsp;so they are happy and productive for you.<br></li><li><strong>Expand your domain</strong>s&nbsp;and meet new allies to become more powerful than other sects.<br></li><li><strong>Commerce and interact with other NPCs</strong>,&nbsp;but be careful – your actions will impact their behavior!<br></li><li><strong>Keep the balance</strong>&nbsp;between good and evil.<br></li><li><strong>Research and fill your library</strong>&nbsp;with more and more sources of mystic knowledge, martial arts, medicine…<br></li><li><strong>Search for the most powerful relics</strong>&nbsp;and artifacts.<br></li><li><strong>Hunt evil beasts and demons</strong>&nbsp;that want to destroy the world you want to protect.<br></li><li>Live&nbsp;<strong>unique playthroughs every time</strong>:&nbsp;maps are randomly generated for each run.<br></li><li>Learn about&nbsp;<strong>Chinese myths and legends</strong>,&nbsp;as well as spiritual traditions which draw from Taoism and Buddhism.</li></ul><h2 class="bb_tag">Update</h2><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/e358872d25495d57b2ee484be1a705a4.avif?t=1774513735"></span><br><ul class="bb_ul"><li>Yaoguai Awakening: As Qi energies resurge across the lands, the Yaoguai finally return to the mortal realm. Enlightened beasts start cultivation of their own, craving a longer life, but they still can't escape the Creed of Heaven or the Heavenly Tribulation.<br></li><li>Taoist Animism: Even the most base of existences have the chance to attain spirituality as they subsist throughout the mists of time. If fortunate enough, some might even be enlightened by a master and turned into sentient spirits. After acquiring a human body through Body Genesis, they are all set to begin their cultivation.<br></li><li>Physical Cultivation: Ancient Yaoguai never bothered to become enlightened or to meditate on the Creed of Heaven. They domineered the realm with their brutal physical strength. They follow their instincts and burn their own vital energy to refine their bodies with nature's essence, until they can even block flying swords and survive the Heavenly Tribulation with mere mortal bodies. <br></li><li>Pet Training: Spiritual pets are special creatures with mighty forms and profound potential. They are also manifestations of the rules of nature. Learn to train your sect's pet, and have them serve your needs.<br></li><li>More Plotlines: As the ancient Yaoguai return, the realm of cultivators will witness an unprecedented upheaval that shall spare no creature. But is it a blessing or a curse? <br></li><li>Updated Tutorial: In the Yaoguai Uprising update, we made a complete, step-by-step tutorial to help new players learn all the controls and game systems so that everyone can experience the fun of cultivation.<br></li><li>Encyclopedia: All kinds of items, laws and monsters are recorded here. You can reflect on your journey and also anticipate new adventures.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/31500cfab5f4a398d04094ecb2e09a32.avif?t=1774513735"></span><br><ul class="bb_ul"><li>Beast Siege: The Phoenix, Jiao-dragon and Torch Dragon have all awoken. Threatened by the invasion of the three mighty ancient beasts, will your sect be able to survive the trials that await?<br></li><li>Roaming Sages: To hunt ancient beasts, one must become a true cultivation champion. Myriad mysterious sages from different sects start roaming the world far and wide. To your sect, this shall be both an opportunity and a brand-new challenge.<br></li><li>Elemental Medicines: The planting methods of dozens of powerful elemental herbs have been found. A storeroom full of potent elemental medicines is a dream no longer!<br></li><li>Building Rotation: Build your sect as you like.<br></li><li>Animal Farming: You can now feed paralyzed animals, using their favorite food as bait to try and tame them.<br></li><li>Feng Shui Relic: Regular items may have stats that make them a Feng Shui Relic.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/4c6cb9319145ef527445649abb974987.avif?t=1774513735"></span><br><ul class="bb_ul"><li>Explore the World: Almost the entire world is yours to explore. Cultivators can travel the lands over to find hidden treasures and face secret challenges.<br></li><li>Sect War: Except for the Daemonia Temple, all the sects now have their own bases. Countless treasures, ancient formation diagrams, forgotten rare artifacts and magnificent buildings can all be found within.<br></li><li>Interactive World: NPC sects now interact with each other, with consequences for their power and influence which constantly shift to create an ever-changing world of cultivators.<br></li><li>Formation: A complete Formation consists of one cultivator acting as the Pillar and several others as Auxiliaries. By searching for manuals and meditating on the Creed of Heaven, cultivators can learn to become new types of Pillars and Auxiliaries that connect with each other to create Formations.<br></li><li>Sub-Spirits: Cultivators that have achieved the Primordial Spirit state or above can train, study secret moves, take elixirs, meditate on the Creed of Heaven and challenge the Heavenly Tribulation to obtain sub-spirits. Sub-spirits can help cultivators with Primordial Spirits make great progress in their practice.<br></li><li>Various Tribulations: Once their attainment and lifespan limits are reached, cultivators can take on the corresponding Heavenly Tribulations to break through and earn themselves new realms of progress.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/00f588b0874f6096f2a7b25f16f1894e.avif?t=1774513735"></span><br><ul class="bb_ul"><li>Cultivation Laws: Thousands of laws have been discovered in the realm of cultivators, each law worth studying and learning if only for its uniqueness alone. Learn the best of all the cultivation laws and push yourself to a higher state of existence!<br></li><li>Path of Shendao: Collect beliefs from mortals to increase your power. Build a divine realm in the void to become your own god. Channel power from all the heavenly guards to craft your own sacred artifact.<br></li><li>Mini Universe: A Bounded Universe created with elemental forces. Most regular items can be contained within it. You needn’t leave all your items on the floor any more. Just store them in the Mini Universe!<br></li><li>Expand Your Sect: Send outer disciples out into the mortal world to create an agency for your sect. Help mortals solve their problems, earn their trust and loyalty and obtain local products.<br></li><li>Commerce: As sects interact with each other, immortals will begin to trade more often. Obtain specialties exclusive to each sect, and meet mysterious merchants travelling around the world; even Ye Xuan the Gambler has opened an auction house.<br></li><li>Each to Their Own: Disciples from all sects now have their own names with secrets, hobbies and stories to tell. Make friends around the world and uncover all kinds of interesting information.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/e2159f592dea9dadd23fc1fbda14af83.avif?t=1774513735"></span><h2 class="bb_tag">Cultivation</h2><ul class="bb_ul"><li>Over 10 cultivation laws, waiting to be discovered and practiced.<br></li><li>Over 40 miracles, presenting you with loads of different cultivation experiences.<br></li><li>Over 40 elixirs and 30 talismans, each with their own interesting effects.<br></li><li>Everything can be crafted into artifacts.<br></li><li>Achieve a higher cultivation state and collect amazing treasures to prolong your lifespan.<br></li><li>Increase your cultivation in all aspects to prepare for the Heavenly Tribulation.</li></ul><h2 class="bb_tag">Battle</h2><ul class="bb_ul"><li>Master your artifacts and use them to battle against enemies.<br></li><li>Each character comes with a realistic physical body, meaning there’s countless possibilities within each and every battle.<br></li><li>Use powerful secret laws to their fullest extents to turn the tide of battle.</li></ul><h2 class="bb_tag">Adventure</h2><ul class="bb_ul"><li>Send disciples on adventures to encounter fortuitous events, investigate secrets and collect treasures.<br></li><li>It's your decision whether to do good or torment others around you.<br></li><li>Hundreds of event chains are waiting for you to explore</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/c932d8e80f2296d156fb63f1f1ff259e.avif?t=1774513735"></span><h2 class="bb_tag">Survival</h2><ul class="bb_ul"><li>Collect resources like food and wood and survive in strange forests.<br></li><li>Build houses and grow crops to expand your sect.<br></li><li>Store resources to prepare for challenging and harsh weather.<br></li><li>Prepare to face opportunities and challenges brought by mythical beasts such as Lushu, Fei..</li></ul><h2 class="bb_tag">Crafting</h2><ul class="bb_ul"><li>There’s hundreds of different kinds of food, weapons, clothing and accessories.<br></li><li>Your finished product will inherit the traits of the original materials used each time you craft.</li></ul><h2 class="bb_tag">Building</h2><ul class="bb_ul"><li>Adhere to Feng Shui according to the interactions between the Five Elements, and create your very own Earthly Paradise.<br></li><li>The right layout will increase the efficiency and aesthetics of your sect.</li></ul><h2 class="bb_tag">Socializing</h2><ul class="bb_ul"><li>Parents, lovers, friends and enemies. Through tactics and strategy, you must handle the relationships of your disciples.<br></li><li>Thousands of social events await, providing you with a rich and interesting sect life.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/955900/extras/af593020100528180954f5c70ae55514.avif?t=1774513735"></span><h2 class="bb_tag">Challenges:</h2><ul class="bb_ul"><li>Obtain achievements in Hardcore mode, and accept the challenge of a life where if you die, that’s it.</li></ul><h2 class="bb_tag">Mods:</h2><ul class="bb_ul"><li>Mod development will be implemented steadily. We can’t wait to build a world of cultivation with you all!</li></ul><h2 class="bb_tag">Crossover:</h2><ul class="bb_ul"><li>We have plans to collaborate with various other excellent games. Remember to support the developers you love!</li></ul><h2 class="bb_tag">DLC:</h2><ul class="bb_ul"><li>We will continue to develop new and exciting content in the days to come: Pet keeping, Yaoguai Uprising and sect wars are all coming soon!</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

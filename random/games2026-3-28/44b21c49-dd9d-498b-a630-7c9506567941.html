@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ambition: A Minuet in Power</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Ambition: A Minuet in Power</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:26:56</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:27:07</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-8/18/2021">8/18/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Point-and-click">Point-and-click</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Joy Manufacturing Co.">Joy Manufacturing Co.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Iceberg Interactive">Iceberg Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.Ambition-Game.com" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/JoyManufacturingCo" target="_blank">Facebook</a><br/><a href="https://twitter.com/joymanuco" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCJIQ1OIcuLqh3ZUXRbaE9dQ" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/949200" target="_blank">Steam</a><br/><a href="https://www.gog.com/game/ambition_a_minuet_in_power" target="_blank">GOG</a><br/><a href="https://iceberg-int.itch.io/ambition" target="_blank">Itch</a><br/><a href="https://discord.com/invite/iceberginteractive" target="_blank">Discord</a><br/><a href="https://www.instagram.com/joymanufacturingco/?hl=en" target="_blank">Instagram</a><br/><a href="https://www.twitch.tv/directory/game/Ambition%3A%20A%20Minuet%20in%20Power" target="_blank">Twitch</a><br/><a href="https://www.nintendo.com/store/products/ambition-a-minuet-in-power-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/ambition_a_minuet_in_power/mp4/A_Toast_-_600px__Shorter_.gif.mp4" type="video/mp4"></video>
+<br>
+A revolutionary, romantic, visual novel where your choices change the course of history!
+<br>
+
+<br>
+It’s March 19th, 1789 and King Louis XVI rules over France from the gilded halls of Versailles. France is a country of elegance and poverty, of ancient tradition and unstoppable change. It is a country on the brink of revolution. 
+<br>
+
+<br>
+Attend parties, mingle with the rich and powerful, learn their secrets, and use this to get the wealth and power you deserve. Find true love in an opulent world of ever-shifting alliances, that grows more dangerous by the day. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/ambition_a_minuet_in_power/mp4/Guillotine_Ending_-_600px__Shorter_.gif.mp4" type="video/mp4"></video>
+<br>
+Still, you must always keep your eye on the coming revolution. After all, it’s better to be on the right side of history, than the wrong side of the guillotine.
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Header_-_Spectacular_Features_-_Steam_Size.png" alt="" width="100%"></p>
+
+
+
+<h4>Explore A Living, Scheming World</h4>
+
+Use your calendar to plan your commitments each week in Paris, and more importantly, who you do them with. In a city marching towards revolution, time is of the essence, and your enemies have agendas of their own!
+
+<h4>Love Is Power</h4>
+
+Ensnare the hearts of Parisian nobles and use their influence to your advantage. Change the outcome of political events, snub your rivals, and be lavished with expensive gifts.
+
+<h4>Everything Has A Price</h4>
+
+Turn gossip into profit by selling the secrets you learn, but be careful! Your own credibility and security are also at stake. The choices you make can yield great rewards and change the course of the story, but dire consequences could arise if you’re caught!
+
+<h4>A Cast Of Unforgettable Characters</h4>
+
+Fall in love with a sprawling cast of fully realized characters. Enjoy the company and learn the secret histories of mysterious priests, wronged soldiers, wealthy widows, and more! Don’t worry, if you’re discreet, you won’t have to pick just one.
+
+<h4>An Exquisite Work Of Art</h4>
+
+Experience a gorgeously illustrated, and lovingly researched rendition of 18th century Paris. It is a time of fashion, and a time of secrecy. It is a world of staggering beauty, and unspeakable danger.
+
+<h4>The Sound Of Another Time</h4>
+
+Be entranced by the authentic, original score crafted by award-winning composer John Robert Matz! Enjoy a sweeping musical journey that will take you from the class and sophistication of fashionable string quartets, to the grandeur of the orchestra of the late baroque.
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Header_-_A_Revolutionary_Romance_-_Steam_Size.png" alt="" width="100%"></p>
+
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/ambition_a_minuet_in_power/mp4/RomanceOptions_600.gif.mp4" type="video/mp4"></video>
+<br>
+
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Armand.png" alt="" width="100%"></p>
+
+
+
+<br>
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Elisabeth.png" alt="" width="100%"></p>
+
+
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Ludovico.png" alt="" width="100%"></p>
+
+
+
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Alex.png" alt="" width="100%"></p>
+
+
+
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Honorade.png" alt="" width="100%"></p>
+
+
+
+<br>
+
+<p style="text-align:center;"><img src="https://items.gog.com/ambition_a_minuet_in_power/Love_Interest_Card_-_Antoine.png" alt="" width="100%"></p>
+
+
+
+<br>
+<a href="https://discord.gg/EaKsK54xjx" target="_blank" rel="noopener"  ><video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/ambition_a_minuet_in_power/mp4/Join_the_Discord-gif.gif.mp4" type="video/mp4"></video> </a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

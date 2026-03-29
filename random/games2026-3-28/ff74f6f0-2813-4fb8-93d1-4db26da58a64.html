@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Car Mechanic Simulator 2018</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Car Mechanic Simulator 2018</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:59:23</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-7/28/2017">7/28/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-66">66</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-67">67</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Racing">Racing</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Red Dot Games">Red Dot Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-PlayWay S.A.">PlayWay S.A.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/645630" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/store/p/car-mechanic-simulator-2018" target="_blank">Epic</a><br/><a href="https://www.carmechanicsimulator.com" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/Car%20Mechanic%20Simulator%202018" target="_blank">Twitch</a><br/><a href="https://www.reddit.com/r/CarMechanicSimulator/" target="_blank">Subreddit</a><br/><a href="https://car-mechanic-simulator-2018.fandom.com/wiki/Car_Mechanic_Simulator_2018_Wiki" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Car_Mechanic_Simulator_2018" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/PlayWayGames" target="_blank">Facebook</a><br/><a href="https://x.com/Play_Way" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/ThePlayWay/" target="_blank">YouTube</a><br/><a href="https://discord.gg/c7WFxfmYPm" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><strong>The Bestselling Car Mechanic Simulator series goes to a new level!</strong> </p><p class="bb_paragraph"></p><p class="bb_paragraph">Car Mechanic Simulator 2018 challenges players to repair, paint, tune and drive cars. </p><p class="bb_paragraph">Find classic, unique cars in the new Barn Find module and Junkyard module. You can even add your self-made car in the Car Editor.</p><p class="bb_paragraph">Build and expand your repair service empire in this incredibly detailed and highly realistic simulation game, where attention to car detail is astonishing.</p><p class="bb_paragraph">All this with new, photorealistic graphics. Featuring more cars (40+), more tools (10+), more options and more parts (1000+) than ever before. It’s time to roll up your sleeves and get to work! </p><p class="bb_paragraph"> </p><p class="bb_paragraph">Car Mechanic Simulator 2018 also includes car auctions where old cars are available for resale or purchased for your collection. With the inclusion of photo-mode, you can take stunning before and after photos, and the game’s infinite number of randomly generated missions will keep you more than busy (and dirty). </p><p class="bb_paragraph"></p><p class="bb_paragraph">Each mission offers its own unique challenge of varying difficulty and time constraints to meet. Additional tools are available for purchase if needed. You can eventually upgrade your garage to include specific equipment such as lacquer sprayer or a parts warehouse.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Features of Car Mechanic Simulator 2018:</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">photorealistic graphics</p></li><li><p class="bb_paragraph">40+ cars to get your hands dirty with</p></li><li><p class="bb_paragraph">10+ tools to help you check out cars</p></li><li><p class="bb_paragraph">1000+ parts waiting for you</p></li><li><p class="bb_paragraph">start from a small workshop and upgrade it to a full sized 3-lifter gem</p></li><li><p class="bb_paragraph">mix of randomly generated jobs to fulfill</p></li><li><p class="bb_paragraph">endless gameplay</p></li><li><p class="bb_paragraph">multilevel car parking in which you can store you cars</p></li><li><p class="bb_paragraph">Advanced Upgrades System (level up and spend your points to upgrades)</p></li><li><p class="bb_paragraph">Path Test to test car suspension</p></li><li><p class="bb_paragraph">Test Track to test car condition (or just fool around)</p></li><li><p class="bb_paragraph">Race Track to test car performance</p></li><li><p class="bb_paragraph">Car Auctions where you can compete with other bidders and try to outbid them</p></li><li><p class="bb_paragraph">Car Paint Shop with different paint types and car liveries (or you can just paint one part to save money)</p></li><li><p class="bb_paragraph">Barn Finds, where you search for abandoned cars in barns - make sure to look there for parts</p></li><li><p class="bb_paragraph">Junkyard (scavenge for parts and rusty cars)</p></li><li><p class="bb_paragraph">Car Editor for modders (add your cars to the game!)</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>New Features since CMS 2015:</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">seats, steering wheels and benches are exchangeable</p></li><li><p class="bb_paragraph">car windows are now parts too</p></li><li><p class="bb_paragraph">new repair system (smarter way to repair parts)</p></li><li><p class="bb_paragraph">parts warehouse (you can store your parts in a warehouse now)</p></li><li><p class="bb_paragraph">sheds (Barn Find module)</p></li><li><p class="bb_paragraph">separated tires and rims (you can place any tire and rim you want)</p></li><li><p class="bb_paragraph">new working shock absorber tool</p></li><li><p class="bb_paragraph">new working battery charger</p></li><li><p class="bb_paragraph">new working wheel balancer and changer</p></li><li><p class="bb_paragraph">race track (next to test track, there is a race track with a timer)</p></li><li><p class="bb_paragraph">new physics system (much more complex)</p></li><li><p class="bb_paragraph">car liveries (you can apply liveries to your car)</p></li><li><p class="bb_paragraph">redone paint system (you can paint each part separately, choose the paint type: matt, metallic, pearl)</p></li><li><p class="bb_paragraph">modding support from day 1 (place your own cars in the game)</p></li><li><p class="bb_paragraph">customizable license plates (with modding support)</p></li><li><p class="bb_paragraph">customizable game music (with user music)</p></li><li><p class="bb_paragraph">engine crane (tired of lifting your car up and down to disassemble engine)</p></li><li><p class="bb_paragraph">creating new engines on the crane (starting from scratch)</p></li><li><p class="bb_paragraph">leveling system (XP with upgrades)</p></li><li><p class="bb_paragraph">new car salon (you can buy brand new cars)</p></li><li><p class="bb_paragraph">liquids in car</p></li><li><p class="bb_paragraph">story orders (pregenerated like in CMS 2014) next to generated orders (like in CMS 2015)</p></li><li><p class="bb_paragraph">all new UI and easier controls (with rebind)</p></li><li><p class="bb_paragraph">pad support</p></li><li><p class="bb_paragraph">... and much, much more</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Official licensed brands coming up in DLC's:</strong></p><ul class="bb_ul"><li><p class="bb_paragraph">Mercedes</p></li><li><p class="bb_paragraph">Maserati</p></li><li><p class="bb_paragraph">DeLorean</p></li><li><p class="bb_paragraph">Pagani</p></li><li><p class="bb_paragraph">Bentley</p></li><li><p class="bb_paragraph">Dodge</p></li><li><p class="bb_paragraph">Plymouth</p></li><li><p class="bb_paragraph">Chrysler</p></li><li><p class="bb_paragraph">Jeep</p></li><li><p class="bb_paragraph">Ram</p></li><li><p class="bb_paragraph">Lotus</p></li><li><p class="bb_paragraph">Mazda</p></li><li><p class="bb_paragraph">... and more</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

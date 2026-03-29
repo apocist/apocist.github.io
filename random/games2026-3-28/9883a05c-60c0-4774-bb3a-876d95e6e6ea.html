@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>A Highland Song</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> A Highland Song</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:13:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/5/2023">12/5/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Music">Music</a><br/><a href="#quicklink-Platform">Platform</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-inkle">inkle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-inkle">inkle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1240060/A_Highland_Song" target="_blank">Steam</a><br/><a href="http://www.inklestudios.com/ahighlandsong" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/game/A%20Highland%20Song" target="_blank">Twitch</a><br/><a href="https://en.wikipedia.org/wiki/A_Highland_Song" target="_blank">Wikipedia</a><br/><a href="https://bsky.app/profile/inkle.co" target="_blank">Bluesky</a><br/><a href="https://www.nintendo.com/us/store/products/a-highland-song-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Moira McKinnon is running away.</h2>To reach the sea, Moira must first cross the Scottish Highlands—a wilderness of paths, peaks, shortcuts, dangers, and song.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/04677d6720b2a4ed4f963c3b3efe8356.poster.avif?t=1745516629"></span><h2 class="bb_tag">Platforming</h2>Climb peaks to orient yourself and plan your next steps. Spelunk caves, scale cliffs, jump from rock to rock and slide down scree slopes as you make your way forward.<br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/9534eacab69d12f5cd657758f4015435.poster.avif?t=1745516629"></span><h2 class="bb_tag">Survival</h2>Wind, rain and cold are your enemies. Moira is no superhero, and the Highlands are not to be underestimated. Shelter to survive.<br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/5d18e8ab20b76736f3a3d3627d9f3eb3.poster.avif?t=1745516629"></span><h2 class="bb_tag">Navigation</h2>Collect and position 100 map fragments to discover faster routes. The hills are crisscrossed with paths: some well-trodden, others hidden away.<br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/47e7ef41eb2c44781c576c419480d401.poster.avif?t=1745516629"></span><h2 class="bb_tag">Narrative</h2>Learn the stories and the secrets of the hills, which are filled with lost things, echoes, and memories.<br><br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/db2b4353eb6debe816ff0935a85a7c8f.poster.avif?t=1745516629"></span><h2 class="bb_tag">Rhythm runs</h2>Skip and jump through the valleys to the incredible music of TALISK and Fourth Moon. The landscape itself forms itself around the shape of the music.<br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/e2d865f4c3a0f91a48b7bba4270c2b75.poster.avif?t=1745516629"></span><h2 class="bb_tag">Replay</h2>Get ready to make the journey more than once, because a single trip isn't nearly enough to discover the Highlands' deepest secrets.<br><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/c51628c65a2909083a5f0fd1b3166460.avif?t=1745516629"></span><h2 class="bb_tag">The Story</h2>Moira McKinnon has never seen the sea. <br><br>For fifteen years she’s lived with her mum in a small house on the edge of the Scottish Highlands—then one day she receives a letter from her Uncle Hamish urging her to come to the coast. If she can reach his lighthouse in time, a wonderful surprise will be waiting...<br> <br>And so, Moira runs away.<br><br>The hills are full of secrets and stories, but what you find will depend on where you go. The narrative is not branching but weaving; a mesh of history, mythology and family secrets. What truths will you discover? <br><br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/f1a1536726464f377f7d3da7696c643c.poster.avif?t=1745516629"></span><h2 class="bb_tag">The World</h2>In the Highlands, every peak has a story to tell and every valley echoes with song. Giants sleep, ghosts sing, crows carry messages, and eagles lift the dead. <br><br>But the Highlands’ crags are unforgiving and its summits are cold—Moira’s trek will not be easy. <br><br>Can you help her find a way across this winding wilderness in time?<br><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1240060/extras/36313c104d1162289d3624855b55ce42.avif?t=1745516629"></span><h2 class="bb_tag">The Music of the Highlands</h2>A Highland Song’s soundtrack is composed by Laurence Chapman alongside two multi-award-winning giants of the Scottish folk scene, TALISK and Fourth Moon. Royalty of the festival circuit, these two bands combine virtuosic instrumental playing with fast, inventive rhythms, to produce new tunes in traditional styles played with beauty, energy and swagger.<h2 class="bb_tag">Accessibility and Settings</h2>The following settings area available and may help depending on your needs:<br><br><strong>Narrative</strong><br><ul class="bb_ul"><li>Reading speed setting: How long the dialogue gives you before it animates out again.<br></li><li>Allow mild profanity: On by default.<br></li><li>Unfortunately we don't currently have any font or text size settings, although it is planned for a future update. Our text size is however relatively generous - we we suggest you look at screenshots full screen where you intend to play to get a sense of how readable it is for you.</li></ul><br><strong>Controls</strong><br><ul class="bb_ul"><li> Alternative gamepad controls: By default choices and interaction is on the A button, and jump is on the Y button. But for those that find it more natural for jump to be on the A button there is an alternative control scheme.<br></li><li> Remap keyboard controls: Full remapping of all controls in game is possible. Mouse buttons are assignable although general mouse movement control isn't supported.</li></ul><br><strong>Gameplay</strong><br><ul class="bb_ul"><li> Trip less when running to music: Normally during the rhythm running mechanic 3 stumbles will cause the music and momentum to stop. With this setting on you are allowed infinite stumbles. (However some types of platforming mistakes may still cause failure.)<br></li><li> Never flail while climbing: Occasionally a quick time event may occur during climbing that requires you to quickly press a button to re-attach to the wall. This option disables the mechanic completely.<br></li><li> Easier music rhythms: During the rhythm run mechanic, use less complicated rhythms to make the game easier.<br></li><li> Single jump button only: After the first few rhythm runs the game will introduce a second jump button to introduce difficulty and complexity. This option will mean you only ever require a single jump button during the rhythm mechanic.<br></li><li> Weather and Environment: How strongly poor weather will affect your health and recovery.<br></li><li> Lightning: By default switched on, this is a strobe effect during thunderstorms that can be disabled.<br></li><li> Highlight routes when looking further: By default switched on, when using the "Look Further" mechanic (zooming out), this will highlight the available surface that can be walked and climbed on for easier navigation. For players that prefer more of a challenge and to look at the raw art only, this can be disabled.</li></ul><br><strong>Audio and Vibration</strong><br><ul class="bb_ul"><li> The following volumes can be independently controlled: master volume, ambient music volume, rhythm music volume, speech volume.<br></li><li> Gamepad vibration can be disabled.</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

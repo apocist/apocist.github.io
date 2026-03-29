@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rise to Ruins</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Rise to Ruins</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 1m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-10/1/2023">10/1/2023</a> 22:57:23</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:51:16</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-10/27/2014">10/27/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-SixtyGig Games">SixtyGig Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/328080" target="_blank">Steam</a><br/><a href="http://risetoruins.com" target="_blank">Official Website</a><br/><a href="https://www.gog.com/game/rise_to_ruins" target="_blank">GOG</a><br/><a href="https://rayvolution.itch.io/risetoruins" target="_blank">Itch</a><br/><a href="https://www.twitch.tv/directory/game/Rise%20to%20Ruins" target="_blank">Twitch</a><br/><a href="https://x.com/RaymondDoerr" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/RayDoerr/" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/600a6ad754aa58ccb8ac453b76237106.poster.avif?t=1695161904"></span><br>Rise to Ruins is at heart a <strong>godlike village simulator</strong>, but it also throws in plenty of familiar game play mechanics from classic real-time strategy and resource management games like Black and White, Settlers, ActRaiser and many others. It also throws in some twists by melding in some tower defense and survival elements in an attempt to create a new kind of godlike village simulator. The goal is to try to bridge the gap between the depth and complexity of traditional village simulators, the fun of godlikes and tower defense, with the simplicity of real-time strategy games.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/33c6e24cb8060438b6e918f3dadbd942.poster.avif?t=1695161904"></span><h2 class="bb_tag">Build A Village, and Die Trying!</h2>A major part of the game is village management, and trying to discover new and creative ways to use the tools at your disposal to keep yourself alive as long as possible while you defend your village at night from the raging hoard of monsters, and try to expand in the day time. In this game, you will lose frequently, but with every failure you learn a little bit more about how to survive and apply that knowledge to your next attempt.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">Frequent 100% Free Content Patches!</h2>Like getting new content and not having to pay for it? Well, this is the game for you. For years Rise to Ruins had gotten frequent and completely free content patches, expanding the base game regularly!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">Several Game Modes</h2><br><strong>Survival</strong> is the game the way it was meant to be played, as a brutal survival style village sim, you will probably die often trying to figure out the best way to survive, but that's half the fun right?!<br><br><strong>Traditional</strong> is very similar to Survival, but it's balanced much like a traditional village simulator with some godlike and RTS elements sprinkled on top. The monster spawn rates are much lower, and the main focus is keeping your village happy and fed. It's a very easy mode, designed for casual players, or players just wanting to experiment.<br><br><strong>Nightmare</strong> makes survival mode look like it's for carebears. Mostly, it's just like survival mode, but difficulty levels are ramped up through the roof. This is the masochist's mode.<br><br><strong>Peaceful</strong> is the mode for you if you want to play a more laid back, classic village management game. There are no monsters what so ever, and no need to defend people. Just chill out and try to keep your villagers alive.<br><br><strong>Sandbox</strong>, like the name implies, is a mode where you can play around with the game mechanics. Change the time of day, weather, spawn monsters or villagers, or even edit the map while you're playing on it. This is the ultimate "Screw around" mode for players wanting to play with the game mechanics.<br><br><strong>Custom</strong> allows you to make up your own mode. You can adjust day length, how many days in a season, how many monsters spawn, and all sorts of other things. If you don't like the game's default settings, make your own up!.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">Godlike Elements</h2>Not only can you manage your village, but you also have many godlike abilities at your disposal. You can alter the terrain, blast enemies from afar, pick up objects or creatures, heal your villagers, speed up resource growth and all sorts of other fun godly stuff. You're part of this world just as much as your villagers are.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">Tower Defense Elements</h2>This isn't a tower defense game, but you'll still be getting some tower defense vibes from it! Use classic tower defense mechanics to defend your village at night, creating walls of towers behind maze walls to help keep your little villagers alive as long as possible, and if tower defense isn't your thing. That's ok! You can also raise an army of golems and recruit guards to defend the village.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">World Maps and Regions!</h2>The game has tons of hand made maps for you to select from (You can also make your own if you like!) Every biome follows a certain theme (Forest, Desert, Drylands, etc). Start your village anywhere you like, and slowly conquer the whole world! (Well, try to anyway, you'll probably just die.)<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/27f5b2f37ac186fbd145aebedf6f3b94.webp?t=1695161904"></span><h2 class="bb_tag">The Soundtrack!</h2>A full original soundtrack, made by Bibiki Garcia that blends orchestral instruments in a way fans of old 1990s era PC gaming will love and remember!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/8085ac5026304aed8a402864d2410508.poster.avif?t=1695161904"></span><br>SixtyGig Games is a DRM free independent game developer! Rise to Ruins will not now or ever in the future have any sort of DRM! Piracy protection only hurts you guys, the loyal paying players. So you rest assured knowing that once you buy yourself a copy of Rise to Ruins you'll never again have to concern yourself with nagging questions about if you can continue playing the game down the road due to something like always-online logins, lost registration codes or because you bought a new computer and you're only licensed to put the game on one. All I ask from you is to be reasonable and responsible, you can buy the game and play it as much as you like, wherever you like. Just tell your friends to support my DRM-Free philosophy and buy their own copy! Free Content Patches, no paid-DLC<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/328080/extras/501f99960ac128b8d39becbe0451fa94.poster.avif?t=1695161904"></span><br>I don't believe in paying for Downloaded Content. If you buy Rise to Ruins you will have access to the entire game and all the content I'll ever create for it, forever! I believe DLC is greedy, and you deserve to have the full gaming experience from day 1, right out of the (figurative) box!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

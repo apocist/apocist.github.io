@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Elite Dangerous</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Elite Dangerous</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>22m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-11/15/2024">11/15/2024</a> 15:45:48</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:18:12</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/16/2014">12/16/2014</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Shooter">Shooter</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Frontier Developments">Frontier Developments</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Frontier Developments">Frontier Developments</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://en.wikipedia.org/wiki/Elite:_Dangerous" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/EliteDangerousOfficial" target="_blank">Facebook</a><br/><a href="https://twitter.com/EliteDangerous" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/359320" target="_blank">Steam</a><br/><a href="https://www.epicgames.com/p/elite-dangerous" target="_blank">Epic</a><br/><a href="https://www.elitedangerous.com/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/elitedangerous" target="_blank">YouTube</a><br/><a href="https://www.instagram.com/elitedangerous" target="_blank">Instagram</a><br/><a href="https://discord.gg/invite/elite" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/EliteDangerous" target="_blank">Subreddit</a><br/><a href="https://elite-dangerous.fandom.com/wiki/Elite_Dangerous" target="_blank">Community Wiki</a><br/><a href="https://www.twitch.tv/directory/game/Elite:%20Dangerous" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/221902" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/c7e6cb394bc08e8fca6484d37c0d64c1.avif?t=1759842966"></span>Discover the next chapter of the legendary Elite saga. Elite Dangerous is the definitive massively multiplayer space epic, bringing gaming’s original 1984 open world adventure to the modern generation with a seamless, connected galaxy, a player‑shaped evolving narrative, and the entire Milky Way recreated at full galactic scale.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">Against this vast backdrop, take to the stars in your own starship and do whatever it takes to survive in an ever-changing futuristic galactic sandbox. Acquire wealth and power, develop your skills and knowledge, and earn the right to stand tall among the ranks of the iconic Elite.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">In an age of galactic superpowers and interstellar war, your story influences the connected experience and handcrafted evolving narrative. From discovering new worlds, to exhilarating space combat and a fully-realised economy for trade, the galaxy is waiting.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/8eceddc18a950ddb68be8a19a13c2fc0.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">The 400-billion star systems of the Milky Way form the vast and dynamic stage for Elite Dangerous' open-ended gameplay. Constructed using real astronomical data, the stars, planets, moons, asteroid belts, and black holes of our galaxy are rendered at true galactic scale. Chart a course through star systems never before visited by other Commanders and explore the surface of strange and unfamiliar worlds with a Surface Recon Vehicle.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/dc420005afcf7256f5348b0592746ff6.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">Over 35 distinct spacecraft are ready for you to command, from lightweight exploration vessels to gigantic behemoths ready for battle. Build a diverse collection of ships and outfit them to match your playstyle. Customise every component, weapon and optional module to enhance and alter your ships’ capabilities.</p><p class="bb_paragraph">&nbsp;&nbsp;</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/a433c2efca3c9532463cc387dd166942.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">Hunt, explore, fight, mine, smuggle and trade across the galaxy. Forge your path solo or with up to three friends in a Wing. Join a Squadron full of like-minded Commanders and share the highs and lows of your interstellar adventures together.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">With the System Colonisation mechanic, the power to claim and expand your very own star systems is in your hands. Whether creating a thriving new economy, a bustling trade hub, or a new port of operations, the galaxy awaits your vision.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/5d44d90fe282691e3d9a05bba23e5026.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">The Elite Dangerous galaxy revolves around players’ actions. In an age of galactic superpowers and interstellar war, every player’s personal story influences the space simulation and handcrafted, evolving narrative.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">Co-operate with fellow Commanders in pivotal Community Goal events that can permanently alter the state of the galaxy, earning exclusive rewards and recognition for your contribution in the process.&nbsp;&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph">Align with a galactic superpower and alter the interstellar landscape with Powerplay. Support your power or undermine a rival through a variety of means, from hacking starport advertisements to attacking gigantic Stronghold Carriers. Every contribution matters.&nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/860a27d35636f1dbe8f852f2642b076f.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">Experience unpredictable encounters with other players in a vast, massively multiplayer space. Experience the connected galaxy alone in Solo mode or with players across the world in Open Play, where every pilot you face could become a trusted ally or your deadliest enemy. &nbsp;</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/359320/extras/caf95dfdfb79a058cd08de5ba533f8e1.poster.avif?t=1759842966"></span></p><p class="bb_paragraph">The universe of Elite Dangerous continues to grow and expand with new features and content. Regular major updates provide new opportunities and gameplay for you to discover and change the way you play.&nbsp;</p><p class="bb_paragraph"></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tribes of Midgard</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Tribes of Midgard</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>2h 23m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-2/5/2023">2/5/2023</a> 22:20:57</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:04:11</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-7/27/2021">7/27/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-61">61</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Fighting">Fighting</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Norsfell">Norsfell</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Gearbox Publishing">Gearbox Publishing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.tribesofmidgard.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/tribesofmidgard" target="_blank">Facebook</a><br/><a href="https://twitter.com/tribesofmidgard" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCkS5L9DFQjTvCszEVghmqhA" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/858820/Tribes_of_Midgard" target="_blank">Steam</a><br/><a href="https://instagram.com/tribesofmidgard" target="_blank">Instagram</a><br/><a href="https://discord.gg/tribesofmidgard" target="_blank">Discord</a><br/><a href="https://reddit.com/r/tribesofmidgard" target="_blank">Subreddit</a><br/><a href="https://en.wikipedia.org/wiki/Tribes_of_Midgard" target="_blank">Wikipedia</a><br/><a href="https://www.epicgames.com/store/en-US/p/tribes-of-midgard" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/tribesofmidgard" target="_blank">Twitch</a><br/><a href="https://tribesofmidgard.fandom.com/wiki/Tribes_of_Midgard_Wiki" target="_blank">Community Wiki</a><br/><a href="https://www.nintendo.com/store/products/tribes-of-midgard-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10000648" target="_blank">Playstation</a><br/><a href="https://www.xbox.com/en-us/games/store/tribes-of-midgard/9NNGTS145NBM" target="_blank">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/4ded1cc7a963ca6a353c780e63b53f80.avif?t=1773691576"></span></p><p class="bb_paragraph">Gear up, journey across Midgard (and beyond!) in this epic Survival ARPG adventure. Build, craft, explore, and fight creatures of legend to discover the secrets of the Sanctuary stones. Valhalla awaits, Einherjar!</p><h2 class="bb_tag"> <br>Save The Day, Your Way: </h2><p class="bb_paragraph">Travel across procedurally generated worlds to harvest resources, gather loot, craft powerful Weapons, level up, and chase chickens in the most colorful Ragnarök you’ve ever seen!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Survival Mode:</strong> Explore at your own pace and build your perfect Viking home! Choose among 90 skills as you progress and fight your way through towering Jötnar until you can face off against the all-powerful Ancients. Discover what awaits you at the end of your epic journey.&nbsp; </p><p class="bb_paragraph"><strong>Saga Mode:</strong> Challenge yourself in this fast-paced adventure to face the forces of Ragnarök before the endless winter. Unlock and specialize among 8 Classes to defend your Village for as long as you can. The greater the feat, the greater the reward when you take the Bifröst! </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/71b58e848e1bdf40fcc402d6a85a657c.poster.avif?t=1773691576"></span></p><h2 class="bb_tag"> <br>Face Colossal Threats: </h2><p class="bb_paragraph">The bigger they are, the harder they’ll fall! And trust us—they’re pretty big!&nbsp;&nbsp; </p><p class="bb_paragraph"></p><p class="bb_paragraph">Descending from Valhalla, your Einherjar starts with nothing but a loincloth and a save the world attitude. Stand against the ever-looming threat of the gigantic Jötnar, and the even more threatening Ancients that command them. Unleash mighty Spells contained within your Weapons, block incoming attacks with your trusty Shield, and time your evades in this action-packed gameplay against these screen-filling baddies! </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/86b96b31eb512ee36736ae4b4397ee64.poster.avif?t=1773691576"></span></p><h2 class="bb_tag"> <br>Forge Your Viking Legend: </h2><p class="bb_paragraph">You are in control of your own destiny, Einherjar! </p><p class="bb_paragraph">Create unique character builds by leveling up and choosing game-changing abilities from the Norse gods. Hunt rare resources and loot powerful Runes that will modify your playstyle in surprising ways. Complete in-game events, sail boats across the oceans, take on NPC quests, and raid dungeons to grow your legend further! Or simply fish! Not only are you up for the challenge, this is what you were chosen to do. </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/5f2dcd85983ded6411b0874a0fd2b3ca.poster.avif?t=1773691576"></span></p><h2 class="bb_tag"> <br>Rally The Tribe: </h2><p class="bb_paragraph">You don’t have to do it alone, save some glory for the rest of us! </p><p class="bb_paragraph">Adventure solo or form a tribe of up to 10 players in online PvE co-op. Play together to build a functioning village, complete with formidable defenses, towering structures and top-of-the-line crafting stations!  Or just an aesthetically pleasing Viking homestead with some well-earned decorations! The game difficulty adapts to the amount of players in a world. Note that we recommend taking on Ragnarök with a tribe of four or more. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/982c15b4bad6a366ff2f9aad59bf0acc.poster.avif?t=1773691576"></span></p><h2 class="bb_tag"> <br>Keep Up the Fight: </h2><p class="bb_paragraph">Never has the end of the world been so bright and fun! </p><p class="bb_paragraph"> </p><p class="bb_paragraph">Continuous free updates and limited time Festive Events bring even mightier treasures to the endgame. Play to accumulate Golden Horns and redeem them to unlock a myriad of recipes, including Starter Kits, Runes and Equipment, to make each new session more rewarding. Progress through Valhalla Levels and complete hundreds of challenges for even more. Make each saga your own by wearing your best costumes and bringing your cutest pets along! </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/858820/extras/dfc68d835994bb9639482562392d3b66.poster.avif?t=1773691576"></span></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

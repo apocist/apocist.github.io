@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vampire Therapist</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Vampire Therapist</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:14</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:11:53</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-7/18/2024">7/18/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-93">93</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Little Bat Games">Little Bat Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Little Bat Games">Little Bat Games</a><br/><a href="#quicklink-Ultimate Games">Ultimate Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/2481020" target="_blank">Steam</a><br/><a href="https://vampiretherapist.com/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/category/vampire-therapist" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/channel/UCrU6urEbG0b9pfyipwY6mJQ" target="_blank">YouTube</a><br/><a href="https://discord.gg/invite/haFvr8FE" target="_blank">Discord</a><br/><a href="https://vndb.org/v49188" target="_blank">Community Wiki</a><br/><a href="https://www.gog.com/en/game/vampire_therapist" target="_blank">GOG</a><br/><a href="https://bsky.app/profile/littlebatgames.bsky.social" target="_blank">Bluesky</a><br/><a href="https://www.instagram.com/vampiretherapist" target="_blank">Instagram</a><br/><a href="https://x.com/littlebatgames" target="_blank">Twitter</a><br/><a href="https://store.playstation.com/en-us/concept/10014497" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/us/store/products/vampire-therapist-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2481020/extras/25a97ea95105b4bc666a30abc2187458.avif?t=1764966503"></span></p><p class="bb_paragraph">Vampire Therapist is the BAFTA-nominated narrative adventure / therapy simulator in the vein (get it) of <i>What We Do in the Shadows, Young Frankenstein, My Dinner with André</i>, and <i>Horrible Histories</i> where you play as a reformed bloodsucker helping other vampires find inner peace.</p><p class="bb_paragraph">This isn't your typical visual novel — featuring a fangtastic cast (such as Matthew Mercer, Sarah Grayson, and Cyrus Nemati), Vampire Therapist teaches <strong>real therapy concepts</strong> with a story that explores what it means to live, die, live again, and maybe even how to feel alive. Because even vampires deserve to love themselves.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Step into the boots of Sam, a reformed Wild West gunslinger turned vampire therapist. After centuries of bloodshed, Sam teams up with a 3000-year-old blood-sucking mentor in a moody German nightclub, to guide fellow vampires through the twists and turns of their immortal existence — offering them a chance at self-acceptance in a world that feels ever more alien.</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2481020/extras/11b4c5f2cff4241b68c9555988db43d0.poster.avif?t=1764966503"></span></p><p class="bb_paragraph">From self-loathing vampires who’ve witnessed millennia of human folly to agoraphobic social media addicts, and even those grappling with the trauma of seeing too many awful streaming series (we’ve all been there), Sam’s got his work cut out for him. With each session, Sam will challenge cognitive distortions using <strong>real-life therapy techniques</strong> to help his clients reconnect with reality — even if reality has left them behind.</p><p class="bb_paragraph">You can’t fix the world, but maybe you can help other vampires accept it.</p><p class="bb_paragraph">That is, if you can accept yourself first.</p><h2 class="bb_tag">What Critics Are Saying:<br> </h2><p class="bb_paragraph"><i>"It's simultaneously earnest and winningly ridiculous...a labor of love, and an original one at that." —</i> The Spectator<i> </i></p><p class="bb_paragraph"><i>"Vampire Therapist is shaking a lot of things up in one very elegant bag." — </i>Rock Paper Shotgun<i> </i></p><p class="bb_paragraph"><i>"Every single character was memorable, and the thought of even more quirky clients for Sam to treat is exciting." — </i>GameRant<i> </i></p><p class="bb_paragraph"><i>"I came away from Vampire Therapist actively wanting to emotionally improve and be kinder to myself" - </i>GamesRadar</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2481020/extras/193e78d95aba7f73ec53cd0592d5be29.avif?t=1764966503"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Real Therapy Concepts: </strong>You’ll learn and apply real cognitive behavioral therapy concepts vetted by licensed therapists. By challenging client statements that contain “cognitive distortions”, you’ll help vampires see where their thoughts don’t match reality. </p></li><li><p class="bb_paragraph"><strong>A Comedic Look Through History:</strong> Meet emotionally damaged vampires from ancient Greece, Renaissance Italy, Tudor England, and the Bronze Age.</p></li><li><p class="bb_paragraph"><strong>An All-Star Voice Cast: </strong>&nbsp;Featuring <strong>Matthew Mercer</strong> (<i>Critical Role, Baldur's Gate 3</i>), <strong>Francesca Meaux</strong> (<i>Hades</i>), <strong>Sarah Grayson</strong> (<i>Gone Home, Hades II</i>), <strong>Kylie Clark,</strong> and the game's creator, <strong>Cyrus Nemati</strong> (<i>Hades, Pyre</i>).</p></li><li><p class="bb_paragraph"><strong>Unique Setting: </strong>Vampire Therapist merges cozy self-introspection with a dark European goth vibe. In fact, the whole thing takes above a goth club in Germany filled with willing necks to bite.</p></li><li><p class="bb_paragraph"><strong>Minigames:</strong> Learn mindfulness meditation, safely and consensually bite sexy necks!</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2481020/extras/61721f0c86d4c0ea1512c4fb6c89583d.poster.avif?t=1764966503"></span></p><p class="bb_paragraph"><strong>NOTE:</strong> Please read the content warning thoroughly before purchase. The game deals with mature and challenging themes that are not for the faint of heart.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

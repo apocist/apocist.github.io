@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Outlast Trials</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Outlast Trials</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>13h 56m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-10/24/2025">10/24/2025</a> 20:35:20</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:50:35</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/5/2024">3/5/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-78">78</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Red Barrels">Red Barrels</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Red Barrels">Red Barrels</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://redbarrelsgames.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/RedBarrels" target="_blank">Facebook</a><br/><a href="https://twitter.com/TheRedBarrels" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/user/redbarrelsgames" target="_blank">YouTube</a><br/><a href="https://www.epicgames.com/store/en-US/product/the-outlast-trials/home" target="_blank">Epic</a><br/><a href="https://en.wikipedia.org/wiki/The_Outlast_Trials" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/1304930/The_Outlast_Trials" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/The%20Outlast%20Trials" target="_blank">Twitch</a><br/><a href="https://discord.gg/invite/outlastofficial" target="_blank">Discord</a><br/><a href="https://www.xbox.com/en-us/games/store/the-outlast-trials/9NR13RF1V2WV" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/10001988" target="_blank">Playstation</a><br/><a href="https://www.instagram.com/the.redbarrels/" target="_blank">Instagram</a><br/><a href="https://bsky.app/profile/redbarrels.bsky.social" target="_blank">Bluesky</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Red Barrels invites you to experience mind-numbing terror, this time with friends. Whether you go through the trials alone or in teams, if you survive long enough and complete the therapy, Murkoff will happily let you leave… but will you be the same?<h2 class="bb_tag"><strong>SYNOPSIS</strong></h2><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/dde7d2581a50011c158efdf29a880093.avif?t=1774362779"></span><br>Set in the era of the Cold War, human guinea pigs are involuntarily recruited by the good folks at the Murkoff Corporation to test advanced methods of brainwashing and mind control. In a world of distrust, fear, and violence, your morals will be challenged, your endurance tested, and your sanity crushed. All in the name of progress, science, and profit.<h2 class="bb_tag"><strong>SURVIVE: SOLO OR COOP</strong></h2><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/a0353ea8b7c187e21e213fe69dff2375.avif?t=1774362779"></span><br>You’re all prisoners of Murkoff trapped inside their facility. You can choose to complete the trials by yourself or you can tackle them in a team of 2, 3, or 4 players.<br>Coop is never forced when it comes to mandatory objectives but working together can be highly beneficial.<br>Whatever the number of players in your party, it’s about surviving and getting out.<br><br>Ultimately, your goal is to complete Murkoff's therapy and earn the right to be released back into society.  In order to do so, you must complete the Trials and the MK-Challenges.  <br>Trials are immersive story driven therapies that take a certain time to complete.  Mk-Challenges are shorter therapies occurring in modified or redesigned section of an existing map.<h2 class="bb_tag"><strong>HIDE OR FLIGHT</strong></h2><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/ef5dff68ec093aab8becf14243559d2f.avif?t=1774362779"></span><br>In pure Outlast fashion, the core gameplay involves avoiding enemies, hiding from them, and trying to run away. Murkoff will provide tools you can use to increase your stealth capabilities, create opportunities to flee, slow down enemies, and more. However, you will have to earn those tools and work hard to improve them.<br>The tools will allow you to <br><ul class="bb_ul"><li>Stun enemies<br></li><li>Blind them<br></li><li>See through walls<br></li><li>Heal yourself and people around you.</li></ul>Murkoff will ask you to perform disturbing tasks in each trials or mk-challenges.  Only after completing those, will you be allowed to exit the Trials or the MK-Challenges.<h2 class="bb_tag"><strong>CHARACTER CUSTOMIZATION</strong></h2><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/3740e1cc100681a7154c9d8c9e685426.avif?t=1774362779"></span><br>Customize and create your own trial patient.<br>Your cell is your home while you complete the therapy, you can decorate it however you wish.<br>Choose your tools, upgrades, and perks to fit your playstyle. <br>Meet the Denizens of Murkoff’s Sinyala Facility in The Outlast Trials.  Each one of them will try and help you get through the Trials in one piece! Think you’ll make it?<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/fd083cc22f6d176724bd933f35592073.avif?t=1774362779"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/ee0aeb2d18495ce0fbbba3732928783f.avif?t=1774362779"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/c8fbcb779c3eec181ebdd8fcc413595f.avif?t=1774362779"></span><h2 class="bb_tag"><strong>INVESTIGATE</strong></h2><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/399c74dc99a66d5ab30177993d18bbe5.avif?t=1774362779"></span><br>You’ve been abducted by the Murkoff Corporation to undergo unethical experiments that will modify your psyche and behavior throughout the Trials. <br>Collect documents and items that will help prove Murkoff’s malpractice against its patients.<br>The Process:<br><ul class="bb_ul"><li>Break the Self: Murkoff aims to break down the test subject’s fundamental beliefs. Aspects of self-identity are systematically attacked. Like boot camp or indoctrination, the goal is to force a person to purge themselves of anything held sacred or taboo, the things that limit their behavior. The constant assault on identity, guilt and self-betrayal eventually leads to them breaking down.<br></li><li>Build the Self: It’s a bad cop, good cop principle. The rejection of the old ideology leaves a vacuum into which the new ideology can be introduced. As the antithesis of the old ideology, it forms a perfect attraction point as the person flees the old in search of a contrasting replacement.  This progress is accelerated as the new ideology is portrayed as harmonious and ideally suited to the person's needs. Collegiality and calm replaces pain and punishment. Just at the point when the person is fearing annihilation of the self, they are offered a small kindness, a brief respite from the assault on their identity.<br></li><li>Salvation: Faced with the stark contrast of the pain of the past with the rosy glow of the future that the new ideology presents, the person sheds any the final allegiance to the old ideology, confessing any remaining deep secrets, and takes on the full mantle of the new ideology.  This often feels, and has been described by many, as a form of rebirth. It may be accompanied by rites of passage as the person is accepted and cemented into the new order. The rituals will typically include strong statements made by the person about accepting the new ideology fully and completely, swearing allegiance to its leaders. Saluting flags, kissing other artefacts and other symbolic acts, all solemnly performed, all anchor them firmly in the new ground.</li></ul><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1304930/extras/b3a84c20fa59582e954822debc2b3858.webp?t=1774362779"></span><br><u>Content and Photosensitivity Warning:</u></h2>The Outlast Trials contain strobing and flashing lights that could cause a small percentage of people to experience seizures when exposed to certain lights, patterns, or images.<br>This game also contains intense violence, gore, graphic sexual content, and strong language. Please enjoy.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

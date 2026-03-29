@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Landfall Archives</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Landfall Archives</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:03:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/31/2023">3/31/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Landfall Games">Landfall Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Landfall Games">Landfall Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/><a href="#quicklink-Split Screen">Split Screen</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/2353760" target="_blank">Steam</a><br/><a href="https://landfall.se/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/@landfallgames" target="_blank">YouTube</a><br/><a href="https://twitter.com/LandfallGames" target="_blank">Twitter</a><br/><a href="https://bsky.app/profile/landfall.se" target="_blank">Bluesky</a><br/><a href="https://www.instagram.com/landfall_official/" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>Break into the Landfall Archives and steal previously unreleased games, demos, interactive slide shows, and even an old version of TABS!<br><br>Landfall Archives is a collection of every project Landfall and friends have worked on since 2016 that didn't make it to the shelves but which all deserve to see the light of day. </strong><h2 class="bb_tag">This collection of 23 projects includes:</h2><br><strong>Anything for my pals (2021)</strong><br>Control a herd of Pals to help you navigate through a short level with obstacles.<br><br><strong>Robots Forever (2018)</strong><br>Find weapons to fight modular robots! Every robot part has its own health and can be destroyed separately so you better watch out…<br><br><strong>Robots Forever 2 (2019)</strong><br>This game builds on the concept of modular robots from the first Robots Forever. Included are more robots with varying sizes and parts, as well as randomly spawning weapons with upgrades.<br><br><strong>Post Game (2019)</strong><br>Small building game where you build conveyor belts and other parts to move packages around a facility. The more packages you get into the containers, the more credits you collect!<br><br><strong>Physics Survival (2019)</strong><br>A physics animated top-down game where you explore and interact with the environment and animals to gather resources that you can use to get more equipment and units.<br><br><strong>TABS 2017 (2017)</strong><br>TABS 2017 is an early version of Totally Accurate Battle Simulator using the 2.0 physics system that was scrapped in 2017 in favor of the current 3.0 version. In the game you use a variety of different units to beat a level or you can play around in the sandbox mode.<br><br><strong>Airships 1 (2018)</strong><br>An exploration of airship building, using a system with different modular parts you can use to build your ship. Fly the ship around the landscape to explore! We imagined this to be a way to travel around in some of the other prototypes.<br><br><strong>Airships 2 (2018)</strong><br>Another version of airship building with different modular parts and improved stabilization for the airships, aiding in flying and construction.<br><br><strong>Wrecktangels (2019) Local PVP</strong><br>Simple side-view battle game where you jump and shoot each other while using a time-slow mechanic. The world is built out of objects that collapse and break apart as they are hit, to keep you on your toes!<br><br><strong>RTS card game (2021)</strong><br>Play cards to spawn units, and cast spells during real-time strategy gameplay. Build your own deck and combine cards to change which units and abilities are part of your deck. We made this to explore real-time card mechanics with some light RTS gameplay. <br><br><strong>Physics Fighter (2021)</strong><br>Brawl with enemies in small rooms, using your fist, legs, and a knife. The enemies have different attacks and patterns that they follow during fights to keep you on your toes.<br><br><strong>Medieval America (2020) Online PVP</strong><br>Physics shooter where you battle your enemy on a destructible level that collapses as the battle goes on, be careful not to fall! <br><br><strong>Plant Plane (2019)</strong><br>Go on a peaceful journey along the level in a plane, creating bushes and leaving nature around you as you fly past. <br><br><strong>Ocean Plane (2023)</strong><br>Fly around and fire small missiles at airships and towers, in and around an ocean.<br><br><strong>Playful (2021) Online PVP</strong><br>A 1v1 game where you can battle and play in different scenarios with your own rules and goals. It was made to be a sandbox to create your own small games in.<br><br><strong>Blob Game (2018)</strong><br>A small experience of being locked in a room with an unknown creature while a voice speaks to you. There are a few different endings to this game, can you find them all?<br><br><strong>Walking House Game (2021)</strong><br>Prototype for a building game where you control and build a walking castle. Travel to explore and gather resources around you to build and upgrade your base. Beware of the enemies lurking nearby!<br><br><strong>Missile Game (2021)</strong><br>Control missiles and fly them through different levels with varying obstacles to bring down physics towers, with the goal of destroying the small objects you find in the structures.<br><br><strong>Creepy Robots (2017)</strong><br>Run and climb around a small town scene while being chased by humanoid robots!<br><br><strong>ROUNDS 3D (2022) Online PVP</strong><br>Prototype for a 3-dimensional version of the game ROUNDS. It’s mainly explored with the shooting mechanics and a handful of upgrades.<br><br><strong>Counts and Stakes (2020) Online PVP</strong><br>A vampires vs vampire hunters-themed top-down-shooter focusing on precise aiming. Play against other players in small arenas with physics obstacles that you can interact with.<br><br><strong>Physics Presentation (2018)</strong><br>Not exactly a game, but more of an interactive slideshow made to be used as a presentation explaining the principles of the physics used in Landfalls games.<br><br><strong>Auction Brawl (2017) 2-4 Local Splitscreen</strong><br>Split screen fighting game where you bid on items that you then use to brawl against the other bidders. You can also grab and use most other items in the auction room to fight your fellow players!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

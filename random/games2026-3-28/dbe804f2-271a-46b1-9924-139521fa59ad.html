@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Not For Broadcast</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Not For Broadcast</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:58:56</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-1/25/2022">1/25/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Point-and-click">Point-and-click</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-NotGames">NotGames</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-tinyBuild">tinyBuild</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1147550" target="_blank">Steam</a><br/><a href="https://www.notforbroadcastgame.com/" target="_blank">Official Website</a><br/><a href="https://twitter.com/notgamesuk" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/user/tinyBuildGAMES" target="_blank">YouTube</a><br/><a href="https://www.gog.com/game/not_for_broadcast" target="_blank">GOG</a><br/><a href="https://www.epicgames.com/store/en-US/p/not-for-broadcast-7e523f" target="_blank">Epic</a><br/><a href="https://en.wikipedia.org/wiki/Not_For_Broadcast" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/notgamesuk" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/notgamesuk" target="_blank">Instagram</a><br/><a href="https://discord.gg/invite/notforbroadcast" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/NotForBroadcast" target="_blank">Subreddit</a><br/><a href="https://notforbroadcast.fandom.com/wiki/Not_For_Broadcast_Wiki" target="_blank">Community Wiki</a><br/><a href="https://www.twitch.tv/directory/game/Not%20For%20Broadcast" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/10003940" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/b255917b286358da3d83dedbe77aebc5.avif?t=1763649177"></span><br><strong><h2 class="bb_tag">Feature List:</h2></strong><br><ul class="bb_ul"><li>Deep and meaningful gameplay decisions<br></li><li>14 distinct endings<br></li><li>Darkly-comic branching narrative<br></li><li>Over 42 hours of full motion video (FMV) - a GUINNESS WORLD RECORDS™ achievement<br></li><li>Bursting with musical numbers</li></ul><br>Take control of the National Nightly News.  With the nation's eyes fixed on your choices, it’s up to you to decide what gets broadcast. Choose the shots, censor any “troublesome” content, and steer the narrative as your country tumbles into totalitarianism. No pressure, right?<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/5e1ce2c61e74435903360ee72508bab5.poster.avif?t=1763649177"></span><br><strong><h2 class="bb_tag">Hand-pick the Headlines</h2></strong><br><strong>Not For Broadcast</strong> drops you into the heart of a darkly-comedic tale of televised chaos, where your every decision helps shape the fate of a nation. From ego-fueled celebrities to deceptive politicians and enigmatic advertisers - you control the public’s perception.  As long as you can hold the audience’s fickle attention, it’ll be your choice whether to toe the party line or hype up the scandal.<br><br>Will you make that sportsman seem like a national treasure, or an alcoholic disgrace?  What about those scientists trapped in Dante’s Taint?  Or that new boss at multinational giant Rymmington-Svist who seems to live a double life?  Most importantly, will you help the brand-new government look benevolent, or is there something untoward about them that the public need to see?<br><br>The power is in your hands to change everything, but you’ll have to decide quickly - the news goes out live!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/ac18c7e0db6bb7c44900c90f399a41d1.poster.avif?t=1763649177"></span><br><strong><h2 class="bb_tag">Craft the Narrative (and the Nation's Fate)</h2></strong><br>You are in the driving seat of a multi-level tale about both an entire country and a single family.  Being the architect of the nation’s future is a challenge, to be sure, but so is trying to hold your household together through the dark times.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/6082d0dfd65e48a74fa7d9229a1a612a.poster.avif?t=1763649177"></span><br><br>With multiple branching narratives, every choice you make resonates into the future. Will you help your spouse’s sibling flee the country... even if it involves breaking the law?  Who are ‘Disrupt’ -  concerned citizens or something more revolutionary?  And how do you feel about your son spending more and more time with them?<br><br>And then there’s Grandma... Can you afford her life-saving treatment, or should you and your spouse be taking advantage of one of the Government’s brand-new Transition Centres?  After all, granny, there’s nothing more noble than unburdening your children!<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/b5cdcf635319169d9525f9e4162f5d14.poster.avif?t=1763649177"></span><br><br>And then there’s your broadcast room - when it’s not overheating, it seems to be trying to electrocute you.  Keep the plates spinning as best you can, but remember, whether it’s a newsreader who just won’t take it any more, naked streakers at the Sportsboard Final, or the ever growing threat of nuclear war... this show MUST go on.<br><strong><h2 class="bb_tag">Cue the Ads</h2></strong><br>Select your ads carefully to mould the public’s opinion.  Why not choose to show only adverts for the companies you have shares in?  Maybe that extra cash will help with the difficult decisions at home.  Or maybe you’ll be selling dangerous toys to the nation’s children…<br><br>With more than 50 hilarious ads to choose from there’s never a dull moment - even during the breaks.  <br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1147550/extras/3a4f9e55407c713037cc09d36eb1308d.poster.avif?t=1763649177"></span><br><strong><h2 class="bb_tag">Endure the Unthinkable and Laugh in the Face of Adversity</h2></strong><br>There will be smiles, there will be tears, even as the world falls apart around your ears. So grit your teeth, close your eyes and keep those cameras rolling - the people are counting on you.  Long live the National Nightly News.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

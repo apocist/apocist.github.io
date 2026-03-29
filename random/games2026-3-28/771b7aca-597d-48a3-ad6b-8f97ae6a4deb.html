@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Worms W.M.D</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Worms W.M.D</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:18:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-8/23/2016">8/23/2016</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-72">72</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Arcade">Arcade</a><br/><a href="#quicklink-Strategy">Strategy</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Team17">Team17</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/WormsTeam17" target="_blank">Facebook</a><br/><a href="http://www.team17.com/games/worms-wmd/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/327030" target="_blank">Steam</a><br/><a href="https://wormswmd.gamepedia.com/Worms_W.M.D._Wiki" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/Worms_W.M.D" target="_blank">Wikipedia</a><br/><a href="https://twitter.com/@WormsTeam17" target="_blank">Twitter</a><br/><a href="https://www.gog.com/game/worms_wmd" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Worms%20W.M.D" target="_blank">Twitch</a><br/><a href="http://itunes.apple.com/us/app/id1456135661#?platform=iphone" target="_blank">App Store (iPhone)</a><br/><a href="http://itunes.apple.com/us/app/id1456135661#?platform=ipad" target="_blank">App Store (iPad)</a><br/><a href="https://www.xbox.com/en-us/games/store/worms-w.m.d/C4BZ7X545J1T" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/219617" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/games/detail/worms-wmd-switch/" target="_blank">Nintendo</a><br/><a href="https://www.youtube.com/team17ltd/" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/ba679329762069b9540d0bb56f17a367.avif?t=1773940442"></span></p><p class="bb_paragraph">The worms are back in their most destructive game yet. With a gorgeous, hand-drawn 2D look, brand new weapons, the introduction of crafting, vehicles and buildings plus the return of some much-loved classic weapons and gameplay, Worms W.M.D is the best worms experience ever. </p><p class="bb_paragraph"></p><p class="bb_paragraph">Work your way through 30 campaign levels of increasing difficulty using the huge arsenal of new and classic weapons at your disposal. Use new vehicles to cause chaos amongst the enemy ranks and use buildings to gain the tactical advantage as you try to dominate the battlefield!</p><p class="bb_paragraph"></p><p class="bb_paragraph">Take on up to five opponents in hilarious all-out tactical worm warfare with up to eight worms each, either in local or online multiplayer, including ranked play. Flatten your opponents with the Concrete Donkey. Turn them into chunks of worm meat with the Holy Hand Grenade. Rain down hell from above in helicopters or pound them into oblivion with the tank. With 80 weapons and utilities at your fingertips, this is Worms at its chaotic best!</p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>Key Features</strong></h2><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/ff80ccbf7d49a34cd99b41a9d1ffffde.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Wonderfully 2D</strong>: The best implementation of the Worms formula yet, now with a brand new worm, and gorgeous digitally-painted 2D artwork.</p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/e8aad1b1916cad115c97049e8bd73117.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Vehicles</strong>: Worm warfare gets serious with the introduction of vehicles for the first time in the series. Dominate the landscape in warfare-ready tanks, take to the skies to unleash hell from from above in helicopters and more! </p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/0648c24ca02a8818a3cda081f8b22b6c.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Buildings</strong>: Keep your head down, and hide out in a building. Buildings provide a tactical advantage by hiding away your worms, and keeping them safe from direct attacks!</p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/f40c8ca0a07a31007b75430e6476c2b3.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Crafting</strong>: No more waiting around while your opponents take their turns! Grab the crafting crates that drop from the sky during games to make fiendishly upgraded versions of items such as the Electric Sheep, the Bazooka Pie and the Holy Mine Grenade to unleash on your enemies!</p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/7480f99cb1587d1f698439d9907052ee.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Classic Worms Physics and Gameplay</strong>: Our brand new engine recreates the feel of the fan-favourite entrants in the series; and sees the reintroduction of the much loved Classic Ninja Rope!</p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/77591276669cd38e83693cf524088bfd.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>New and classic weapons</strong>: Over 80 weapons and utilities at your fingertips, including many returning classics and a slew of new additions such as the Dodgy Phone Battery, the Unwanted Present and the OMG strike. </p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/85936961336560288e08e19f1c4b8608.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Mounted Guns</strong>: As if over 80 weapons and utilities wasn't already enough! A range of different gun types are placed around the landscape, allowing your warmongering worms to do even MORE damage!</p></li></ul><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/327030/extras/391015de09065720c63d2209104bffd8.avif?t=1773940442"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Hilarious single player plus online and local multiplayer warfare</strong>: Worms W.M.D comes locked and loaded with a huge arsenal of Training Missions, Campaign Missions and Challenges for the solo player. Train up then head online to create havoc in multiplayer modes including ranked play, with room for up to six players with eight worms each on a map!</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

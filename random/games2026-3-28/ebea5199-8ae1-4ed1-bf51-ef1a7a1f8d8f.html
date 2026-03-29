@@ -1,0 +1,338 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Thronebreaker: The Witcher Tales</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Thronebreaker: The Witcher Tales</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:26:57</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:33:02</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-10/23/2018">10/23/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-85">85</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Card & Board Game">Card & Board Game</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Strategy">Strategy</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-CD Projekt RED">CD Projekt RED</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-CD Projekt RED">CD Projekt RED</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://witcher.fandom.com/wiki/Thronebreaker:_The_Witcher_Tales" target="_blank">Community Wiki</a><br/><a href="https://www.gog.com/game/thronebreaker_the_witcher_tales" target="_blank">GOG</a><br/><a href="http://itunes.apple.com/us/app/id1499205535#?platform=iphone" target="_blank">App Store (iPhone)</a><br/><a href="http://itunes.apple.com/us/app/id1499205535#?platform=ipad" target="_blank">App Store (iPad)</a><br/><a href="https://play.google.com/store/apps/details?id=com.cdprojektred.gwentthronebreaker" target="_blank">Google Play</a><br/><a href="https://www.twitch.tv/directory/game/Thronebreaker:%20The%20Witcher%20Tales" target="_blank">Twitch</a><br/><a href="https://store.steampowered.com/app/973760" target="_blank">Steam</a><br/><a href="https://www.thewitcher.com/thronebreaker-witchertales" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/thewitcher/" target="_blank">Facebook</a><br/><a href="https://x.com/witchergame" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/thewitcher/" target="_blank">YouTube</a><br/><a href="https://discord.gg/thewitcher" target="_blank">Discord</a><br/><a href="https://store.playstation.com/en-us/concept/232723" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/games/detail/thronebreaker-the-witcher-tales-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>The Witcher World is Back!</strong>&nbsp;<br>
+<br>
+<i>"A spectacularly crafted RPG"</i> - 5/5 - <strong>GamesRadar&nbsp;</strong><br>
+<br>
+<i>"One of the best-written RPGs in years"</i> - 9.4/10 -<strong> IGN</strong>&nbsp;<br>
+<br>
+<i>"Superb</i>" - 9/10 - <strong>GameSpot</strong>&nbsp;<br>
+<br>
+Thronebreaker is a single player role-playing game set in the world of The Witcher that combines narrative-driven exploration with unique puzzles and card battle mechanics.&nbsp;<br>
+<br>
+Crafted by the developers responsible for some of the most iconic moments in The Witcher 3: Wild Hunt, the game spins a truly regal tale of Meve, a war-veteran and queen of two Northern Realms — Lyria and Rivia. Facing an imminent Nilfgaardian invasion, Meve is forced to once again enter the warpath and set out on a dark journey of destruction and revenge.
+<p></p>
+
+<p>
+&nbsp;
+</p>
+<h4>KEY FEATURES</h4>
+<p>
+<br>
+<strong>AN ALL NEW EPIC TALE</strong>
+&nbsp;
+</p>
+<ul>
+	<li>Experience an all-new 30-hour Witcher world tale with 20 possible world end-states.</li>
+	<li>Embark on a grand adventure full of thought-provoking quests.</li>
+	<li>Influence the state of the world around you by making difficult choices and face their consequences.</li>
+	<li>Meet a cast of rich, multidimensional characters — some of them will join you on your quest, others you’ll have to face on the battlefield.</li>
+<br>
+</ul>
+<p>
+<img src="https://items.gog.com/thronebreaker_the_witcher_tales/gog-2d-product-2d-thronebreaker_cropped-2d-screenshots-2d-for-2d-product-2d-features-2d-an-2d-all-2d-new-2d-epic-2d-tale_600x200-7db63.png">&nbsp;<br><br>
+<strong>TRAVEL TO NEVER-BEFORE-SEEN KINGDOMS</strong>
+&nbsp;
+</p>
+<ul>
+	<li>Explore new and mysterious regions of the monster-infested world of The Witcher.</li>
+	<li>Traverse vast lands and unique locations, all with their distinct theme — from vibrant countrysides and war-torn landscapes, to grand castles and snow-capped mountains.</li>
+	<li>Save villages from hordes of monsters, look for treasures hidden among ancient ruins, scour the land for resources, and more — the world of Thronebreaker is teeming with things to do.</li><br>
+</ul>
+<p>
+<img src="https://items.gog.com/thronebreaker_the_witcher_tales/gog-2d-product-2d-thronebreaker_cropped-2d-screenshots-2d-for-2d-product-2d-features-2d-travel-2d-to-2d-never-2d-before-2d-seen-2d-kingdoms_600x200-ce78a.png">&nbsp;<br><br>
+<strong>PREPARE FOR WAR</strong>
+&nbsp;
+</p>
+<ul>
+	<li>Develop and customize your very own battle camp.</li>
+	<li>Train and recruit units, unlock new skills and work on your tactics.</li>
+	<li>Manage resources you find and trade them with local merchants.</li>
+	<li>Learn more about your companions and increase their strength in battle.</li><br>
+</ul>
+<p>
+<img src="https://items.gog.com/thronebreaker_the_witcher_tales/gog-2d-product-2d-thronebreaker_cropped-2d-screenshots-2d-for-2d-product-2d-features-2d-prepare-2d-for-2d-war_600x200-09df5.png">&nbsp;<br><br>
+<strong>LEAD YOUR ARMY IN EPIC BATTLES</strong>
+&nbsp;
+</p>
+<ul>
+	<li>Build an army from characters you meet and interact with during your journey.</li>
+	<li>Fight in epic story battles and solve unique puzzles and challenges.</li>
+	<li>Use unique skills and abilities of your army and lead it to victory.</li><br>
+</ul>
+<p>
+<img src="https://items.gog.com/thronebreaker_the_witcher_tales/gog-2d-product-2d-thronebreaker_cropped-2d-screenshots-2d-for-2d-product-2d-features-2d-lead-2d-your-2d-army-2d-in-2d-epic-2d-battles_600x200-79cc4.png">&nbsp;<br><br>
+<strong>Thronebreaker: The Witcher Tales comes with these bonus items:</strong>&nbsp;
+&nbsp;
+</p>
+<ul>
+	<li>Official Thronebreaker Soundtrack</li>
+	<li>Digital version of GWENT: Art of The Witcher Card Game artbook from Dark Horse</li>
+	<li>Concept art, including the map of Lyria</li>
+	<li>The Witcher graphic novel "Fox Children" by Dark Horse</li>
+</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

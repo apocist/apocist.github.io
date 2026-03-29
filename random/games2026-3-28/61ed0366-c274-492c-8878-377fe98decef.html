@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Tin Hearts</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Tin Hearts</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:26:57</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:33:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-4/20/2023">4/20/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Platform">Platform</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Rogue Sun">Rogue Sun</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Wired Productions">Wired Productions</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.tinheartsgame.com" target="_blank">Official Website</a><br/><a href="https://www.gog.com/game/tin_hearts" target="_blank">GOG</a><br/><a href="https://store.steampowered.com/app/1831700/Tin_Hearts" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Tin%20Hearts" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/wiredp" target="_blank">YouTube</a><br/><a href="https://twitter.com/WiredP" target="_blank">Twitter</a><br/><a href="https://store.epicgames.com/en-US/p/tin-hearts-221ecf" target="_blank">Epic</a><br/><a href="https://www.facebook.com/TinHearts/" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/wired_productions/?hl=en" target="_blank">Instagram</a><br/><a href="https://discord.gg/jx94BAmVEb" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/WiredP/" target="_blank">Subreddit</a><br/><a href="https://www.nintendo.com/store/products/tin-hearts-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10002494" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Embark on a series of lemmings-like puzzles to relive the captivating and emotional story of a genius inventor, Albert J. Butterworth, whilst guiding a troop of tin soldiers to reach their goal. Critically acclaimed for its moving narrative, refined puzzle design, and immersive atmosphere, Tin Hearts is a narrative puzzle adventure where the ghosts of the past emerge to tell a resonating tale of family, love, and compromise.  
+<br>
+
+<br>
+Spanning across four distinctive acts with 50+ puzzles masterfully woven throughout a grand Victorian home, steadily uncover a variety of whimsical inventions with unique abilities to provide a safe route of passage for the tin soldiers to travel. From the meticulous garden, where the soldiers can bounce, glide and soar to their goal, or the inventor’s basement filled with the heights of innovation and technology, each location has an abundance of treasured memories, whilst there are some that would rather be forgotten.
+<br>
+
+<br>
+In a tragic fable which will see Albert overwhelmed by sorrow and heartache, discover what brilliant minds do when the love for life, and the love for invention, are threatened by life itself. 
+<br>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/1_TH_Banner.png" />
+<br>
+
+<br>
+Set out on an immersive adventure through 50+ lemmings-like puzzles which constantly evolve as you progress. Uncover new routes to your destination each time you play, with multiple ways to solve the intricate puzzles. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Embark.gif.mp4" type="video/mp4"></video>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/2_TH_Banner.png" />
+<br>
+
+<br>
+In a multi-layered and heartfelt narrative, told through treasured memories, photographs and hand-written letters, there is much to be uncovered in Tin Hearts. Witness the delicate balance of family with the persistence of work and the exploitative nature of the Guild of Toy Makers as you wander through Alberts life. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Explore.gif.mp4" type="video/mp4"></video>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/3_TH_Banner.png" />
+<br>
+
+<br>
+Explore the world through the perspective of the independent and fully controllable Mr Soldier, a Tin Soldier who is able to break rank and scout out the best way to progress, whilst bringing with him an additional layer of discovery throughout the adventure. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Take_Direct_control.gif.mp4" type="video/mp4"></video>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/4_TH_Banner.png" />
+<br>
+
+<br>
+Unlock the power to control a variety of ground-breaking inventions steadily introduced throughout the game. Manoeuvre toy cannons, trampoline drums, and balloon inflating machines before taking on the electrifying vigour of the power glove, a visionary invention which is truly ahead of its time. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Unravel.gif.mp4" type="video/mp4"></video>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/5_TH_Banner.png" />
+<br>
+
+<br>
+Pause, fast-forward and rewind time to observe and change the outcome of your actions. With the offer of hints readily available, Tin Hearts provides an accessible and relaxing puzzle-solving experience to complement your journey. 
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Manipulate_time.gif.mp4" type="video/mp4"></video>
+
+<br>
+<img src="https://items.gog.com/tin_hearts/6_TH_Banner.png" />
+<br>
+
+<br>
+Take your time working through the relaxing puzzles whilst indulging in the poignant soundtrack from award-winning composer Matthew Chastney, whose credits include trailers for ‘JOKER’, 'Chernobyl', and 'Bridgerton'.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Music.gif.mp4" type="video/mp4"></video>
+<br
+<br>
+<img src="https://items.gog.com/tin_hearts/8_TH_Banner.png" />
+<br>
+
+<br>
+Tin Hearts is brought to life by former members of the exceptionally talented Lionhead Studios development team, responsible for the critically acclaimed Fable series.
+<br>
+
+<br>
+<video muted preload="auto" loop autoplay="autoplay" style="margin: auto;display:block;width:100%">
+  <source src="https://items.gog.com/tin_hearts/mp4/Fable.gif.mp4" type="video/mp4"></video>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

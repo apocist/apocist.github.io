@@ -1,0 +1,340 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Phantasie Memorial Set</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Phantasie Memorial Set</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:26:56</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:30:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/19/2023">12/19/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/en/game/phantasie_memorial_set" target="_blank">GOG</a><br/><a href="https://store.steampowered.com/app/2702050/Phantasie_Memorial_Set/" target="_blank">Steam</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<b>PHANTASIE I:</b>
+<br>
+
+<br>
+<i>When sorcery ruled, and trolls and minotaurs still walked this Earth, a party of six intrepid adventurers set out to find the Nine Rings and use them to destroy the Dark Lord. This is your quest. This is your... Phantasie.</i>
+<br>
+
+<br>
+A multiple-character role-playing game, PHANTASIE transports you to the medieval isle of Gelnor for the adventure of your dreams. You command a group of one to six characters with such roles as monk, priest, wizard, ranger, thief, or fighter. Your companions need not be human; they may be gnomes, elves, orcs, or lizardmen — just to name a few exotic races.
+<br>
+With this motley crew, you search the lands for the Nine Rings to help you wipe out the scourge of Gelnor — the Dark Lord and his evil minions. You'll map out new terrain, explore maze-like dungeons, solve puzzles, learn spells, gain experience, and battle countless monsters. In every town you visit, you can recruit new members to replace lost or unneeded comrades.
+<br>
+
+<br>
+Beautiful 90s color graphics and a spell-binding storyline suspend reality and launch you into our magical world. No computer-carrying adventurer will want to miss out on the glorious excitement and enchanting experience that is PHANTASIE.
+<br>
+
+
+<br>
+<b>PHANTASIE II:</b>
+<br>
+
+<br>
+<i>For no reason other than to embellish his title, the Dark Lord Nickademus fashioned an evil orb. With it, he cast a curse on a beautiful island and enslaved its people. Now, six travelers brave his wrath to find and destroy his nefarious handiwork in… Phantasie II.</i>
+<br>
+
+<br>
+A NEW ADVENTURE BEGINS...
+<br>
+
+<br>
+Your quest to remove the evil warlock's curse will be no easy task since there are precious few clues. All you know is that locating the orb requires a danger-filled search of a vast wilderness and of dungeons, a trip to the Astral Plane and the Netherworld — wherever they are.
+<br>
+
+<br>
+You command a band of one to six adventurers, each endowed with the skills of a monk, priest. wizard, ranger, thief, or fighter. You can recruit new members to replace unneeded or fallen comrades. During this quest, you'll help your heroes gather treasure, solve puzzles, learn spells, and battle the Dark Lord's countless hordes. With all these magical distractions and obstructions, don't forget that finding the orb will do you no good. You'll still have to find a way to destroy it!
+<br>
+
+
+
+<br>
+<b>PHANTASIE III:The Wrath of Nikademus </b>
+<br>
+
+<br>
+<i>The Final Confrontation Against The Dark Lord!</i>
+<br>
+
+<br>
+Phantasie III: The Wrath of Nikademus is a fantasy adventure game far greater in scope, complexity, and challenge in the world of Phantasie.
+
+<br>
+This time, the Dark Lord Nikademus has set his evil sights on conquering — not only an island — but the entire world! He must be stopped, and you've been chosen to undertake this difficult and dangerous quest. Assemble and guide a band of six brave souls (human and otherwise) to search for and destroy Nikademus. Your group will traverse an entire continent, battling the Dark Lord's ugly hordes and exploring dungeons for clues that will ultimately lead you to Nikademus — and to the Final Confrontation. 
+<br>
+
+<br>
+Travel to the astral Planes of Light and Darkness where you will meet some of the most powerful beings that inhabit the Phantasie Universe — including the legendary Lord Wood. From these encounters, you hope to gain the knowledge and power with which to destroy the Dark Lord.
+<br><br>
+
+This pivotal game boasts a number of new and improved features. Bows and arrows and ever more potent spells have been added to the long list of weapons. During combat, you can move each character to the front, middle, or back of the party. You can also aim your spells at different ranks of the enemy. You determine which skills an individual character should improve on as he gains experience. Wounds are specified by body location and extent of injury.
+<br><br>
+
+You'll enjoy the enhanced graphics display of characters and monsters, and the increased speed of play as you travel across the wilderness and dungeons.
+<br><br>
+The Wrath of Nikademus promises a spell-binding storyline with enough twists and turns to satisfy your wildest fantasies!
+<br><br>
+<i>Note that Phantasie II was never released for PC, and we had to use the Apple II emulator to make this game playable on Windows. Thus, when asked to “INSERT DUNGEON DISK AND PRESS A KEY” in Phantasie II, please ensure to press F5 to continue playing. </i>
+
+<br><br>
+ <p class="module">You can access the parts II and III through Additional Executables section in GOG GALAXY. You will also find them in the game folder.</p>
+
+<br>
+<p class="module">Languages, features and system requirements may vary between games.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Scarlet Hollow</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Scarlet Hollow</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:05:18</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-6/11/2021">6/11/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-87">87</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Point-and-click">Point-and-click</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Black Tabby Games">Black Tabby Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Black Tabby Games">Black Tabby Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.youtube.com/channel/UC6bbk3AuxgkmTlIqmTgv2mQ" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/1609230/Scarlet_Hollow" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Scarlet%20Hollow" target="_blank">Twitch</a><br/><a href="https://twitter.com/blacktabbygames" target="_blank">Twitter</a><br/><a href="https://blacktabbygames.itch.io/scarlet-hollow" target="_blank">Itch</a><br/><a href="https://www.gog.com/en/game/scarlet_hollow" target="_blank">GOG</a><br/><a href="https://scarlethollow.wiki.gg/" target="_blank">Community Wiki</a><br/><a href="https://blacktabbygames.com/" target="_blank">Official Website</a><br/><a href="https://en.wikipedia.org/wiki/Scarlet_Hollow" target="_blank">Wikipedia</a><br/><a href="https://www.instagram.com/blacktabbygames/" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/ScarletHollow/" target="_blank">Subreddit</a><br/><a href="https://discord.gg/ptYb8VC" target="_blank">Discord</a><br/><a href="https://bsky.app/profile/blacktabbygames.com" target="_blank">Bluesky</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">From the developers of <i><strong>Slay the Princess</strong></i>, Scarlet Hollow is an immersive horror-mystery with sharp writing, impactful choices, and meticulously hand-drawn art.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1609230/extras/1b0cffe0c4b0a5ef3cf1a06812f6f977.avif?t=1773936757"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph"><i>Coal mines sealed off after a deadly collapse. Strange creatures preying on livestock. Houses infested with vengeful spirits. The sleepy town of Scarlet Hollow has suddenly come alive with horrors, just in time for your arrival.   This was supposed to be a quiet getaway in the rural mountains of North Carolina. All you had to do was finally meet your long-lost cousin and comfort her through her mother’s funeral. But now, each new day welcomes new nightmares.</i>&nbsp;</p><p class="bb_paragraph"><i><strong>You only have to survive a week. But can you get to the bottom of the horrifying mysteries haunting Scarlet Hollow before they claim your life? </strong></i>  </p><p class="bb_paragraph"> </p><p class="bb_paragraph">The first five episodes are available now, with one major content update planned before the story reaches its conclusion.</p><p class="bb_paragraph"><strong>Features</strong> </p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"> <strong>A heavily branching narrative where your decisions (actually) matter</strong>. The relationships you forge and the decisions you make will dramatically alter your journey. </p></li><li><p class="bb_paragraph"> <strong>A complex paranormal mystery</strong>. Investigate haunted houses, strange sightings in the woods, a deteriorating mine, and more as you try and piece together what happened in Scarlet Hollow. </p></li><li><p class="bb_paragraph"> <strong>Trait-based dialogue and role-playing.</strong> Scarlet Hollow's dialogue system is driven by role-playing elements that let you choose who you want to be. Are you quiet and observant? Hot and clueless? <i><strong>Can you talk to animals</strong></i>? 21 different character builds change how you interact with the world and how your story unfolds. </p></li><li><p class="bb_paragraph"> <strong>A dynamic relationship system that reacts to your every choice and changes how your story unfolds.</strong> People won't just like or dislike you. Become friendly rivals, bitter adversaries, best friends, or mild acquaintances with everyone in town based on how you approach the story. </p></li><li><p class="bb_paragraph"> <strong>Original monster designs </strong>inspired by Appalachian myths and cryptids<strong>.</strong>  </p></li><li><p class="bb_paragraph"> <strong>No jumpscares.</strong> All of the horror in Scarlet Hollow comes from dread, tension, and a sprinkle of disturbing imagery. </p></li><li><p class="bb_paragraph"> <strong>A touch of romance.</strong> Whether you're into goths, dads, moms, paranormal investigators, mysterious recluses, or <strong>actual monsters</strong>, you'll find something waiting for you here. And if you'd rather avoid that entirely, your story won't be any less for it. </p></li><li><p class="bb_paragraph"> <strong>Hundreds of meticulously hand-drawn and traditionally inked backgrounds.</strong> Every background in the game is hand drawn and inked by Ignatz-winning graphic novelist Abby Howard.  </p></li><li><p class="bb_paragraph"> <strong>Fully immersive art.</strong> Each major character has dozens—and often hundreds—of hand-drawn sprites that interact with backgrounds and capture a full range of lighting, emotion, environment, and outfit changes. </p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

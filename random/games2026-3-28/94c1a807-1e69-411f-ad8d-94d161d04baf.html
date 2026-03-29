@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cursed Companions</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Cursed Companions</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>3m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-1/24/2026">1/24/2026</a> 21:21:49</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:58:05</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-11/20/2025">11/20/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Crimson Forge Studios">Crimson Forge Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Crimson Forge Studios">Crimson Forge Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/3265230/Cursed_Companions/" target="_blank">Steam</a><br/><a href="https://cursedcompanions.crimson-forge.com/" target="_blank">Official Website</a><br/><a href="https://twitter.com/CursedCompani0n" target="_blank">Twitter</a><br/><a href="https://discord.gg/invite/WpmWCmgZRz" target="_blank">Discord</a><br/><a href="https://bsky.app/profile/cursedcompanions.bsky.social" target="_blank">Bluesky</a><br/><a href="https://www.instagram.com/cursedcompanionsgame/" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">Cursed Companions is a co-op horror game that responds to every word the players say. Every player is <strong>cursed with a forbidden word</strong>, like "<i>Okay</i>" or "<i>I think</i>". If anyone says it, the player takes damage.</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/ead89395d70bd6e45570a629b03ef5d3.poster.avif?t=1773937294"></span></p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/3269073ec55f5ebaeb6118520e903436.webp?t=1773937294"></span></h2><p class="bb_paragraph">When you say the <strong><i>right</i></strong> words, you can heal your friends or disarm traps. </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/e4ff25926d108f4f3eacc01f230b014c.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><i>"Mommy loves you... I'm sorry, I'm sorry... IT'S IN THE BOOK! IT'S IN THE BOOK!" - MichiMochievee</i></p><p class="bb_paragraph">But when you say the <strong><i>wrong</i></strong> words (i.e. "<i>Follow me!</i>") you could wipe out your team. </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/a4043ac3dfcc10f267ccaedfffbfa34d.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/cb75afd240449a368b385c94d8e3b295.webp?t=1773937294"></span></p><p class="bb_paragraph">Dungeons are <strong>randomly generated</strong>, every run is a brand-new experience.</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/4325386c7195264795fb0b11e73946de.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/8289933ed974e331b1b37db3a1a8ad66.webp?t=1773937294"></span></p><p class="bb_paragraph">Over twenty different monsters to encounter and "befriend".</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/b9f25dd3198b58b7d770f8f986ae8291.poster.avif?t=1773937294"></span></p><h2 class="bb_tag">The Foul Moth</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/9640e1e97e44878d5f1ea1e1721272f6.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><i>"[The Foul Moth] kinda looks like a Labubu." - QuarterJade.&nbsp;</i></p><p class="bb_paragraph"><strong>Watch your mouth! </strong>The <strong>Foul Moth</strong> punishes players who swear. </p><h2 class="bb_tag">The Meatgrinder</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/a58ddef2cddb9653d31a2b165546c793.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><strong>Roast or get roasted! </strong>Shout <strong>"</strong><i>Who's your Daddy!</i>" to send the <strong>Meatgrinder</strong> packing!</p><h2 class="bb_tag">The Bride</h2><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/b2b82b8e45b024244fea452047f778d2.poster.avif?t=1773937294"></span></p><p class="bb_paragraph"><strong>Scare The Bride away</strong>! Bad pickup lines and awkward confessions are your best defense! </p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/d6c9eb6152db41de2e7cc6848a767bbf.webp?t=1773937294"></span></p><p class="bb_paragraph">Team up and tackle a variety of co-op modes. Battle bosses in two standalone stages or dive into tougher dungeons in <strong>Challenge Mode</strong>.&nbsp;Push your limits in <strong>Endless Mode</strong> to see how long you can survive.</p><h2 class="bb_tag"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/a5c8b479331ecc0ceb04d1b70626e513.webp?t=1773937294"></span></h2><p class="bb_paragraph">Monsters aren’t the real threat in Traitor Mode; your so-called friends are. It’s a chaotic social deduction mode where Traitors secretly sabotage the mission.</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/134005e1555b8b3974b6d29d8d50d8aa.poster.avif?t=1773937294"></span>But don’t be too obvious as others can call an "<i>Emergency Meeting</i>" to vote you out! </p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/c0b3aa23322dbcb2f19cd42209ba34f9.webp?t=1773937294"></span>Unlock unique skins as rewards for your greatest achievements! Kill bosses, survive brutal challenges, or simply get killed in unique circumstances.&nbsp;</p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/19bf5baca22e771b44f3c45c05aa3939.poster.avif?t=1773937294"></span><i>“Oh that’s nice… I can be a knight!” - Foolish</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/a0cbf76b61fff084a30e9fb5d4d486d2.webp?t=1773937294"></span></p><p class="bb_paragraph">Customize your home and let your friends see how cursed your taste really is! </p><p class="bb_paragraph"><strong> </strong><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/2d662b048701be40f2bcfa7fa59aaa97.poster.avif?t=1773937294"></span><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3265230/extras/c34d7e776dc6319396f5639c08af108e.webp?t=1773937294"></span></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Voice Control </strong><br>The game is 'always listening', the game uses voice-activation game mechanics. </p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Everyone gets a forbidden word </strong><br>Like "<i>Okay</i>" or "<i>I think</i>" or "<i>Didn't</i>". If anyone says it, you take damage.</p></li><li><p class="bb_paragraph"><strong>Say the right words to get ahead </strong><br>Use your voice to light your torch, to disable traps or shoo monsters away. </p></li><li><p class="bb_paragraph"><strong>Say the wrong words to your peril </strong><br>Your voice can awaken monsters, hurt you and even your teammates.&nbsp;</p></li><li><p class="bb_paragraph"><strong>Procedural Dungeons </strong><br>Every run is a brand new experience. The dungeons go deep, so try not to get lost!</p></li><li><p class="bb_paragraph"><strong>Co-op or Traitor Mode </strong><br>Play as a team in Co-op Mode or find the Traitor in an 'Among Us'-style Mode</p></li><li><p class="bb_paragraph"><strong>Magical Items </strong><br>Buy equipment like the Teleport Stone, Ice Wand, Stink potions and more. Use the equipment in your own creative ways to try and survive the dungeons and fend off monsters.</p></li><li><p class="bb_paragraph"><strong>Unique Monsters </strong><br>Voice-activated monsters, creatures that track by vision or sound and many more interesting monsters to meet.</p></li><li><p class="bb_paragraph"><strong>Language Mod Support </strong><br>Currently officially supports&nbsp;<strong>English, Japanese, French, Spanish and Simplified Chinese</strong>. These languages are in the Language-Beta version of the game: 	German, Brazilian Portuguese, Russian, Polish, Turkish, Italian, Dutch, Korean, Swedish. We have provided easy instructions to add your own language using alternative language voice models.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

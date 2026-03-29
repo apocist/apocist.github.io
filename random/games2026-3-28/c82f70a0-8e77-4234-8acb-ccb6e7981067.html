@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Strange Antiquities</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Strange Antiquities</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:14</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:58:19</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/17/2025">9/17/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-70">70</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Point-and-click">Point-and-click</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Bad Viking">Bad Viking</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Iceberg Interactive">Iceberg Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/2885870/Strange_Antiquities/" target="_blank">Steam</a><br/><a href="https://x.com/BadVikingGames" target="_blank">Twitter</a><br/><a href="https://bsky.app/profile/badvikinggames.bsky.social" target="_blank">Bluesky</a><br/><a href="https://www.instagram.com/badvikinggames/" target="_blank">Instagram</a><br/><a href="https://epicgames.com/p/strange-antiquities-e37660" target="_blank">Epic</a><br/><a href="https://www.nintendo.com/us/store/products/strange-antiquities-switch/" target="_blank">Nintendo</a><br/><a href="https://discord.gg/xtCjxWFBv2" target="_blank">Discord</a><br/><a href="https://www.gog.com/game/strange_antiquities" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/86eff390760f9fd9fb7ab263864ad8fc.webp?t=1772794646"></span><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/517aea9ffe207fe7675e3e4acbe573f0.poster.avif?t=1772794646"></span> <span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/d6bdf9f8602ed2f4640c73e58541f148.webp?t=1772794646"></span></p><p class="bb_paragraph"><strong><i>Dear Applicant,</i></strong></p><p class="bb_paragraph">I am pleased to offer you the role of Apprentice Thaumaturge at Strange Antiquities.</p><p class="bb_paragraph">You show promise – a sharp mind and a strong stomach – exactly what this work demands. I need you to run the shop while I attend to other pressing matters. You will need a keen eye for detail as you provide the townsfolk of Undermere with occult objects for their arcane needs.</p><p class="bb_paragraph">Undermere might seem unassuming at first – a serene little town on the edge of a grand lake. But it also sits at the edge of our world and the world beyond – and it falls on us to preserve reality’s frayed edge.</p><p class="bb_paragraph">Permit me now to outline your duties – you’ll need to be up to speed from day one.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/8725696ce6f59fa1a55834064c9cdd89.poster.avif?t=1772794646"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/2a6cf711d23b9ec0ec661f55482fd38e.webp?t=1772794646"></span></p><p class="bb_paragraph"><strong>Every day, you will welcome new customers into the cosy, candle-lit interior of the shop. Their needs are unpredictable and often alarming, but never dull!</strong></p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Study and Identify:&nbsp;</strong>Examine, identify and catalogue strange artefacts. Observation, deduction, and careful reference to our collection of illustrated tomes will serve you well. Mistakes can be… costly.</p></li></ul><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Help… Or Hinder:&nbsp;</strong>When dealing with powerful items, your choices matter. Will you help someone with their problem, or curse them with a horrid affliction? In a small town like this, people remember your misdeeds.</p><p class="bb_paragraph"></p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Explore and Discover:&nbsp;</strong>From time to time, you will have to leave the safety of the shop. Whether investigating rumours or retrieving artefacts, my well-loved hand-drawn maps will guide you to where you need to go.</p></li></ul><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Solve and Uncover:&nbsp;</strong>Your day-to-day might already feel like a puzzle, but this store holds many more. Few know how old this building is, and fewer still know what secrets lie within its walls.</p><p class="bb_paragraph"></p></li></ul><ul class="bb_ul"><li><p class="bb_paragraph"><strong>Tending the Familiar:&nbsp;</strong>And, of course, Jupiter, the shop’s cat, demands daily affection. In return for his company, please oblige him with the occasional scratch behind the ears.</p><p class="bb_paragraph"></p></li></ul><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/eab4a1eae3a5e65044f09d9f2f612c88.poster.avif?t=1772794646"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/1278dc4712b083b6911c690857a989f2.webp?t=1772794646"></span></p><p class="bb_paragraph">These ravens are an omen. There is a sickness in this town and I intend to investigate it.</p><p class="bb_paragraph">Barton Potter told me that his bad eye has been aching again. That can’t be a good sign. And a creeping dark has set up in Jack Hungerford’s house. I have business in Ravenglass but I will consult with the occult scholar, Verona Green, before I leave.</p><p class="bb_paragraph">There are always forces at play that would see our beloved Undermere <i>unmade</i>. We stand between them and the threshold. If events take a turn, you may be called upon to take a stand.</p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/0570ba1a1d3fa939d7ab03533e6953aa.avif?t=1772794646"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/bb5744370c6161e4bd0511668f1c2dab.webp?t=1772794646"></span></p><p class="bb_paragraph">This shop is my life’s work. And, for the most part, it has been good to me. May it now offer you equal parts reward and mystery! But remember: some curiosities are best left untouched, and some visitors are not what they seem.</p><p class="bb_paragraph">I look forward to your arrival.</p><p class="bb_paragraph">Yours,</p><p class="bb_paragraph"><strong>Eli White</strong></p><p class="bb_paragraph"><i><strong>Thaumaturge &amp; Proprietor</strong></i></p><p class="bb_paragraph"><i>Strange Antiquities, Undermere</i></p><p class="bb_paragraph"><i>Purveyors of the Arcane since 1683</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/d86eb9c429e4bedfe58b1377c358a887.webp?t=1772794646"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/f647e529f6a15fa780ebae9d81289cca.poster.avif?t=1772794646"></span></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2885870/extras/71bad73a5c0567ab5495611577a1b79e.webp?t=1772794646"></span></p><p class="bb_paragraph">We are two brothers from the UK who have been making games together for over a decade. In 2022, we released our occult puzzle game Strange Horticulture, and the response has been incredible; from amazing reviews and award nominations to appearing in numerous best-of-the-year lists. Most importantly, it has been a joy to read the kind words left by so many of our players on Steam, where we are still rated Overwhelmingly Positive after close to 12,000 reviews!</p><p class="bb_paragraph"><i>Strange Antiquities</i> is not a sequel, not a direct one, at least. You’ll see some familiar faces, and maybe some plants will pop up, but it’s a brand new story. If you have a fondness for <i>Strange Horticulture </i>and the dark, but welcoming world we’ve created, know that you’ll feel right at home.<br><br>We want to thank everyone who has played Strange Horticulture, left us a review, told their friends, or supported the game in any way. It has been an amazing journey and we can't wait to share the next chapter with you.</p><p class="bb_paragraph">Many thanks,</p><p class="bb_paragraph">Rob &amp; John</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Please wishlist and follow Strange Antiquities to stay up-to-date with the development and help us spread the word.</strong></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

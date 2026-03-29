@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Thrive</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Thrive</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>6h 48m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-7/4/2024">7/4/2024</a> 0:27:18</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:17:04</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/31/2010">12/31/2010</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Revolutionary Games">Revolutionary Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://revolutionarygamesstudio.com/" target="_blank">Official Website</a><br/><a href="https://www.youtube.com/c/RevolutionaryGames" target="_blank">YouTube</a><br/><a href="https://twitter.com/thrive_game" target="_blank">Twitter</a><br/><a href="https://discord.gg/invite/FZxDQ4H" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/thrive" target="_blank">Subreddit</a><br/><a href="https://thrive.fandom.com/wiki/Thrive" target="_blank">Community Wiki</a><br/><a href="https://www.facebook.com/pages/Thrive/182887991751358" target="_blank">Facebook</a><br/><a href="https://store.steampowered.com/app/1779200" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Thrive" target="_blank">Twitch</a><br/><a href="https://www.instagram.com/thrive_game/" target="_blank">Instagram</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					In Thrive, you take control of an organism on an alien planet, beginning with the Last Universal Common Ancestor (LUCA). Your goal is to survive in the environment, adapt your species by adding mutations, and <i>thrive</i>. Other species will emerge to compete with yours. They will evolve via a population dynamics driven simulation with random mutations - you must improve and spread your species to surpass them. The success of your species depends both on your skill in surviving as an individual and the changes you make in the editor.<h2 class="bb_tag">Create your own Species</h2>Use over 25 different parts to create your own unique species. Place mitochondria to power your cell, use chloroplasts to eat sunlight, or add a pilus to stab unsuspecting prey. Keep the membrane of your cells flexible to eat others in one bite, or add a tough cell wall to protect yourself. The choice is yours, as you evolve to survive.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/extras/d34fc5380d3c8cabfaff109cf6f7eedc.poster.avif?t=1765967062"></span><h2 class="bb_tag">Fight to Survive</h2>Travel through your environment, collecting the resources you need to survive and reproduce. Gather them from clouds and chunks, or steal them from other species and use every tool you gave yourself in the editor to prevent being eaten by someone else.<h2 class="bb_tag">Evolution Simulation</h2>Watch as the other species of the world evolve alongside you. They adapt to become ever better at surviving. Whether that be by becoming stronger and more efficient in using their food sources, avoiding predation, or choosing to become better at hunting you instead.<br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1779200/extras/2183aaaa4d8686802b98b4a8be6027fe.poster.avif?t=1765967062"></span><h2 class="bb_tag">A Dynamic World</h2>Explore a world of different regions with varying environments. Choose to live anywhere from scalding hydrothermal vents in the deep sea, to freezing ice shelves on the surface. Even these environments themselves don’t stay the same; an asteroid impact or a global ice age might just ruin the day of photosynthesising bacteria.<h2 class="bb_tag">A Variety of Playstyles</h2>Use one of many ways to survive and thrive. Try a different gameplay style each playthrough, feeding yourself with photosynthesis, by turning poisonous hydrogen sulfide into sugar, burning chunks of iron, or even more exotic methods. Or, instead of making your own food, just eat everyone else.<h2 class="bb_tag">And More</h2><br><ul class="bb_ul"><li>Learn about biology by using real compounds, organelles or parts inspired by real science<br></li><li>Review and plan future actions by looking at population simulation results and graphs<br></li><li>Use endosymbiosis to turn other species into a part of yourself<br></li><li>Learn the basics of the game with a light, interactive tutorial<br></li><li>Create experimental species in freebuild mode with removed editing limits<br></li><li>Play the in-development version of the next stage and see prototypes of future stages</li></ul><h2 class="bb_tag">The Present And The Future</h2><br>In the <strong>Microbe Stage</strong>, which is the first and only complete stage of the game, you control a single microbe or a colony of microbes bound together. You swim through a watery environment to find the resources your cell needs to stay alive and to reproduce. Once you have reproduced, you enter the editor, where you can review how well your species and others are surviving, move to new biomes. And then modify your species: add new organelles, change your membrane, modify your cell's visuals, environmental tolerance and behaviour. Your goal is to become a more complex lifeform by first evolving the nucleus to become a eukaryote, then using binding agents to form cell colonies, the precursor to the first multicellular lifeforms. <br><br>The <strong>Multicellular Stage</strong> adds the ability to place multiple cells and customize their types. Your species will still interact with other microbes in the familiar microbial environment, but with new abilities and size that allows taking over the microbial world. This stage of the game is quite developed but multicellular-specific gameplay is still somewhat limited. Even further stages are included with the game but they are mostly just prototype level examples to show off our future vision.<br><br>The major goals of Thrive are to create engaging, compelling gameplay that respects our players’ intelligence, and remain as accurate as possible in our depiction of known scientific theory without compromising the former. Thrive is an open-source project, and anyone with game development skill is welcome to join our team. The game uses the open-source Godot Engine with the C# programming language.<br><br>If you don't have game development skills, you are still welcome to join our fan community. We would love to have you along for the long ride!
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

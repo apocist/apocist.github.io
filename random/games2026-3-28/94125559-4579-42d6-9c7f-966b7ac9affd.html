@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Planet Nomads</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Planet Nomads</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>4h 29m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-8/22/2017">8/22/2017</a> 21:57:53</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:11:02</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-5/3/2019">5/3/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-50">50</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Quiz/Trivia">Quiz/Trivia</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Craneballs">Craneballs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Craneballs">Craneballs</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.planet-nomads.com" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/504050" target="_blank">Steam</a><br/><a href="https://play.google.com/store/apps/details?id=com.tencardgame.spades_paid&hl=en&gl=us" target="_blank">Google Play</a><br/><a href="https://www.gog.com/game/planet_nomads" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Planet%20Nomads" target="_blank">Twitch</a><br/><a href="https://x.com/PlanetNomads" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/planetnomads/" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					Planet Nomads is a singleplayer sci-fi sandbox game of survival on alien planets through block-style building. You are a lone astronaut scientist crash-landing on a strangely captivating planet. Keeping your wit together and securing your basic survival needs that include food, water and building material is the best start towards figuring out a way out of this messy situation.<br><br>Planet Nomads delivers a unique gaming experience by combining building, survival and exploration together to make you feel like a true survivor.<h2 class="bb_tag">Building</h2><br>Building is the cornerstone of Planet Nomads. What you build determines your survival chances and increases your action radius. Building helps you to progress further and uncover advanced materials. Close to a hundred blocks await to let you create nearly anything your imagination can come up with.<h2 class="bb_tag">Exploration</h2><br>You may have explored your immediate surrounding, but a couple kilometers North or South, things are radically different. Multiple biomes cover the planet from pole to pole depending on the climate. Sandy engine blends the biomes naturally, making sure the journey to the North pole is an epic and everchanging adventure.<h2 class="bb_tag">Survival</h2><br>Surviving on an inhabited planet is no easy task, but with careful planning, caution and a healthy amount of curiosity, you can do it. As long as you overcome poisonous plants and curious beasts, avoid being slashed to pieces, frozen to death, eaten alive, starved and generally ended.<br><br>Planet Nomads has been successfully Kickstarted, is now going through its Early Access, and it's being developed and improved together with our growing Nomadic family. You are most welcome to join us.<br><br><strong>How can a life of a Nomad look like?</strong><h2 class="bb_tag">Day 17</h2>Things have changed radically since my crash-landing. During the first days, I was hardly able to get food. Securing every meal was a life or death struggle back then, while now I have greenhouses to produce food for me. The planet felt strangely Earth-like at first, with atmosphere composition close enough to ours so that the suit filters have no problem processing it for me to breath. Then one day I saw a pack of creatures that looked like some kind of armored gorillas. I was watching them for a while when the biggest one saw me. It stood on its legs and started thumping its chest. I got the message loud and clear and quickly departed.<h2 class="bb_tag">Day 21</h2>I have a good thing going. I started growing all of my food. I've built a rover and use it to collect resources from nearby mining spots I set up. It's beautiful out here, but it's not like I intend to settle down and grow old. I'm a building a much bigger version of the rover now. With some clever design choices I should be able to fit it with a generator, 3D printer and stasis chamber so it's all self-reliable and caring to all my needs. I intend to check what's beyond the horizon. Maybe there's a way out. Maybe there are other survivors out there.<h2 class="bb_tag">Day 26</h2>There was an unexpected turn of events today. The armored gorillas paid me a visit. I don't think they like the mining machines that much so they came to tell me. I thought I could hide inside the base and wait it out, but the beasts started throwing huge rocks at the walls and the walls were caving in with a screeching noise all around me. I fired up the one mining machine I have in my base to serve as a distraction. Luckily enough I scheduled a test run of my new mobile base for this day. It was standing by all powered up and ready. I made a run for it, quickly got into the cockpit and got away this time. But there's no going back now. I'm a Nomad.<br><br><br>Hundreds of stories like this await you in Planet Nomads. Come and survive your own.<h2 class="bb_tag">Game Features:</h2><br><ul class="bb_ul"><li> completely mineable voxel terrain<br></li><li> physics-ruled block-based building<br></li><li> actual wheel physics for vehicles, rails, traps and gadgets<br></li><li> three types of wheels<br></li><li> hover physics<br></li><li> multiple biomes based on temperature and humidity<br></li><li> Improved animal AI to catch you off guard<br></li><li> climate-based creature diversity<br></li><li> automated mining machines and production blocks<br></li><li> mobile bases<br></li><li> survival mechanics embedded to the game's core design<br></li><li> constant evolution based on community feedback</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504050/extras/dad2c9e8c7f5145611c569b6d4892c72.avif?t=1707004314"></span><br><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/504050/extras/b8be2d16842c8253102f72b4f7f9cca3.avif?t=1707004314"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

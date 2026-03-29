@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Deep Rock Galactic</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Deep Rock Galactic</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>1d 8h 42m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-2/1/2025">2/1/2025</a> 16:26:20</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:57:14</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-5/13/2020">5/13/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Shooter">Shooter</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Ghost Ship Games">Ghost Ship Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Coffee Stain Publishing">Coffee Stain Publishing</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.youtube.com/ghostshipgames" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/548430" target="_blank">Steam</a><br/><a href="https://www.facebook.com/JoinDeepRock" target="_blank">Facebook</a><br/><a href="https://twitter.com/JoinDeepRock" target="_blank">Twitter</a><br/><a href="https://discord.gg/invite/drg" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/DeepRockGalactic" target="_blank">Subreddit</a><br/><a href="https://en.wikipedia.org/wiki/Deep_Rock_Galactic" target="_blank">Wikipedia</a><br/><a href="https://www.twitch.tv/directory/game/Deep%20Rock%20Galactic" target="_blank">Twitch</a><br/><a href="http://deeprockgalactic.com/" target="_blank">Official Website</a><br/><a href="https://deeprockgalactic.wiki.gg/wiki/Deep_Rock_Galactic_Wiki" target="_blank">Community Wiki</a><br/><a href="https://www.xbox.com/en-us/games/store/deep-rock-galactic/9NHFVWX1V7QJ" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/233449" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/66f86ae3f1f183fcb4064ab609d7a3c1.poster.avif?t=1774642035"></span></p><p class="bb_paragraph"> Hello Miner, and congratulations on joining <strong>DEEP ROCK GALACTIC</strong>! It’s the beginning of a bright new career for you.</p><p class="bb_paragraph">We’re preparing to send you and your colleagues down into the rich mines of <strong>Hoxxes IV</strong>. If you’re a hard worker, a good shot and a reliable team player, you should have respectable odds of survival. </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/3c145689afa955438d08fd9b9ed78f0f.poster.avif?t=1774642035"></span></p><p class="bb_paragraph"><strong>Award-winning co-op gameplay</strong> puts <strong>1-4 players</strong> together to explore labyrinthian procedurally-generated cave systems, extract valuable minerals, and fight for their lives against alien hordes.</p><p class="bb_paragraph">Play as four unique classes: </p><ul class="bb_ul"><li><p class="bb_paragraph"><u>SCOUT:</u> The nimble wayfinder. Light the way with your flare gun, zip around with your grappling hook, and be the first to fall down a really deep hole.</p></li><li><p class="bb_paragraph"><u>GUNNER:</u> The heavy weapons guy. Great at turning alive things into dead things, and keeping teammates safe behind his impenetrable bubble shield.</p></li><li><p class="bb_paragraph"><u>ENGINEER:</u> The defensive support specialist. Sentry guns, land mines and&nbsp;40mm grenades help you keep a secure perimeter.</p></li><li><p class="bb_paragraph"><u>DRILLER:</u> The living bulldozer. Carve through terrain and shape the work site with your handheld drills, and solve problems using your flamethrower and C4 charges.</p></li></ul><p class="bb_paragraph">Each class brings their own strengths to the team. Use your toolkits in tandem and work together to bring your whole crew home safe.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/b1e09da4971f482ba004dadc1dfc918f.poster.avif?t=1774642035"></span></p><p class="bb_paragraph">Explore an endless labyrinth of procedurally-generated caves – no two missions are alike. </p><p class="bb_paragraph">You’ll need to rely on your wits and your traversal tools to navigate through narrow, snaking passages and vast caverns alike. Dig into <strong>11 distinct biomes</strong>, each with their own unique cave formations and colorful (sometimes deadly) flora and fauna.</p><p class="bb_paragraph">And with 100% destructible environments, you can shape the terrain as you see fit. Dig tunnels, collapse stalagmites and close off choke points to make your job easier.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/98fd5d2f0e24955a536b84a6f9737c16.poster.avif?t=1774642035"></span></p><p class="bb_paragraph">Your work in the mines will pit you against the many creatures of Hoxxes IV who don’t take kindly to your presence.</p><p class="bb_paragraph">Keep your finger on the trigger, and learn to defend yourself against hordes of over <strong>50 different enemy types</strong>, all of which are keen to bite, slash and acid-spit you to death. Some fly, some crawl, some snatch you from above and below. You’ll need to keep your wits about you, and make sure your teammates have your back.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/e25b9204dd1bd4115bcf1c3ba0183b86.poster.avif?t=1774642035"></span></p><p class="bb_paragraph">Unlock thousands of cosmetics, weapons and player upgrades, making for hundreds of hours of gameplay as you work your way up the ranks and become a star employee.</p><p class="bb_paragraph">Deep Rock Galactic features six full seasons of additional content on top of the base game, and it’s <u>all free</u>. No time-limited battlepasses, no FOMO shop rotations, no gated content. The only extras you can buy are a couple DLC armors.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/cd85b15e0b2d7062783f496ed99c8704.poster.avif?t=1774642035"></span></p><p class="bb_paragraph">The Deep Rock Galactic Corporation isn’t known for its benefits package. But at least there’s a bar on the Space Rig.</p><p class="bb_paragraph">Enough talk – it’s time to get to work, and join millions of other motivated employees!</p><h2 class="bb_tag">NO DWARF LEFT BEHIND - FOR ROCK AND STONE!</h2><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/548430/extras/4f770757357c36689f39bde08aea58cb.avif?t=1774642035"></span></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Detached</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Detached</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:52:01</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-2/22/2017">2/22/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-73">73</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Anshar Studios">Anshar Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Anshar Studios">Anshar Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/436230" target="_blank">Steam</a><br/><a href="https://www.facebook.com/DetachedGame" target="_blank">Facebook</a><br/><a href="https://twitter.com/detachedgame" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/ansharstudios" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/user/AnsharStudios" target="_blank">YouTube</a><br/><a href="https://www.twitch.tv/directory/game/Detached" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/231799" target="_blank">Playstation</a><br/><a href="https://ansharpublishing.com/detached" target="_blank">Official Website</a><br/><a href="https://www.meta.com/en-us/experiences/pcvr/detached/945551678861092/" target="_blank">Meta</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<i>Detached</i> is a space exploration VR game that demands tactics and skill to survive. Strap yourself in for hardcore gameplay uniquely designed for VR headsets.<br><br>Trapped in an abandoned space station, you must race against borrowed time to find your crew before your oxygen supply runs out. As you solve puzzles to open airlocks, locate power cores and disable transmitters, something tells you that you won’t be alone when you finally escape into the universe’s deep infinity.<h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/436230/extras/2bd93cc4e7755cc1d05760c6777b1de8.poster.avif?t=1755764272"></span></h2><h2 class="bb_tag"><strong><br>Core Features</strong></h2><ul class="bb_ul"><li><strong>Go Hardcore</strong> – Experience 360-degree freedom of movement, rotation and acceleration in a sandbox environment built for VR headsets.<br></li><li><strong>It’s Getting So Atmospheric</strong> – Discover the wide blue yonder inspired by the sublimity of Gravity with an accompanying fully orchestrated score composed by Mikołaj Stroiński (The Witcher 3, The Vanishing of Ethan Carter).<br></li><li><strong>Blast, Splinter and Charge</strong> – Employ Shield, Boost and EMP Rockets skills in both single-player and multiplayer modes. Hit targets with lock-on missiles built into your suit. Master weapon cool down times before your opponent gets the upper hand. Gain temporary immunity with the shield skill. Exploit boosting tunnels to gain a speed advantage.<br></li><li><strong>Astronautic Drills</strong> – Get to grips with your spacesuit’s controls in a zero-G environment through a dynamic tutorial before venturing into outer space. FPS-style steering will introduce newbies and those sensitive to VR playing to the hardcore VR experience. <br></li><li><strong>Blink and You’ll Miss It</strong> – Challenge a friend to Detached’s nail-biting PvP mode and then spend time getting acquainted with the infinite universe in single-player mode.  </li></ul><h2 class="bb_tag"><strong><br>Warning</strong></h2>This is an extreme VR experience that simulates sudden and dramatic acceleration, freefalling, twisting and rolling. Even with the 90 FPS frame rate, it is not for VR-sensitive players.<h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/436230/extras/d5e3679760fa13a4f7ad141f010aaaef.poster.avif?t=1755764272"></span></h2><h2 class="bb_tag"><strong><br>Exploration. Rivalry. Survival.</strong></h2> These are the tenets of deep space society. Detached drops you at the edge of a universe destroyed by human misrule and extortion. Thanks to years of warfare and greed, the human colonies in deep space are no more. The great factions have crumbled; the corrupt corporations have dissolved.<br><br>Most people adhere to the last remaining code of humanity: no killing. But in the lonely expanse of space where resources are low, many are willing to bend the rules to survive.<br><br>“<i>Detached</i> will give you tons of freedom in how you play, and the gaming sensation is intense,” says Łukasz Hacura, Creative Director of Anshar Studios, “players of our Early Access release told us exactly what we needed to know to make the game absolutely electrifying for virtual reality headset users.”<br><br><strong>Detached isn't just a game; it’s an experience.</strong> Unlike many games where VR is a mere expansion, VR is the primary asset of Detached. To complete the game, you must master the controls of your EVA spacesuit and develop your ability to move in a realistic zero-G environment.<h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/436230/extras/b6cd62e681e12e255c771fd33a6c0230.poster.avif?t=1755764272"></span></h2><br><br><strong>Put your skills to the test in both single-player and multiplayer modes.</strong> Multiplayer pits you against your friends in an entirely new take on capture the flag. Race against each other to gather the necessary skills and complete your mission. Every second is precious, and every choice you make can mark the difference between life and death.<br><br>Single-player mode makes full use of the VR headset, giving you the chance to interact with the tranquil expanse of space. Beta players have lauded Detached’s sandbox environment that encourages players to enjoy the types of experiences normally only felt by astronauts.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

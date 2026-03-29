@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Ambrosia Sky: Act One</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Ambrosia Sky: Act One</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:14</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:10:39</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-11/10/2025">11/10/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Soft Rains">Soft Rains</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Soft Rains">Soft Rains</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/3580160" target="_blank">Steam</a><br/><a href="https://softrains.games/" target="_blank">Official Website</a><br/><a href="https://epicgames.com/p/ambrosiasky-0596ee" target="_blank">Epic</a><br/><a href="https://bsky.app/profile/softrains.bsky.social" target="_blank">Bluesky</a><br/><a href="https://discord.gg/e9RwnGhQSS" target="_blank">Discord</a><br/><a href="https://www.instagram.com/softrainsgames/" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/@SoftRainsGames" target="_blank">YouTube</a><br/><a href="https://x.com/softrainsgames" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/category/ambrosia-sky" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" style="text-align: center"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/ffea397b74fe1f33b79505e67d62ee7d.avif?t=1774642588"></span></p><p class="bb_paragraph" style="text-align: center"></p><p class="bb_paragraph" style="text-align: center"><strong><i>Ambrosia Sky: Act One</i></strong><i>&nbsp;</i>is a first-person immersive sim where the only thing standing between you and the answers you seek are treacherous zero-G anomalies, deadly alien fungus with their own unique abilities, and the creeping guilt that maybe if you hadn’t abandoned this place all those years ago, everyone you used to know might still be alive. </p><p class="bb_paragraph" style="text-align: center"></p><p class="bb_paragraph" style="text-align: center"><strong>Act One is available to purchase now.</strong>&nbsp;<strong>Act Two arrives as a free update in 2026.</strong></p><p class="bb_paragraph" style="text-align: center"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/b7d897b1a0d148a492eb6ed2f9a9a2e0.avif?t=1774642588"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><i>Ambrosia Sky: Act One</i> will be your sombre homecoming to a colony that is overrun with a vibrant, alien ecosystem. Adapt and survive encounters with various forms of hostile fungi that will burn, electrocute, and overwhelm you. Harvest their fruit to craft powerful new chemical agents to fight back or open new avenues of exploration. And pick through the desiccated remains of a once populous colony as you journey into strange depths to unravel the dark mystery that left its inhabitants dead, missing, or maybe even complicit.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/3e44cebf4db68bd641589dd0eea58443.poster.avif?t=1774642588"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><i>Ambrosia Sky</i>’s unique gameplay blends rewarding exploration with meditative cleaning. Use your chemical sprayer to cleanse unique strains of deadly fungi, each one trying to burn, electrocute, or trap you. Study their behaviours and harvest their fruiting bodies to craft powerful upgrades, like electrical foam you can use to reroute power to power doors or consoles.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/15f040427dd4662a55e2cf61312e4f42.poster.avif?t=1774642588"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center">The stylized world of <i>Ambrosia Sky </i>is a living ecosystem with both the hostile fungus and the remnants of those who once lived there. Explore a series of environments across a range of mission types, using your tether to traverse unstable gravity fields or reach hidden passages to uncover the mystery of the Cluster.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/36b647ea59bc4cc96d2c36f58ccf8999.poster.avif?t=1774642588"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center">Your mission isn’t purely personal. As part of an enigmatic order of scientists in pursuit of human immortality, you are also tasked with finding victims of the contamination whose DNA can be studied. Find these chosen deceased, perform a sacred ritual to further your research and understand the disaster through the lives of the people destroyed by it.</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><strong>AMBROSIA SKY'S ACT STRUCTURE</strong></h2><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/9b7a5085b2b5a8187fa3979e79e997c2.webp?t=1774642588"></span></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/83cf869c76f80ce68ac8fc072db98730.webp?t=1774642588"></span></p><p class="bb_paragraph" style="text-align: center"><i>Ambrosia Sky: Act One</i> begins Dalia’s story and introduces the world of the Cluster, encompassing different mission types, hostile fungus varieties, collectibles, the ability to 100% clean all fungus upon location revisitation, and a variety of upgrades to your chemical sprayer and tether. Ambrosia Sky: Act One is roughly 5 hours of gameplay, but more hours if you revisit each location to 100% clean them and hunt for all of the collectibles.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><i>Act Two</i> will carry your progression forward, and will echo Act One in terms of content and will include all new mission locations to explore, new exo-fungus to contend with and harvest, as well as an updated progression system with new upgrades. Ambrosia Sky: Act Two will be a free update to the base game. When <i>Act Two</i> is released, we will increase the base price to $24.99 USD to reflect the full experience, and it is tentatively scheduled to launch in 2026.</p><p class="bb_paragraph" style="text-align: center"> </p><p class="bb_paragraph"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3580160/extras/b7d897b1a0d148a492eb6ed2f9a9a2e0.avif?t=1774642588"></span></p><h2 class="bb_tag"><strong>ABOUT THE DEVELOPMENT TEAM</strong></h2><p class="bb_paragraph">Soft Rains is a Toronto, Canada-based game studio focused on delivering world-class development experience in our work, from world-building and memorable storytelling to immersive gameplay and art.&nbsp;</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Detective Case and Clown Bot in: Murder in the Hotel Lisbon</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Detective Case and Clown Bot in: Murder in the Hotel Lisbon</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:18:37</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/5/2013">12/5/2013</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-80">80</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Point-and-click">Point-and-click</a><br/><a href="#quicklink-Puzzle">Puzzle</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Nerd Monkeys">Nerd Monkeys</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Nerd Monkeys">Nerd Monkeys</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://caseandbot.com" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/297290" target="_blank">Steam</a><br/><a href="https://discord.gg/Uep6T94a" target="_blank">Discord</a><br/><a href="https://nerdmonkeys.itch.io/detective-case-and-clown-bot-in-murder-in-the-hotel-lisbon" target="_blank">Itch</a><br/><a href="https://www.nintendo.com/games/detail/detective-case-and-clown-bot-in-murder-in-the-hotel-lisbon-switch/" target="_blank">Nintendo</a><br/><a href="https://www.facebook.com/NerdMonkeys/" target="_blank">Facebook</a><br/><a href="https://x.com/Nerd_Monkeys" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/nerdmonkeys/" target="_blank">YouTube</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<strong>Detective Case and Clown Bot in: Murder in the Hotel Lisbon</strong><br><br>Murder in the Hotel Lisbon is a videogame inspired by the classic point and click adventures from the 80’s and 90’s. It adopts these eras distinctive design and it is built using only the pixel art technique. The game itself runs at a native resolution of 256x192, the same resolution used by the old ZX Spectrum 48k and most recently by the Nintendo DS. <br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/297290/extras/6de0b6f6f403e8c8dd21180a8935156f.avif?t=1634915607"></span><br><br><strong>Synopsis: </strong><br>A strange murder has occurred in the Hotel Lisbon, a man committed suicide with 14 stabs to the back while at the same time he peacefully drank his coffee. <br>This case with contradictory facts was too complex for Policeman Garcia to solve, so he decided to hire the only detective duo in town capable of solving it: the mythical Detective Case and the unmistakable Clown Bot. <br>Together, they will solve a network of love relations so complex and so intricate, that it would take at least 14 clairvoyants, 5 apocalyptic sect prophets who can predict the end of the world and 3 of those gypsies that can read the palm of your hand just to guess the final outcome. <br><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/297290/extras/95b896624152d343f612aca4b7eb393d.poster.avif?t=1634915607"></span><br><br><strong>Characters: </strong><br>With the mythical Detective Case, also known as the world worst detective, a man so rough and rude that his witnesses would rather be run over by a slow moving freight train than to be questioned by him. <br>And the hilarious Clown Bot who, although he works as a Detective Case’s sidekick, he hopes in reality that one day he will get a job as a circus clown. Unfortunately, and no matter how many applications he sends, no circus will ever accept a clown that is afraid of children. He never sleeps, so besides working by day as a sidekick, he also works by night as a stand-up comedian in a local bar. People say that he is a joke machine. <br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/297290/extras/7bb6ddf4f5bd7024f3e4f63813355102.avif?t=1634915607"></span><h2 class="bb_tag">Key features</h2>Murder in the Hotel Lisbon has THOUSANDS of key features!<br><br><ul class="bb_ul"><li>A point and click graphic adventure game. <br></li><li>Play as Detective Case and Clown Bot. <br></li><li>Search for clues and interview witnesses. <br></li><li>Take a rest, have a nap. <br></li><li>Solve the murder in the Hotel Lisbon. <br></li><li>Includes 3 additional cases.</li></ul><h2 class="bb_tag">Steam release:</h2>The release on the Steam platform includes many Steam updates and Steam extra features only found here on Steam! (wow!)<br><br><ul class="bb_ul"><li>Updated Steam version to 1.02 with multiple bug fixes and Steam enhancements. <br></li><li>New Steam animations for Steam Case, Steam Bot, Steam Garcia and many Steam more.<br></li><li>Support for Steam achievements with a proper real trophy shelf on Case's office.<br></li><li>Awesome and cool Steam Trading Cards!<br></li><li>Taxi is now properly Steam animated.<br></li><li>Revised Steam English version.<br></li><li>Steam!</li></ul><br><strong>Trading cards</strong><br>8 awesome and cool Steam Trading Cards! <br>Collect them all!<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/297290/extras/0abb2cd511f3a6811d52fa49bac4b1e1.avif?t=1634915607"></span><h2 class="bb_tag">Original soundtrack</h2>Murder in the Hotel Lisbon may be low res and retro on the visual side, but we made sure that on the audio side your ears would rejoice with a complete original soundtrack. Composed of an orchestral band, a jazz band and a typical Portuguese Fado trio, the musical landscape contrasts beautifully with the colorful graphics.<br><br><br><strong>Game music</strong><br>Throughout the game you will hear over 20 different tracks of orchestral music composed and recorded specifically for the game.<br>All these tracks were recorded on studio with a 10-member band composed of friends and colleagues. All of them brought their soul and heart to these recordings and the results are absolutely AWESOME!<br><br><strong>Jazz music</strong><br>Inside the GAF Bar, a 4-man band plays some cool Jazz.<br>The character at the Piano is actually Filipe Melo who is doing a cameo and allowed us the rights to use some songs recorded previously with John Ellis, Romeu Tristão and João Pereira! BAM!<br><br><strong>Fado music</strong><br>To top it all, inside the Noitadas Restaurante we have a Portuguese Fado trio ready to entertain the guests. The song they sing was also recorded on studio. It is called "A Caldeirada" and it was originally written for famous Fado singer Amália Rodrigues.<br>SUAVE!<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/297290/extras/4eea217fdad5017bbc06247ea9b37a99.avif?t=1634915607"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

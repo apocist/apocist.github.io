@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Witcher 2: Assassins of Kings Enhanced Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> The Witcher 2: Assassins of Kings Enhanced Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>1d 7h 39m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-7/15/2016">7/15/2016</a> 23:34:51</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:55:27</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-4/16/2012">4/16/2012</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-88">88</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-CD Projekt RED">CD Projekt RED</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-CD Projekt">CD Projekt</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://witcher.wikia.com/wiki/The_Witcher_2:_Assassins_of_Kings" target="_blank">Community Wiki</a><br/><a href="https://en.wikipedia.org/wiki/The_Witcher_2:_Assassins_of_Kings" target="_blank">Wikipedia</a><br/><a href="https://www.facebook.com/thewitcher" target="_blank">Facebook</a><br/><a href="https://twitter.com/witchergame" target="_blank">Twitter</a><br/><a href="https://store.steampowered.com/app/20920" target="_blank">Steam</a><br/><a href="http://www.thewitcher.com" target="_blank">Official Website</a><br/><a href="https://www.gog.com/game/the_witcher_2" target="_blank">GOG</a><br/><a href="https://www.youtube.com/WitcherGame/" target="_blank">YouTube</a><br/><a href="https://discord.gg/thewitcher" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The second installment in the RPG saga about professional monster slayer Geralt of Rivia, The Witcher 2: Assassins of Kings spins a mature, thought-provoking tale to produce one of the most elaborate and unique role-playing games ever released on PC. <br><br>A time of untold chaos has come. Mighty forces clash behind the scenes in a struggle for power and influence. The Northern Kingdoms mobilize for war. But armies on the march are not enough to stop a bloody conspiracy...<h2 class="bb_tag">KEY FEATURES</h2><strong>IMMERSIVE, MATURE, NON-LINEAR STORY</strong><br><ul class="bb_ul"><li>Dive into an immense, emotionally-charged, non-linear story set in a fantasy world unlike any other. <br></li><li>Embark on a complex, expansive adventure in which every decision may lead to dire consequences. <br></li><li>Engage in over 40 hours of narrative-driven gameplay, featuring 4 different beginnings and 16 different endings. </li></ul><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/4e9a12c6295620fa38cca6b9cb4f1280.poster.avif?t=1761657279"></span><br><br><strong>SPECTACULAR, BRUTAL, TACTICAL COMBAT</strong><br><ul class="bb_ul"><li>Fight using a combat system that uniquely fuses dynamic action with well-developed RPG mechanics.<br></li><li>Use an array of unique witcher weapons, featuring both melee and ranged options.<br></li><li>Prepare for battle using a wide array of tactical options: craft potions, set traps and baits, cast magic and sneak up on your foes. </li></ul><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/034583ba40dc5b0478c14314b2a1cb4a.poster.avif?t=1761657279"></span><br><br><strong>REALISTIC, VAST, CONSISTENT GAME WORLD</strong><br><ul class="bb_ul"><li>Discover a deep, rich game world where ominous events shape the lives of entire populations while bloodthirsty monsters rage about. <br></li><li>Explore numerous, varied locations: from vibrant trading posts, to bustling mining towns, to mighty castles and fortresses; and discover the stories they have to tell and dark secrets they hide.</li></ul><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/20920/extras/a6ed1b1e17944551618d33859aaac525.poster.avif?t=1761657279"></span><br><br><strong>CUTTING-EDGE TECHNOLOGY</strong><br><ul class="bb_ul"><li>Experience a believable living and breathing world, featuring beautiful graphics and utilizing sophisticated in-game mechanics made possible thanks to CD PROJEKT RED in-house technology, REDengine. </li></ul><h2 class="bb_tag">ABOUT THE WITCHER 2 ENHANCED EDITION</h2>The Enhanced Edition features lots of new and exciting content.<br><ul class="bb_ul"><li>Additional hours of gameplay: New adventures set in previously unseen locations, expanding the story and introducing new characters, mysteries and monsters.<br></li><li>New game introduction and cinematics: All new animations and cutscenes, including a new pre-rendered cinematic intro directed by BAFTA Award winner and Academy Award nominee Tomasz Bagiński.<br></li><li>All DLCs and improvements introduced in the 2.0 version of the game, including:<br><ul class="bb_ul"><li>Arena Mode — an arcade mode that allows players to fight against endless waves of enemies and test their combat skills.<br></li><li>A new, extensive tutorial system, gradually and smoothly immersing players in the game world and Geralt’s adventures.<br></li><li>Dark Mode — a difficulty level designed for hardcore players, with unique dark-themed items. At this difficulty level, even greater emphasis is placed on battle preparation, defensive maneuvers and opportunistic attacking.</li></ul></li></ul><br>The Witcher 2 Enhanced Edition comes with these bonus items: <br><ul class="bb_ul"><li>Official soundtrack in MP3 format<br></li><li>A map of the game's world<br></li><li>A quest handbook for both novice and experienced role-playing fans<br></li><li>Game manual<br></li><li>“Reasons of State” digital comic book.</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

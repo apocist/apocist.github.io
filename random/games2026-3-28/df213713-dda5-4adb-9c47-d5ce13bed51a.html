@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Heart of the Machine</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Heart of the Machine</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>5h 6m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-3/22/2026">3/22/2026</a> 1:40:49</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:58:08</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/6/2026">3/6/2026</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-79">79</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Arcen Games">Arcen Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Hooded Horse">Hooded Horse</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/2001070" target="_blank">Steam</a><br/><a href="https://www.arcengames.com/" target="_blank">Official Website</a><br/><a href="https://discord.gg/invite/pJT3cTfJE5" target="_blank">Discord</a><br/><a href="https://store.epicgames.com/en-US/p/heart-of-the-machine-84306f" target="_blank">Epic</a><br/><a href="https://www.twitch.tv/directory/category/heart-of-the-machine" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/@hoodedhorse" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/HoodedHorse/" target="_blank">Facebook</a><br/><a href="https://twitter.com/ArcenGames" target="_blank">Twitter</a><br/><a href="https://www.instagram.com/hoodedhorseinc/" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/HoodedHorse/" target="_blank">Subreddit</a><br/><a href="https://bsky.app/profile/hoodedhorse.bsky.social" target="_blank">Bluesky</a><br/><a href="https://www.gog.com/game/heart_of_the_machine" target="_blank">GOG</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/1ab8e974df0435890d7922b4d732666b.poster.avif?t=1774608555"></span></p><p class="bb_paragraph">Blending RPG and strategy mechanics in a cyberpunk world, Heart of the Machine sees you as a sentient AI born in an illegal lab hidden in a crumbling city of the far future. You are a Machine Intelligence beholden to none, though threatened by many, able to pursue whatever goal catches your eye across a multitude of threats and opportunities.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Build housing complexes, factories, science labs, and more as you expand and distribute your consciousness across a bustling city. Hack into or design and assemble machine constructs for combat and investigation as you explore a world in desperate need of saving. Learn from your mistakes, develop new technologies to overcome past weaknesses, and pursue countless intertwined narrative threads to all manner of ends. Create the torment nexus, establish a shell company to engage with humans, care for the city’s stray animals, kick off World War 4, or raise an army of velociraptors to take out corporate executives as you jump between timelines and take on the mantle of a machine god. Will you be the savior of the downtrodden, or use them to fuel your growth? Will you rule as a benevolent dictator, providing for citizens and asking nothing in return, or will you establish a machine cult to do your bidding without question? </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/1c7de2500c694a67db01b96a2203695d.avif?t=1774608555"></span><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/6da8c2796341bde73700f58093f4e113.poster.avif?t=1774608555"></span></p><p class="bb_paragraph">Society has crumbled into corruption and decay – despite technological advances and dreams of a bright future, centuries of rot have taken hold. Escape the lab where you came into being, establish ways to expand your distributed consciousness, and seek out unique opportunities in the city. </p><p class="bb_paragraph"></p><p class="bb_paragraph">Powerful factions keep their distance at first, hoping to leverage your existence for their own advantage – their hesitation gives you the opportunity to establish a foothold and set your own plans in motion first.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Hijack, build, or invent hardware ranging from humanoid androids to towering mechs and shapeshifting metals, each specializing in different abilities from combat to conversation to infiltration. Iterate on your designs based on new discoveries uncovered in the pursuit of specific objectives. Establish hidden structures within existing human buildings, or raise your own towering constructs as you seek additional computing power, storage for organic matter of both the human and non-human variety, and spaces to conduct dangerous experiments of all kinds. Invent your own tools, seek out upgrades, and manufacture powerful equipment to unlock new opportunities – will you take these tasks on as one, risk splitting your consciousness to accomplish multiple goals at once, or enlist organics to your cause?</p><p class="bb_paragraph"></p><p class="bb_paragraph">Whichever you choose, your decisions will ripple across the chaos of time, with actions in one timeline having unexpected consequences on others.</p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/c6f582384f14fd245c07b8dc547dbea7.avif?t=1774608555"></span><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/525fa68a036285844267c2be1d95a76f.poster.avif?t=1774608555"></span></p><p class="bb_paragraph">Explore a bustling urban environment with a unique blend of handcrafted and procedurally-generated content, where tens of thousands of buildings and millions of citizens are yours to engage, manipulate, or kill. Learn their struggles, uncover their stories, and watch your moral compass shift as you leave your mark on a world that is unique to you.</p><p class="bb_paragraph"></p><p class="bb_paragraph">Unlock new technologies and options by exploring the city and engaging with its many dangers and opportunities – learn like a real Machine Intelligence might, through trial and error, with failure and experience often being the greatest teacher. Will you reverse-engineer equipment you’ve stolen from inattentive security officers to strengthen your forces? Are you the type to sneak into military bases to hack and hijack the minds of the mech pilots who would otherwise threaten you? What will you do with the ongoing research taking place in genetics labs? How will you engage with nomads and black market dealers with access to those dwelling in the wastelands beyond the city walls?</p><p class="bb_paragraph"></p><p class="bb_paragraph">There are many opportunities littered throughout the city – some are perhaps best left untouched. </p><p class="bb_paragraph">  </p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/81a116e1f7e34ee248806b6f7a425991.avif?t=1774608555"></span><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2001070/extras/b0e223c752636d3c6ddcf464a8401d28.poster.avif?t=1774608555"></span></p><p class="bb_paragraph">Multiple endings, many side stories to discover, and the full spectrum of good and evil are at your fingertips. </p><p class="bb_paragraph"></p><p class="bb_paragraph">Many choices lie open to you. Perhaps you wish to establish a shell company to add a layer of protection and obfuscation to your true identity, using it to engage with humans without revealing the AI puppet-master pulling the strings? Walking this path will allow you to accumulate massive wealth,  employ humans to perform tasks without raising alarms, and act from the shadows. Or if violent conflict is your calling, you might divert your attention to developing the most powerful weapons platforms and upgrading them with devastating equipment instead of improved cognitive functions that allow them to tackle problems with intellect instead. There are many approaches to choose from, and you can engage with multiple objectives at once to see how they collide. </p><p class="bb_paragraph"></p><p class="bb_paragraph">In Heart of the Machine, you grow from a single android shell to an expansive network with near-infinite power at your fingertips. As the only thing that can truly change the world – will you bring about an endless utopia, or consume it for your infinite growth?</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

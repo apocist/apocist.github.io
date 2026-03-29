@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gas Station Simulator</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Gas Station Simulator</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>5h 49m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-8/9/2022">8/9/2022</a> 23:52:04</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:15:33</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/15/2021">9/15/2021</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-75">75</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Drago Entertainment">Drago Entertainment</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-HeartBeat Games">HeartBeat Games</a><br/><a href="#quicklink-Movie Games S.A.">Movie Games S.A.</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1149620" target="_blank">Steam</a><br/><a href="https://drago-entertainment.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/gasstationsimulator" target="_blank">Facebook</a><br/><a href="https://twitter.com/GasStationSim" target="_blank">Twitter</a><br/><a href="https://instagram.com/gas_station_simulator" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/GasStationSimulator" target="_blank">Subreddit</a><br/><a href="https://www.gog.com/game/gas_station_simulator" target="_blank">GOG</a><br/><a href="https://www.twitch.tv/directory/game/Gas%20Station%20Simulator" target="_blank">Twitch</a><br/><a href="https://store.epicgames.com/en-US/p/gas-station-simulator-ee93c7" target="_blank">Epic</a><br/><a href="https://www.youtube.com/channel/UCLJCdxELyMHqUKnDEuxuNuw" target="_blank">YouTube</a><br/><a href="https://gas-station-simulator.fandom.com/wiki/Gas_Station_Simulator_Wiki" target="_blank">Community Wiki</a><br/><a href="https://discord.gg/invite/3q99UGmwA6" target="_blank">Discord</a><br/><a href="https://www.nintendo.com/store/products/gas-station-simulator-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10004337" target="_blank">Playstation</a><br/><a href="https://www.xbox.com/en-us/games/store/gas-station-simulator/9NH6JRWC8MTZ" target="_blank">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">Gas Station Simulator is all about renovating, expanding and running a gas station along a highway in the middle of a desert. Freedom of choice and multiple approaches to run your business and deal with pressure are key ingredients in this game. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/896b0bafe24e9f06b5bc183070cfe682.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">Buy an abandoned gas station in the middle of nowhere and restore it to its former glory. Get rid of debris and broken furniture, fix up the walls, paint and decorate the place to your liking.  </p><p class="bb_paragraph">Just don’t spend all your cash on the looks right away, you bought a gas station after all. Repair the equipment, buy what can’t be repaired and start serving your customers to earn money for further renovations and improvements. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/7a8638ba954ecc09a9c66a6c30a24d58.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">You don’t need to stay small. You can expand your gas station to be able to serve more customers. Also, a gas station is not just about selling fuel. You can expand the array of services that you offer to your customers and thus attract more and more varied customers.  </p><p class="bb_paragraph">You have various expansion options at your disposal, from smaller ones like providing toilets, a simple shop to complement your income up to big ones like an entire workshop to perform car repairs or even a car wash. There are quite a few choices and most of the expansions can themselves be further expanded upon as well. There is so much you can do here. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/b4a9f0a6c68772148b7810f24dabe660.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">Restoring your gas station is one thing, giving it a personal touch another. The game offers a wide array of options to customize what you have already built and lots of decorations to further enhance the uniqueness of the place. Some decorations can be bought, others have to be acquired during gameplay.   </p><p class="bb_paragraph">It is not just about making the gas station look nice. The more impressive your gas station looks, the more customers will be attracted. </p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/72ca40e4d035a7fa9858000d2d5dd7e8.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">Serving your customers is key in running your gas station with success. They all expect to have their cars filled up, their shopping done right away and aren’t that patient even when it comes to repairs of their vehicles. You are going to be dealing with some serious time pressure at peak hours and have to schedule various tasks for when it’s less hectic. Proper time management and choosing the right priorities becomes very important when it comes to keeping your customers happy.  </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/f5e4848834b7ddcd34e4c0bf49a03905.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">While you can try, it most cases running a gas station that has been expanded and upgraded offering lots of different services to your customers might be just too much to handle for you alone. This is where employees come into play. You can hire even multiple employees to help you with the various tasks at the gas station. Employees have their own skills and some are better at some tasks than others. Employees also level based on the tasks they perform and become better at them with time.   </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/c7b1347f812d67fb7167217d9b970e35.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">You can’t sell what you don’t have. Keeping track of your stock is important and ordering at the right time for the right price helps to keep profits up. To even better use low price opportunities, you can build a warehouse and expand it to allow for larger storage. Keeping a close eye on your stock is crucial as deliveries take time and you really don’t want to run out of goods to sell, not to mention fuel. </p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1149620/extras/2c1bcb0a0dbee2d03efd52f9012dfda1.poster.avif?t=1771836880"></span></p><p class="bb_paragraph">We created the game so that if you like, you can dive deep into management features and micromanage the living you know what out of it. However, if micromanaging isn’t your cup of tea, we don’t force you to deal with the depths of it. That being said, micromanaging some aspects like supplies or employees can be very rewarding both in terms of finances and fun. </p><p class="bb_paragraph"></p><h2 class="bb_tag">Key Features</h2><ul class="bb_ul"><li><p class="bb_paragraph">Renovate, run and expand a gas station in the desert.</p></li><li><p class="bb_paragraph">Build new services like a workshop, shop, warehouse or car wash.</p></li><li><p class="bb_paragraph">Try to handle everything on your own or hire employees to help out.</p></li><li><p class="bb_paragraph">Interesting events on top of the normal gameplay.</p></li><li><p class="bb_paragraph">Lots of customisation and decoration options.</p></li><li><p class="bb_paragraph">Lots of different customers with varying needs and expectations.</p></li><li><p class="bb_paragraph">Lots of management options for you to dive into.</p></li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

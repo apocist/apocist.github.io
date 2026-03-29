@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>MENACE (Game Preview)</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> MENACE (Game Preview)</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 17:18:11</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 17:18:11</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Xbox">Xbox</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Xbox Game Pass">Xbox Game Pass</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-2/5/2026">2/5/2026</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Overhype Studios">Overhype Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Hooded Horse">Hooded Horse</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD><a href="#quicklink-Game Pass">Game Pass</a><br/></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p>
+This game is a work in progress. It may or may not change over time or release as a final product. Purchase only if you are comfortable with the current state of the unfinished game.
+
+Command a strike force of marines, mercenaries, and criminals in a distant system, cut off from the Core Worlds. At the lawless frontier, the Wayback system is controlled by pirate warlords, questionable corporations, and fractured planetary governments who struggle for a new order. Though you initially lead your strike force of marines from aboard the strike cruiser TCRN Impetus, you&#39;ll quickly need to unite the disparate locals under your leadership to defeat an unknown threat. Fielding tanks, walkers, and infantry squads with a massive selection of equipment to choose from, you’ll train your troops, plan out operations, and engage in deadly tactical battles.
+
+The developers of Battle Brothers take us to the far future in MENACE – a turn-based tactical RPG set in an isolated system where a strange new threat has begun to emerge. 
+
+TAKE COMMAND
+Your Republic Marine Corps strike force has made its way over to bring the frontier back into the fold, but what was supposed to be a simple pacification mission revealed a threat that puts the entire system at risk…
+
+- Your approach is entirely yours to determine – as distress calls roll in, calling you from planet to planet, you can decide which to respond to, what resources to employ, and when to engage based on your readiness levels. Your choices will determine how the local factions feel about your presence, with a direct impact on your relations with them and what favors they may be willing to do for you. Will you prioritize relations with criminal elements that specialize in gathering intel, hacking enemy equipment, and securing the best deals from local dealers? Or will you ignore them and focus on the recovery and repair teams that keep your vehicles operational while supplying you with powerful advanced tech?
+- With all communications cut off, you&#39;re at the top of the chain of command, and your team of marines, mercenaries, and criminals turn to you for answers. Any single operation is not limited to one battlefield, instead taking you on branching paths of multiple missions each, asking you to engage in a series of battles across entire worlds. Make strategic decisions as you progress through an operation, choosing between the missions available to you – will you first take out the enemy air defenses that keep you from landing tanks? Or will you press directly into the enemy to rescue a group of hostages and gain the trust of the locals? Proceed mission by mission to complete the operation, and ultimately, further your grand campaign, but beware – every decision has serious consequences, not just for the operation at hand, but the entire system itself.
+- The strike cruiser TCRN Impetus acts as your base of operations, not only ferrying you between missions, but providing both orbital support and a place for much needed R&amp;R. Invest in upgrading and customizing your mobile HQ to best synergize with your approach on the battlefield, seeking out opportunities among local allies to gain the upper hand for the task ahead of you.
+- Without access to your standard issue naval arsenal, you&#39;ll have to rely on local black market dealers and the spoils of war to equip your squads. From the jury-rigged war machines of the pirate factions to the refined, high-end arms of the local mercenaries, each engagement isn&#39;t just an opportunity to bring the fractured system under control, but to acquire new equipment to help accomplish your mission.
+
+HIGH STAKES TACTICAL BATTLES
+The threat of death is real as you find yourself pit against numerically, and at times technologically, superior enemy forces. Large engagements across diverse battlefields are subject to the effects of weather conditions across a multitude of biomes, and human foes are the least of your concern. In the recesses of the system, something alien has taken hold, and its methods are unpredictable and unrelenting.
+
+- Battles in MENACE are deadly affairs – under the hail of bullets, plasma bolts, and missile fire, you will face off against enemies that are well prepared, and ruthless. Expect to permanently lose squad leaders and their squads, and prepare to adapt to constantly evolving situations on the battlefield. Pacifying an entire system doesn’t come without a few risks, and superior tactical prowess will determine the victor.
+- Use flanking maneuvers to make your way around cover, or use heavy ordnance to flush enemies out from their firing positions. Rush from cover to cover as you plot pincer attacks, opening fire to suppress enemy squads and pin them in place while working to destroy cover they might run to. A tactical approach is essential to coming out on top but remember to stay on your toes – though you can plan around intel gathered for mission briefings, plans never survive first contact with the enemy.
+- Keep an eye on your weapons&#39; efficient ranges, their damage over distance, and whether they&#39;re best used against heavily or lightly armored enemies. Even beyond accurate ranges, every round fired causes some degree of suppression to the squad it lands next to – whether they were the intended target or not, and whether friend or foe. With heavy fire more likely to pin an enemy down than small arms, you’ll be able to adapt based on the tools at your disposal, but make sure to adjust your approach as needed. Study the enemy to assess if you should be sniping from a distance or aggressively closing the gap under the cover of suppressing fire.
+- Arrive on the battlefield with a variety of vehicles - from troop carriers to MLRS to jury-rigged pickup trucks and more, each with their own strengths and weaknesses, and a variety of weapons systems to choose from. The firepower of a lumbering tank is immense, but the nimble walker is able to respond to fast-moving threats in an instant, rotating freely and quickly. Designated pilots are able to bring these vehicles to the battlefield, albeit at a high cost. Will you opt to bring in self-propelled artillery you’ve commandeered from the mercenaries at the cost of better equipment for your infantry? You might lose an entire squad, but the extra firepower might just be what secures your victory.
+- Use limited supplies to kit your squads out before each mission and ensure you&#39;re equipped for the task ahead. Infantry squads can swap their armor to strike a balance between protection and utility with additional accessory slots, where accessories range from drones to grenades to target designators. Each squad can be equipped from a wide selection of weapons with different advantages and disadvantages, as well as particularly powerful specialist weapons – everything from flamethrowers to sniper rifles to EMP cannons.
+
+A CHARACTER-DRIVEN EXPERIENCE
+Pike is the model marine – loyal to the Republic, and a professional soldier, unwavering in the face of adversity. Rewa suffers from the trauma of past scars, a violent rage constantly boiling beneath the surface. Lim owes Pike for saving his home colony, and distrusts non-Marines – but he&#39;ll have to learn to meet them in the middle as the going gets rough. Every squad leader in MENACE has a history and personality, and as their commander, it&#39;s up to you to navigate the trouble that can bring.
+
+- From the marines you flew in with to the locals you need to recruit, each squad leader carries their own expectations and aspirations. Their accomplishments and failures on the battlefield will influence their leadership – a mission with multiple confirmed kills might help bolster morale for the following engagements, but a squad leader that sees their entire team eliminated might perform worse for some time as they regain composure. Will you take on the liability of an underperforming squad just because you need the numbers, or will you put them on leave until they recover, potentially jeopardizing the current operation entirely?
+- Squad leaders earn promotions and improve over time, giving you the option to customize them to your liking and improve their squad’s performance. Keep your squad leaders alive and choose perks from varied promotion trees, acquiring additional active and passive abilities to use against the enemy.
+- Each playthrough features a selection of characters from a massive pool – learn how individual backstories are tied together and prepare to navigate the unique combinations of each run. Stories unfold in unexpected ways as your squad leaders push from engagement to engagement. Watch them crumble under pressure from a cataclysmic threat, and do your best to train them for the fight against the MENACE.
+
+ENDLESS REPLAYABILITY
+With procedurally generated multi-mission operations and battle maps, alongside a big selection of characters and countless equipment options, every run of MENACE plays different from the last. Find yourself face to face with a seemingly insurmountable challenge that takes on multiple forms across playthroughs, and put your strategic and tactical prowess to the test in new ways each time.
+
+Full details on the latest status of the game, how you can give feedback and report issues can be found at https://discord.com/invite/gYbaYRqwNe.
+</p>
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

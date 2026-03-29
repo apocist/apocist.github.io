@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Sun Haven</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Sun Haven</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>13h 23m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-12/20/2025">12/20/2025</a> 17:23:40</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:53:18</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/10/2023">3/10/2023</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-77">77</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Pixel Sprout Studios">Pixel Sprout Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Pixel Sprout Studios">Pixel Sprout Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1432860" target="_blank">Steam</a><br/><a href="https://pixelsproutstudios.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/Sun-Haven-RPG-108956407514643" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/sunhavenrpg" target="_blank">Instagram</a><br/><a href="https://www.reddit.com/r/SunHaven" target="_blank">Subreddit</a><br/><a href="https://www.twitch.tv/directory/game/Sun%20Haven" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/@PixelSproutStudios" target="_blank">YouTube</a><br/><a href="https://twitter.com/SunHavenRPG" target="_blank">Twitter</a><br/><a href="https://discord.gg/FN5BGk38SP" target="_blank">Discord</a><br/><a href="https://sunhaven.wiki.gg/" target="_blank">Community Wiki</a><br/><a href="https://www.nintendo.com/us/store/products/sun-haven-switch/" target="_blank">Nintendo</a><br/><a href="https://en.wikipedia.org/wiki/Sun_Haven" target="_blank">Wikipedia</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><strong>A fantasy farming sim with an RPG twist like you’ve never experienced!</strong></h2>Immerse yourself in over 30,000 lines of dialogue, romance any (or all…) 23 characters, embark on side quests, interact with hundreds of unique NPCs, solve riddles, and discover secrets all around you in this lore-rich, story-driven world. Your actions may shape your journey, but your choices will determine your legacy. Where will your adventure take you?<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/11e88b33f5ccfc5d5bf3c85e0a8cdd3f.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Sun Haven, a farming sim with no stamina bar!</strong></h2>Every Sun Haven playthrough is fully customizable with tons of in-game settings. Adjust the length of each day to be faster or shorter, make yourself invincible to damage, turn off seasonal pests that eat your crops, toggle weather effects on and off, or just enjoy the vanilla game with default settings!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/4697a1562f8f6baf3645b68dba55b287.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Transform your run-down land into a lively farm!</strong></h2>Play through all four seasons, each with its own seasonal weather and effects, and utilize upgradeable farming tools and magic spells to grow fruits, vegetables, and flowers! Manage your time across 3 different farms with their own unique crops, fruit trees, and animals to take care of!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/4e0ba5f83bbc924294c7454b491ec900.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Cows, chickens, and silk moths, oh my!</strong></h2>Raise classic farming livestock like cows, chickens, sheep, pigs, and other fantastical creatures like silk moths, baby griffons, phoenixes, werewolves, tar slimes, and more! In addition to barn animals, you can also collect a ton of pets and mounts that can accompany you on your adventures. Who doesn’t love adorable companions?<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/df5f07c919d17ca18f78a2ab3aa0ecbe.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Adventure together with friends or progress on your own!</strong></h2>Share a farm and play with up to 8 friends online, or keep to yourself and play solo. Your characters keep their inventories and experience levels, even if you use the same character for both singleplayer and multiplayer!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/d5d8891948e9905312507a253ef308f8.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Decorate your dream home and farm!</strong></h2>Upgrade and customize up to 8 houses with hundreds of exterior decoration options for your house’s roof, walls, windows, doors, and patios, as well as over 30 themed sheds that can be placed anywhere on your farm — and that’s not including the treehouse in Nel’Vari and the Apartment in Withergate! Homes, sheds, and farms can be furnished with hundreds of different furniture and decor items that can be purchased, crafted, received in the mail, or traded in multiplayer.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/0e25b2c9cd30ba8f68484d43e837fa6c.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Progress the story in four different areas!</strong></h2>Explore the medieval town of Sun Haven, the elven forests of Nel’Vari, the monster city of Withergate, or the mysterious underwater region of The Brinestone Deeps!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/c0022fd1b8516c64e235b0f6ebb45fe3.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Go on dates, get married, and even start a family!</strong></h2>Experience heartwarming events with 23 available marriage candidates across all four towns through gifts, dialogue, events, quests, dates, and more! After getting married, upgrading your house, and maintaining a good relationship with your spouse, you’ll have the option to have one child through the powerful magic in Sun Haven!<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/d1cbc45ee968ebd0030ed45ed366da92.avif?t=1741982676"></span><h2 class="bb_tag"><strong>One fish, two fish, red fish… sewer fish?</strong></h2>Enjoy the easy-to-learn, hard-to-master fishing minigame and catch over 130 fish across the world. These fish can be sold, cooked, donated to the Sun Haven Museum, gifted, or used in various quests!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/89c8388e7c800f48130cd43d6900ab31.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Craft to your heart’s content!</strong></h2>Build and utilize over 40 unique crafting tables for cooking, smithing, construction, farming, furniture, and even alchemy! All four towns also have town-specific items and recipes!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/a29ed346574a864a2e4978e6fcec091f.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Fight monsters all over the world of Sun Haven!</strong></h2>Fight tons of unique enemies across four towns. With swords, crossbows, staffs, and magic spells, the possibilities for combat are endless. Buy or upgrade your armor, eat food to increase your maximum stats, and unlock perks in the massive skill tree to unleash your full potential!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/76a72a903d3e421f2f975bcc92dae553.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Unlock floors in the mines to gather resources, gems, and ore!</strong></h2>If you’re in a pinch, you can temporarily unlock mine floors with rusty keys, or permanently unlock them with smelted keys. Grab the chests on every 10th floor, upgrade your armor and tools with better ore, and fight enemies for loot!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/92fe411000f3d339884047c0f3a00692.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Take on tough bosses solo or in multiplayer!</strong></h2>Test your strength in the Combat Arena alone or with friends. Fight your way through multiple different types of bosses and win amazing loot if you come out on top!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/0aee67d0b2de2631679d7d4aa3d1ee27.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>An expansive character customization experience!</strong></h2>Customize your character to your heart’s content with seven different races, ten different starting professions, and hundreds of clothing, hair, and other customization options. If you decide you want to change your appearance a few hours in, don’t worry — just take a trip to the Sun Haven Salon!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/acc98fecfdfbf73eb9f62dbbbf57c98a.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>A calendar full of events to celebrate!</strong></h2>Enjoy seasonal festivals, holidays, and events, and make merry with all the different townsfolk. You’ll find some exclusive shop items such as pets, furniture, and food to buy at these festivals, so don’t forget your wallet!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/0a1cbbfed653707da4614e3637382fd9.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Fill up the museum and put all your hard work on display!</strong></h2>The museum needs your help! Be sure to hang onto all the little trinkets you find when you’re out fishing, mining, foraging, or fighting. One adventurer’s trash is a museum’s treasure!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/e042f65dc51790786a7d1b43b691fd10.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Try out different builds with a massive skill tree full of versatile perks!</strong></h2>Utilize the combat, exploration, farming, fishing, and mining skill trees to upgrade your character with tons of different buffs, skills, weapons, and spells. Once you hit level 70 in each skill, you can purchase skill elixirs from the Sun Haven Town Hall or craft skill tomes at an anvil to grow even stronger!<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/6dc8902b133746f64c147ea9b0e21f72.poster.avif?t=1741982676"></span><h2 class="bb_tag"><strong>Show off your completionist tendencies!</strong></h2>Go achievement hunting for all 177 Steam Achievements related to romance, quests, storylines, festivals, skills, magic, advancements, combat, fishing, animals, farming, and so much more!<br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1432860/extras/05b1ece7b9f2b445a008381cd292a991.avif?t=1741982676"></span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

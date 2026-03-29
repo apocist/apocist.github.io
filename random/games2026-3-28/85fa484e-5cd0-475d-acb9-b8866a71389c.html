@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>ENDER MAGNOLIA: Bloom in the Mist</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> ENDER MAGNOLIA: Bloom in the Mist</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:14</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:12:59</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-1/22/2025">1/22/2025</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-81">81</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Platform">Platform</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-adglobe">adglobe</a><br/><a href="#quicklink-Live Wire">Live Wire</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Binary Haze Interactive">Binary Haze Interactive</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://endermagnolia.com/en/" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/2725260" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/category/ender-magnolia-bloom-in-the-mist" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/@binaryhazeinteractivech5764" target="_blank">YouTube</a><br/><a href="https://twitter.com/EnderLiliesGame" target="_blank">Twitter</a><br/><a href="https://en.wikipedia.org/wiki/Ender_Magnolia%3A_Bloom_in_the_Mist" target="_blank">Wikipedia</a><br/><a href="https://www.nintendo.com/us/store/products/ender-magnolia-bloom-in-the-mist-switch/" target="_blank">Nintendo</a><br/><a href="https://www.xbox.com/en-us/games/store/ender-magnolia-bloom-in-the-mist/9PFFS71HNMGG" target="_blank">Xbox</a><br/><a href="https://store.playstation.com/en-us/concept/10010653" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2725260/extras/6c17078af1dc82543a4d8b20b4b7b028.poster.avif?t=1740447961"></span></p><h2 class="bb_tag">STORY</h2><p class="bb_paragraph">Set in the Land of Fumes, this prosperous magical superpower is home to vast quantities of magical resources lurking underneath the surface. In hopes of advancing their kingdom's development, artificial life forms known as Homunculi came into being. Regrettably, toxic Fumes from the underground drove the Homunculi to madness, turning them into feral monsters. </p><p class="bb_paragraph"></p><p class="bb_paragraph">You play as Lilac, an "Attuner" who possesses the power to save the Homunculi. Upon waking, you find yourself in a laboratory deep in the underground. There, you will become acquainted with the Homunculi closely involved in the kingdom's downfall. Together with the Homunculi, set out in search of your lost memories and precious friends in the Land of Fumes. Follow the journey of destruction and rebirth in a post-apocalyptic world, decades after the disastrous Rain of Death.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2725260/extras/b15228863592c53db7370a5be1a92a7d.poster.avif?t=1740447961"></span></p><h2 class="bb_tag">SCENARIO</h2><p class="bb_paragraph">ENDER MAGNOLIA is a dark fantasy 2D side-scrolling action RPG where you venture through the desolate Land of Fumes trying to save both humans and Homunculi. At the forefront of magical and mechanical development, the kingdom comprises of a hierarchical societal structure. Here, you'll come across abandoned cities, discover laboratories oozing with heinous mysteries, a grand Sorcerer's Academy, colossal factories, and much more. The hauntingly beautiful yet gruesome world of ENDER MAGNOLIA will unfold before you.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2725260/extras/3cfb6e21cf3a33c79c4b24ad962480ed.poster.avif?t=1740447961"></span></p><p class="bb_paragraph">Journey with Homunculi and help those who have lost their minds to the Fumes. Fight fearsome, powerful enemies, purify their souls, and rally your companions. Who will you save at the end of your quest — humans or Homunculi?</p><p class="bb_paragraph"></p><h2 class="bb_tag">GAMEPLAY</h2><p class="bb_paragraph">■ Experience the revamped battle system that elevates your gameplay and exploration beyond that of ENDER LILIES.</p><p class="bb_paragraph">・Explore the mesmerizing yet grim world at your own pace and take on menacing enemies with the help of your companions.</p><p class="bb_paragraph">・Find your battle style using 30 different unique skills acquired from your companions.</p><p class="bb_paragraph">・Collect and upgrade loads of equipment, relics, and items.</p><p class="bb_paragraph">・Featuring new difficulty levels, you can choose to have a challenging experience or enjoy the gripping storyline at your leisure.</p><p class="bb_paragraph"></p><p class="bb_paragraph">■ Gorgeous 2D art, animation, and music all come together to create a whimsical world.</p><p class="bb_paragraph">・Humans and Homunculi live together in the kingdom known as the Land of Fumes. </p><p class="bb_paragraph">・Venture out, get to know people, and help one another while unraveling the mysteries of the world.</p><p class="bb_paragraph">・Witness poignant cutscenes and enhanced character interactions with your companions.</p><p class="bb_paragraph"></p><h2 class="bb_tag">MUSIC</h2><p class="bb_paragraph">After lending their sweet and somber music to ENDER LILIES, 'Mili' is back with new compositions that bring the mysterious world of ENDER MAGNOLIA to life.</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

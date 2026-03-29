@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Guns of Icarus Alliance</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Guns of Icarus Alliance</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:04:30</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/31/2017">3/31/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-60">60</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-65">65</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Shooter">Shooter</a><br/><a href="#quicklink-Simulator">Simulator</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Muse Games">Muse Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Muse Games">Muse Games</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/608800" target="_blank">Steam</a><br/><a href="http://gunsoficarus.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/GunsOfIcarus" target="_blank">Facebook</a><br/><a href="https://twitter.com/GunsOfIcarus" target="_blank">Twitter</a><br/><a href="https://www.twitch.tv/directory/game/Guns%20of%20Icarus:%20Alliance" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/231281" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/d3040a955ae4e5cbc62ba707054274dd.webp?t=1569260269"></span><br><br><i>Guns of Icarus Alliance</i> is the expanded and definitive edition of Muse’s flagship title <i>Guns of Icarus Online</i>, the original player-vs-player steampunk airship combat game. <i>Alliance</i> features all of the content from the original title, but with the addition of player-vs-environment cooperative experiences, an ongoing war between six elite factions vying for control of a world ravaged by machines, and an ever-changing world that is constantly being shaped and reshaped by the players. With a good ship and the right crew, you can conquer the skies - and maybe even the world!<br><br><ul class="bb_ul"><li><h2 class="bb_tag"><strong>The ultimate co-op experience </strong> </h2>Players can take on the roles of pilots, gunners and engineers, working together as a single unit to maximize their airship’s effectiveness and own the skies. You won’t be told to stay still and not die while a veteran preserves their Kill/Death ratio. In Guns of Icarus Alliance, you are forced to work together. It’s an entirely interdependent gameplay experience that cannot be won by a single crew member.<br></li><li><h2 class="bb_tag"><strong>Your crew versus the world </strong></h2>Take your airship and crew, and pit them against a huge variety of AI-controlled challenges, including escort missions, convoy raids, base assaults, and more.<br></li><li><h2 class="bb_tag"><strong>AI that learns </strong></h2>The AI won’t take defeat lying down. Dynamic learning systems mean that every battle will teach the AI what tactics you use, increasing the challenge with every fight.<br></li><li><h2 class="bb_tag"><strong>Pit crew against crew </strong></h2>In addition to AI-controlled missions, airship crews can also battle one-on-one against other human-crewed opponents.<br></li><li><h2 class="bb_tag"><strong>Every battle matters </strong></h2>Rival factions are in a constant battle of wills to take and retain territory and control vital resources. Every victory and defeat will sway the tides of the larger war.<br></li><li><h2 class="bb_tag"><strong>Become a legend </strong></h2> The story of <i>Guns of Icarus Alliance</i> is constantly being written based on the results of online gameplay. Achieve a key victory and your name may become part of the lore!<br></li><li><h2 class="bb_tag"><strong>A vivid steampunk world </strong> </h2>Lumbering, heavily-armored airships bristling with guns patrol the skies above a land ravaged beyond repair by an out-of-control industrial revolution.<br></li><li><h2 class="bb_tag"><strong>Build your own airship </strong> </h2>Starting from a selection of basic hulls, players can mix and match hundreds of custom parts to create their own unique airship, then assemble a crew to fly it.<br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/d85a128189efab65f470ad41e7f5ee6b.poster.avif?t=1569260269"></span><br></li><li><h2 class="bb_tag"><strong>Your ship is your life </strong> </h2>Your ship is your collective life bar - when the ship goes down, the crew goes down with it. Every member of the crew plays an integral role in not only maintaining the integrity - “life” - of the ship, but also weakening the integrity of enemy ships as they work cooperatively towards a shared victory.</li></ul><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/0ee96be4bf6e4cc578b39f2945fe270f.webp?t=1569260269"></span><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/82076935b276409c7fa1f8cedeb22d40.avif?t=1569260269"></span><br><br>The Industrial Revolution never ended. Raging out of control, the new machines consumed the world, staining the sky, scouring the land and poisoning the water. Humanity came to the brink of extinction, all but destroyed by their own unrestrained ingenuity. A few pockets of civilization survived, sheltering in the crevices of the world, and it is time for a comeback.<br>Divided by wide expanses of toxic wasteland, a handful of these remnants have developed airship technology. Cruising through the sky, safely away from the poisoned earth, trade and industry could finally begin anew. However, with resources so desperately limited, war was inevitable.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/7d71b8af615691a717a5d4e8812dcdc1.webp?t=1569260269"></span><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/70bb4e8bc05fd56a8bfe3e54e6e63c29.poster.avif?t=1569260269"></span><br>After years of isolation, the six factions have developed very different ideas about how this new world should be reclaimed.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/0264055d6322dd0d980916d21c68bf29.webp?t=1569260269"></span><br>Reinvigorated by a fulfilled prophecy, the members of the Fjord Baronies don their ceremonial gowns in readiness to fight for lands that have been promised to them. With the Creed close to their hearts and an old, but formidable, armada of airships behind them, the Baronites venture forth to protect those who seek The Creed and to reclaim what is rightfully theirs. The King’s Seat, once occupied by a line of righteous high lords and ladies, is now led by the Silver-Haired Savior. Inspiration sweeps through these feudal lands and all are ready to take up arms to become whole again.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/bb25b1f15689c9e9d3580bb69ee9d82c.webp?t=1569260269"></span><br>Much of the world is teetering out of control, but the Chaladonians are only concerned with correcting a single aspect: sequestered in the eastern isles for too long, the Order of Chaladon now embarks on a mission to put an end to the ecological devastation that their mainland neighbors partake in. The days are already numbered as the natural balance of the world spirals out of control, leaving everything on the planet to die. The island dwellers ask, who will die first? With their advanced organic technologies, the Chaladonians are sure it won’t be them.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/adc675fa0ba5e6e0a3991bcc854c16f5.webp?t=1569260269"></span><br>Rapacious, manipulative, and aggressive are the most common words used to describe those of the Mercantile Guild. Only the desperation of a war-torn world would allow them to get away with the ruthless deals for which they are known. The Mercantile Guild knows everything has its price and they are naturally attracted to the best transactions. Nothing angers Merchants more than denying them a trade. With profits at their highest, the Guild worms its way into every nook and cranny of the world in the hopes of finding retribution and making their enemies pay the ultimate price.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/5009e0d0575a9b088493b0fc461903c4.webp?t=1569260269"></span><br>The Anglean Republic works to uncover the remains of an ancient civilization from underneath the northern icescapes. In these ruined, sunken cities, war machines spit smoke and artifacts harness the power of lightning. The Angleans claim that, through these relics, the Ancients whisper dark secrets to them. Despite the dilapidation, the buried cityscapes are proof to the Angleans that the time of the Ancients was a superior one. Instead of finding a new way of life, they believe a great one is waiting to be resurrected. With newly unearthed powers, the Angleans have become the deadly harbingers of a second Golden Age.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/4e1ef62fd6e43f4a628031515c12bf0d.webp?t=1569260269"></span><br>Discord, disorder, and disarray have taken hold of the land for far too long. People wander in the wastelands without hope, and without purpose. What an unimaginable way to live, a life without meaning. This life doesn’t exist within the borders of the Yesha Empire. An aimless soul can once again find determination in one of its great western cities with their gardens of alabaster columns, and surrounded by great stone walls. Whether it be standing guard at a palace, minding the tops of tables at a restaurant, or fighting fiercely on the battlefront, a Yeshan can lead a fulfilled life by following their ordained path.<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/93d6711af20739b0a801d48ca6b317dd.webp?t=1569260269"></span><br>With time, the desert turns all things to sand and dust - all things, except for the Arashi League. Made up of disparate tribes ruled by the most powerful warrior, the Arashi believe that only the strongest deserve to live. Weaker clans are trampled as the tougher ones join and fortify the ranks of the imposing League as it makes its way out of the desert into a world unknown. The Arashi thirst to be tested, to prove their might and dominance. To them, the world is but an arena where only one can be left standing.<br><br>These are the six great powers that are currently known, but rumors abound of other nations secreted in remote strongholds, biding their time and gathering their strength. Who knows what the future may hold?<br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/dd7143412915334b1ab71e76dc1863f9.webp?t=1569260269"></span><br><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/eee9ea79e118c245a90c68796dcd6a59.poster.avif?t=1569260269"></span><br><br>Select your faction, build a custom airship, assemble a trusty crew and get ready to change the world!<br><br>Every mission you undertake, whether it results in victory or defeat, will have an effect on the factional struggle for dominance. Play the way you want to: become a berserker who lusts only for battle and conquest, protect your domain from aggressive invaders, or take on one of your faction’s constantly changing list of objectives.<br><br>Missions take a wide variety of forms, including straight-up airship battles, tense infiltrations, convoy raids, assaults on heavily-fortified bases and much more. Impress your faction and you will enjoy great rewards, from unique character costumes to powerful experimental weapons.<br><br>The story of Guns of Icarus Alliance is constantly being written, and in-game events determine the course of the story. This means that a player who achieves a key victory, oversees a notorious massacre or repulses an overwhelming invasion may find that their name becomes part of the official lore.<br><br><br><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/608800/extras/2c7e2f2dfe0a747cb0eea72117b578d0.webp?t=1569260269"></span><br><br>We are Muse Games, an independent studio based out of New York City. Our debut game, <i>Flight of the Icarus</i>, was the seed that would later grow into our flagship title. After releasing the unique and eye-catching platform game <i>CreaVures</i> in 2011, we dedicated ourselves to re-engineering our debut title into a fully-featured cooperative online airship combat game.<br><br>We released <i>Guns of Icarus Online</i> in October 2012, right in the midst of Hurricane Sandy. Despite that challenging start, the game earned a loyal audience and built up a healthy community, passing the million player mark in January 2016. Since then, we have remained committed to supporting and expanding the <i>Guns of Icarus</i> experience. What was originally intended to be an expansion that would introduce AI opponents and player-vs-environment gameplay grew into a new standalone game - <i>Guns of Icarus Alliance</i>, the ultimate and definitive <i>Guns of Icarus</i> experience - which released in March 2017.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>X-Morph: Defense</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> X-Morph: Defense</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>4h 29m 0s</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-11/23/2017">11/23/2017</a> 17:03:29</TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:15:27</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Played">Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-8/30/2017">8/30/2017</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-64">64</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-82">82</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Arcade">Arcade</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Shooter">Shooter</a><br/><a href="#quicklink-Simulator">Simulator</a><br/><a href="#quicklink-Strategy">Strategy</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Exor Studios">Exor Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Exor Studios">Exor Studios</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/><a href="#quicklink-Split Screen">Split Screen</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="http://www.xmorphdefense.com/" target="_blank">Official Website</a><br/><a href="https://www.facebook.com/exorstudios" target="_blank">Facebook</a><br/><a href="https://twitter.com/EXORStudios" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/c/EXORStudios" target="_blank">YouTube</a><br/><a href="https://store.steampowered.com/app/408410" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/X-Morph:%20Defense" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/225455" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/games/detail/x-morph-defense-switch/" target="_blank">Nintendo</a><br/><a href="https://discord.gg/exorstudios" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/1cbc5d84f84781aa109d40b76dcc4672.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">Unique fusion of a top-down shooter and tower defense strategy. You are the X-Morph - an alien species that invades Earth to harvest its resources and terraform the surface. Strategize in the build mode by carefully selecting various types of alien towers or throw yourself right into the heat of the battle. Build mazes for incoming enemies in an environment that provides exceptional planning freedom. Tear down buildings and collapse bridges to support your defense or to simply indulge in a spectacle of unprecedented destruction. Possess a range of unique alien weapons and use defense strategies like you've never seen before in this genre. </p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/6d8b2cc76fa72fe7e3c04ea5c68e9a2a.webp?t=1769181071"></span></h2><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/07f05c1f82939e0a594264b7662a91de.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">Your goal is to defend the X-Morph harvesters from waves of incoming human forces. Each enemy wave is preceded by a setup phase in which the player can check what types of enemies are going to be attacking him and to observe their paths. There is no time limit for this phase, so the player can carefully plan his defenses or choose to start fighting immediately and place towers when needed during the battle. One of the game's key features is the ability to build towers virtually anywhere on the map and to shape enemy paths by connecting towers with laser fences. The player can choose between building long mazes out of basic towers or placing more advanced towers which are more effective at different types of incoming enemies. Advanced tower types specialize in dealing with specific enemy types e.g. flame towers are great for destroying fast moving ground units, artillery towers are best at countering large groups of slow enemies, anti-air laser is ideal for shooting down heavy bombers.</p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/c26d08f2755a81f618341e334035d340.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">As the X-Morph fighter you can engage enemy units directly with a diverse arsenal of weapons. You can morph into four distinct forms which specialize in dealing with different kinds of threats. Each form has a basic attack and a special charged attack mode. The Plasma Fighter is the most universal form - good at destroying both air and ground units. The Dark Matter Bomber is great at decimating groups of ground units. It can also slow down time and release a dark matter bomb that can cut down buildings. The Shredder fighter is perfect for annihilating large numbers of human air units and clearing the sky. Finally, the Laser Destroyer is best for smelting large single units. It can also charge up a gravitational anomaly that sucks in smaller enemy units.  A large variety of weapons and enemies along with a dynamic, fully destructible environment provides a rich arcade shooter experience.</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/57f8806b33d8b8ccce365f004173bcf9.webp?t=1769181071"></span></h2><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/fb0b131811dc2742b4071f3184a8deca.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">The game's environments are constructed with a lot of attention to detail and they are almost completely destructible. From small picket fences to huge skyscrapers. Any bridge or building in the game can be collapsed and it's destruction is dynamically simulated using realistic physics. The destruction is not only a visual effect as it can significantly influence the layout of the battlefield. The combination of dynamic environments, laser fences and real-time calculated enemy paths creates unique gameplay scenarios.</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/f631eb7933ae0b1ea40d29ecc1d43777.webp?t=1769181071"></span></h2><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/4c31896e2a7b754f1db4c76de3fc28f2.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">Humans are desperate to defend their homeworld. They have created huge, building size, mechanical war machines to fight against each other, but now they will use them to destroy the X-Morph. Each boss fight is unique and heavily influences the gameplay environment. Entire cities will be destroyed.</p><p class="bb_paragraph"></p><h2 class="bb_tag" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/3debe3a95bb14ca7ad41dc6a83af6e88.webp?t=1769181071"></span></h2><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/058f831620fc4e4b070cab328749befa.poster.avif?t=1769181071"></span></h2><p class="bb_paragraph"></p><p class="bb_paragraph">X-Morph: Defence includes a split screen co-op mode. All missions have different gameplay scenarios designed specifically for co-op play. Enemies attack in larger numbers and from new directions making good cooperation essential to winning. In this mode the game can be played in many different ways, one player can focus on optimizing tower placement while the other shoots at enemies or they can both focus their firepower on the strongest attackers. </p><p class="bb_paragraph"></p><h2 class="bb_tag"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/408410/extras/7ceb5ba7094891e5c1026a4072fabc13.poster.avif?t=1769181071"></span></h2>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

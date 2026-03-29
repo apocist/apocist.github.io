@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Minion Masters</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Minion Masters</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:12</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:03:29</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-5/24/2019">5/24/2019</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-67">67</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Card & Board Game">Card & Board Game</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Real Time Strategy (RTS)">Real Time Strategy (RTS)</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Strategy">Strategy</a><br/><a href="#quicklink-Turn-based strategy (TBS)">Turn-based strategy (TBS)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-BetaDwarf">BetaDwarf</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-BetaDwarf">BetaDwarf</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Massively Multiplayer Online (MMO)">Massively Multiplayer Online (MMO)</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/489520" target="_blank">Steam</a><br/><a href="http://minionmastersthegame.com" target="_blank">Official Website</a><br/><a href="https://minionmasters.gamepedia.com/Minion_Masters" target="_blank">Community Wiki</a><br/><a href="https://www.facebook.com/forcedthegame" target="_blank">Facebook</a><br/><a href="https://twitter.com/BetaDwarf" target="_blank">Twitter</a><br/><a href="https://www.youtube.com/channel/UCjhwA3l54_aC61EvtjElHWw" target="_blank">YouTube</a><br/><a href="https://www.reddit.com/r/MinionMasters" target="_blank">Subreddit</a><br/><a href="https://play.google.com/store/apps/details?id=com.betadwarf.minionmasters.googleplay" target="_blank">Google Play</a><br/><a href="https://www.twitch.tv/directory/game/Minion%20Masters" target="_blank">Twitch</a><br/><a href="https://discord.gg/minionmasters" target="_blank">Discord</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<p class="bb_paragraph">The realm's greatest Masters face off in a never-ending conflict for glory. Will you play Control, Aggressive, Swarm or Giant Minions? Choose a Master matching your playstyle and build the best deck to overthrow your opponents in short intense real-time games!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/419e819855888cf8f4af020587c59ea7.poster.avif?t=1736542616"></span></p><p class="bb_paragraph">Join millions of players worldwide and discover one of the best ever rated free games on Steam! Minion Masters is insanely fun and simple, but challenging to master. A Dynamic Online Tactical game for both competitive and casual players.</p><p class="bb_paragraph">Play 1v1 duels or combine decks in 2v2 multiplayer, with full cross-play for Steam, Xbox, and more to come! Jump into Draft to test your strategic prowess, or even Mayhem where the game rules are changed weekly! Embark on solo adventures through the different ages and conflicts of the continent. Discover the legends of the Crystal Elves, Empyreans, Zen-chi, and more!</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>INNOVATIVE ONLINE FANTASY STRATEGY WITH RPG ELEMENTS</strong></h2><p class="bb_paragraph">Hold bridges to level up and unlock your Master’s powers, capable of changing the fate of a game. Summon swarms of Scrats, draw from the Book of the Dead or enrage your minions! Spells and Minions all have specific mechanics: make the right move and enable a combo to take your opponent by surprise!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/cf417c29d0a44c45fdd039cc8764decd.poster.avif?t=1736542616"></span></p><p class="bb_paragraph">Choose your Master and build your deck from 9 factions, each with their own specialty. Match your Master &amp; cards to create countless combos and tactics; only your creativity is the limit.</p><p class="bb_paragraph">Play <strong><i>your own way</i></strong>, come up with<strong><i> your own strategies</i></strong> and show off<strong><i> your skill</i></strong> in the arena!</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><h2 class="bb_tag"><strong>TRULY FAIR-TO-PLAY &amp; BALANCED ONLINE MULTIPLAYER</strong></h2><p class="bb_paragraph"></p><p class="bb_paragraph">We’re committed to a fair experience in which only skill matters. In Minion Masters, you can easily earn, craft, or try to loot cards - and that’s all you’ll ever need to be competitive. Anyone can take on anyone, it all comes down to YOUR skill.</p><p class="bb_paragraph">This card game offers countless free rewards to help you collect over 260 minions and spells with daily quests, special events and fun game modes. Earn new cards for free and without randomness with the free season pass!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/627fcf49a11a2f8183d9537d8d116488.poster.avif?t=1736542616"></span></p><p class="bb_paragraph"></p><h2 class="bb_tag"></h2><h2 class="bb_tag"><strong>JOIN A GUILD, MEET PLAYERS, PLAY CO-OP</strong></h2><p class="bb_paragraph">Take part in something that matters! Join a guild, you will always be welcomed in the tavern! </p><p class="bb_paragraph">Team up in 2v2, combine your decks to create the ultimate strategy and reach Contender rank together!</p><p class="bb_paragraph">Meet players in a positive and active community. Follow streamers on Twitch, earn prizes with drops and link your account to appear in the arena and interact in real-time with chat commands!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/489520/extras/d69ec2398e615f301c7b21dbfddbc0fd.poster.avif?t=1736542616"></span></p><h2 class="bb_tag"><strong><br>FEATURE LIST</strong></h2><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"><i>Ranked 1v1 and 2v2 full of action </i></p></li><li><p class="bb_paragraph"><i>Quick online battle games from 2 to 6 minutes</i></p></li><li><p class="bb_paragraph"><i>Beautiful graphics in this full 3D game.</i></p></li><li><p class="bb_paragraph"><i>Crazy modes: Draft, Mayhem, Adventures…</i></p></li><li><p class="bb_paragraph"><i>260+ Cards to collect from many different factions always at war</i></p></li><li><p class="bb_paragraph"><i>13 awesome Masters each with 3 powers, and more to come</i></p></li><li><p class="bb_paragraph"><i>Customizable arenas, skins, emotes, guilds...</i></p></li><li><p class="bb_paragraph"><i>Epic fantasy lore!</i></p></li><li><p class="bb_paragraph"><i>Guilds</i></p></li><li><p class="bb_paragraph"><i>Loads of free rewards</i></p></li><li><p class="bb_paragraph"><i>Community tournaments</i></p></li><li><p class="bb_paragraph"><i>Twitch prizes and events</i></p></li><li><p class="bb_paragraph"><i>Constant community selected balance tweaks</i></p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph"></p><h2 class="bb_tag">Massive new Co-op game from BetaDwarf</h2><p class="bb_paragraph">We're making a massive new Top-down Loot &amp; Extract game and will start invites for alpha testing soon, check out our developer page to get access!</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

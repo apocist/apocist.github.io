@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Forgotten Realms: The Archives - Collection Two</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Forgotten Realms: The Archives - Collection Two</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:05:13</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-12/1/1988">12/1/1988</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.gog.com/game/forgotten_realms_the_archives_collection_two" target="_blank">GOG</a><br/><a href="https://store.steampowered.com/app/1882280" target="_blank">Steam</a><br/><a href="https://www.twitch.tv/directory/game/Forgotten%20Realms%3A%20The%20Archives%20-%20Collection%20Two" target="_blank">Twitch</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					The Forgotten Realm Archives - Collection Two brings a healthy mix of “Gold Box” and nostalgia goodness to your PC, along with a combination of adventure builders, turn-based and real-time role-playing gameplay. Composed of RPG classics that premiered the Forgotten Realms to video gamers, The Forgotten Realm Archives - Collection Two contains the following titles: Pool of Radiance, Curse of the Azure Bonds, Hillsfar, Secret of the Silver Blades, Pools of Darkness, Gateway to the Savage Frontier, Treasures of the Savage Frontier, Forgotten Realms Unlimited Adventures.<br><br><strong>POOL OF RADIANCE</strong><br>Located on the northern shore of the Moonsea, the fabled city of Phlan has been overrun by monsters led by a mysterious leader. Your quest: uncover the identity of this evil force and rid Phlan of its scourge, restoring the city to its former glory. Along the way, you hope to find the legendary Pool of Radiance, said to glow with its own mystical power. Does it really give tremendous strength to the warrior who bathes in its magic waters? Or is that just an elfin myth? Before you meet the challenges ahead, you must create your characters and choose their races and battle skills. Then, set off on your glorious quest to drive out the monsters and let civilization reign once more!<br><br><strong>CURSE OF THE AZURE BONDS</strong><br>After you saved the entire city of Phlan and located the Pool of Radiance, a simple trip to Tilverton should have been as easy as a noon-day stroll. But it wasn’t… Ambushed, captured and knocked unconscious, you awake with no idea who attacked you or how you arrived in Tilverton. You only know that five azure-blue symbols are imprinted under the skin of your right arm. The mystical power of the azure symbols ensnares your will like metal bonds! And when the bonds glow, you must do as they command, No magic can dispel them, no prayers can remove them. Your only hope: search the world for members of the alliance who created the bonds and regain control of your own destiny. Only then can you be free of the Curse of the Azure Bonds.<br><br><strong>HILLSFAR</strong><br>Every visit to Hillsfar is a different, exhilarating experience. Explore the city, meet its colorful denizens on the streets or in pubs and discover a quest. Your quest will keep you constantly on the move. Fight in the arena against raging minotaurs, ill-tempered orcs or insulted swordsmen. Enter different buildings and utilize your maze-running and lock-picking skills. Archery and equestrian events may also be part of your overall quest. Think and move fast - these mini-games happen in real-time. For adventure, there is no place like Hillsfar.<br><br><strong>SECRET OF THE SILVER BLADES</strong><br>The frigid valleys of the Dragonspine Mountains echo with the desperate plea of terrified miners: "Heroes of the Forgotten Realms, save us from evil!" Unwittingly digging in unhallowed ground, they have disturbed an ancient vault and released its terrible content. Scores of horrific creatures now infest the mine shaft -- and threaten to escape into the world above! You and your heroes must find the way to contain this scourge. All hope depends upon your ability to unravel the age-old mysteries surrounding this vile infestation.<br><br><strong>POOLS OF DARKNESS</strong><br>The Final Challenge. The Ultimate Enemy. First there was Pool of Radiance. Next came Curse of the Azure Bonds. Then followed Secret of the Silver Blades. Now, the epic has come full circle - Pools of Darkness takes you back to the Moonsea region for the final battle against the ultimate enemy. Prepare yourself for the biggest adventure yet as you are propelled into alternate dimensions on an enormous quest. And, it boasts a fully evolved version of the award-winning game system used throughout the series. Transfer your characters from Secret of the Silver Blades with levels, money and items intact, or create new characters! Either way, you’re in for some high-level action! Battle monsters never before encountered. Cast powerful new spells. Achieve character levels above the 25th level!<br><br><strong>GATEWAY TO THE SAVAGE FRONTIER</strong><br>Enter the foreboding lands of an area never before explored in a computer fantasy RPG: the Savage Frontier! Sail the Trackless Sea; conquer the heights of the Lost Peaks; brave the ruins of Ascore, guardian of the Great Desert; visit magical Silvermoon - and much, much more! Your quest: halt the murderous conspiracy of dark invaders from afar. Your only hope is to uncover the ancient mystical items of power to destroy the malignant invasion! Gateway to the Savage Frontier is based on an enhanced version of the award-winning game system used in Pool of Radiance, Curse of the Azure Bonds and Secret of the Silver Blades. Now you get the freedom to make the story happen the way you want! Plus, an all-new wilderness style adds new exploration and excitement to outdoor adventure! How can you resist? The Savage Frontier awaits!<br><br><strong>TREASURES OF THE SAVAGE FRONTIER</strong><br>The explosive sequel to Gateway to the Savage Frontier is here to put your will and discipline to the test. You mission is truly daunting: save the Savage Frontier from a cataclysmic war, free Llorkh from its evil captors, and regain a powerful magical item lost since ancient times! This big, bold adventure will leave you reeling! The award-winning game system used throughout SSI’s famous gold-box series continues to evolve - new features abound! Movement and combat are now subject to the unpredictable effects of weather. Players can now interact with NPCs - the can even have romances! Plus, in some situations, combat reinforcement can give you extra help just when you need it most. And with the Savage Frontier teetering on the brink of all-out war, you can be sure that this feature will be put to good use! Transfer your characters from Gateway to the Savage Frontier or create new 5th level ones. You’ll find much more to explore - and the freedom to explore it the way you want - as the Heroes of Ascore attempt the impossible yet again!<br><br><strong>FORGOTTEN REALMS UNLIMITED ADVENTURES</strong><br>Have you ever wanted to break the chains and design your own AD&amp;D adventure scenarios? Well, this is your chance to do it in the incredible Forgotten Realms universe. Build maps with the easy-to-use grid screen and link them with teleporters, doorways and stairwells. Choose your characters from the massive bank of 112 monsters and multiple non-player characters. Design the dungeons of your dreams and test them as you go with a point-and-click interface that makes errors gone forever. Test your mettle by playing a pre-created scenario, “The Heirs to Skull Crag” with four separate quests to solve. Should you choose, you can even modify this ready-to-go adventure. With all these tools at your fingertips, the possibilities are endless.<br><br>Each Forgotten Realms classic brings its own unique flare and adventure for you to enjoy, ranging from turn-based to real-time combat, a wide variety of locations to explore, various classes and races to recruit to your party, treasure to loot, and quests and secrets to complete and uncover.<br><br><ul class="bb_ul"><li>An assorted collection of the “Pool of Radiance” and “Savage Frontier” Forgotten Realms titles</li></ul><ul class="bb_ul"><li>A wide variety of monsters to slay, quests to complete and regions to save</li></ul><ul class="bb_ul"><li>Assemble a party of the world’s finest Clerics, Warriors, Thieves and more, and bring them with you through their respective storylines</li></ul><ul class="bb_ul"><li>Immerse yourself in the depth and richness of Dungeons &amp; Dragons campaigns and the Forgotten Realms Universe</li></ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Vampire: The Masquerade - Shadows of New York</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Vampire: The Masquerade - Shadows of New York</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:01:14</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/10/2020">9/10/2020</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-33">33</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Card & Board Game">Card & Board Game</a><br/><a href="#quicklink-Indie">Indie</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/><a href="#quicklink-Visual Novel">Visual Novel</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Draw Distance">Draw Distance</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Draw Distance">Draw Distance</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1279630" target="_blank">Steam</a><br/><a href="https://drawdistance.dev/" target="_blank">Official Website</a><br/><a href="https://twitter.com/DrawDistanceDev" target="_blank">Twitter</a><br/><a href="https://www.gog.com/game/vampire_the_masquerade_shadows_of_new_york" target="_blank">GOG</a><br/><a href="https://www.youtube.com/channel/UCo1Z1imk8O9q0JU94lfZU6A" target="_blank">YouTube</a><br/><a href="https://discord.gg/QpJD8t9" target="_blank">Discord</a><br/><a href="https://www.twitch.tv/directory/game/Vampire%3A%20The%20Masquerade%20-%20Shadows%20of%20New%20York" target="_blank">Twitch</a><br/><a href="https://www.nintendo.com/store/products/vampire-the-masquerade-new-york-bundle-switch/" target="_blank">Nintendo</a><br/><a href="https://store.playstation.com/en-us/concept/10001024" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					You’re a nobody. An outcast in your own vampiric sect. A political prisoner of no particular value. An immigrant who never found her roots in a city of immigrants. A chainsmoker whose favorite pastime is staring blankly at the streets through the windows of a fast food joint at 4AM. The sinking feeling in the pit of your stomach tells you that you’re doomed, and distorted voices from the shadows seem to agree. The curse of your clan makes interacting with everyday technology difficult. Dissociation is your natural state. <br><br>But when New York’s Anarch leader meets a gruesome end, out of all the bloodsuckers in the metropolis, you’re the one picked to investigate. Make no mistake: this is obviously a trap, yet another move in the horrible game of Jyhad, the eternal struggle for power between warring vampire generations. But you’re Lasombra, and if there’s one thing you know, it’s this: if the Ventrue Prince and her followers underestimate you, they’re going to deeply regret it.<br><br><strong>Vampire: The Masquerade – Shadows of New York</strong> is a visual novel set in the rich universe of Vampire: The Masquerade. It's a continuation of our previous title, Coteries of New York. While Coteries was a general introduction to the world depicted in the 5th Edition of the hit tabletop role-playing game, Shadows presents a more personal and unique tale.<br><br><ul class="bb_ul"><li>A visual novel tackling themes of personal and political horror, suitable for both Vampire: The Masquerade veterans, and fans of narrative-driven games who are newcomers to the setting.<br></li><li>A continuation of Coteries of New York. See the familiar metropolis through entirely different eyes. Expect new characters, new locations and a fresh original soundtrack.<br></li><li>Play as a member of the Lasombra clan. Formerly vicious foes of the Camarilla, the Magisters decided to search for safety in the ranks of their former enemies. Master the shadows and communicate with the inhabitants of the Other Side, but beware – Oblivion is always lurking out there, ready to devour you whole.<br></li><li>Explore the streets of the Big Apple. While you search for ways to satiate your bloodthirst, catch glimpses of various fascinating vignettes and forge connections with the eccentric inhabitants of the city. One playthrough won’t be enough to see it all.<br></li><li>Shape your mind, shape your fate. You used to avoid defining yourself and tried to stay neutral, but given your situation, you can no longer afford to do so. The choices you make will alter the way you think, and your thinking will alter the paths you take.</li></ul><h2 class="bb_tag">If it’s called Vampire: The Masquerade, does that mean you have something in common with World of Darkness, Bloodlines 2, Redemption, the cult tabletop RPG system, or...?</h2>Yes. Shadows of New York is set in the same shared universe, but offers independent experiences and stories. You may spot some connections with the other titles, but Shadows is not a sequel to any existing products. The World of Darkness is a media franchise and shared universe, shaped by various creators and participants, meaning: all stand-alone stories play into a greater whole. Berlin falling to the Anarchs during an official LARP, the Lasombra clan joining forces with the Camarilla in the Vampire: The Masquerade - Chicago By Night 5th Edition sourcebook, Sophie Langley’s plot to take control of New York in Coteries of New York – all of these events subtly influence and interact with each other.<h2 class="bb_tag">Do I need to play Coteries of New York to understand and enjoy the story of Shadows of New York?</h2><br>Not at all. Shadows of New York is a continuation of Coteries of New York, which means it shares the New York City setting and a large part of the supporting cast with our previous title, but is designed to offer a different experience. Coteries served as an introduction to the basics of Vampire: The Masquerade 5th Edition – it was focused on showcasing different vampire Clans and core concepts of the setting through the point of view of a newly-fledged vampire, a character who did have a defined backstory, but by and large meant to serve as a player avatar. <br><br>Shadows of New York is a more personal story, told from the perspective of a well-defined character who’s already integrated into the Kindred society and has a developed inner monologue of her own (which means you influence her personality instead of shaping it). Those who are familiar with Coteries will already know a large part of the cast and catch some references that would otherwise go unnoticed, but those who decide to start with Shadows and get back to Coteries later should be able to enjoy both experiences just as much as they would if they played them in their release order. The two stories are essentially separate, different both tonally and thematically.<h2 class="bb_tag">Which platforms is Shadows of New York available on? </h2>Shadows of New York launched simultaneously on PC (Windows/Mac OS/Linux), PS4, Xbox One and Nintendo Switch in September 2020.<h2 class="bb_tag">Does the game support controllers?</h2><br>Yes. You’re able to play both with mouse and keyboard, as well as with a controller.
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

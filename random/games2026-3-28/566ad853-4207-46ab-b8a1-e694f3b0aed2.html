@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Shin Megami Tensei V: Vengeance</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Shin Megami Tensei V: Vengeance</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:17:11</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam Family Sharing">Steam Family Sharing</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-6/14/2024">6/14/2024</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-86">86</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-90">90</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Atlus">Atlus</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Sega">Sega</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://atlus.com/smt5v/" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/directory/category/shin-megami-tensei-v-vengeance" target="_blank">Twitch</a><br/><a href="https://en.wikipedia.org/wiki/Shin_Megami_Tensei_V" target="_blank">Wikipedia</a><br/><a href="https://store.steampowered.com/app/1875830" target="_blank">Steam</a><br/><a href="https://megatenwiki.com/wiki/Shin_Megami_Tensei_V:_Vengeance" target="_blank">Community Wiki</a><br/><a href="https://x.com/Atlus_West" target="_blank">Twitter</a><br/><a href="https://www.facebook.com/AtlusWest/" target="_blank">Facebook</a><br/><a href="https://www.instagram.com/atlus_west/?hl=en" target="_blank">Instagram</a><br/><a href="https://www.youtube.com/atlus" target="_blank">YouTube</a><br/><a href="https://store.playstation.com/en-us/concept/10007941" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/us/store/products/shin-megami-tensei-v-vengeance-switch/" target="_blank">Nintendo</a><br/><a href="https://www.xbox.com/en-us/games/store/shin-megami-tensei-v-vengeance/9PF2Q5NMRDQF" target="_blank">Xbox</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">The Shin Megami Tensei V: Vengeance Digital Deluxe Edition includes:</h2><p class="bb_paragraph"></p><p class="bb_paragraph">• Shin Megami Tensei V: Vengeance Base Game </p><p class="bb_paragraph">• Mitama Dance of Wealth - Increases the drop rate of items that can be sold for Macca.</p><p class="bb_paragraph">• Mitama Dance of EXP - Increases drop rate of items that give the protagonist EXP and ally demons EXP.</p><p class="bb_paragraph">• Mitama Dance of Miracles - Increases drop rate of items that give Glory points needed to learn new bonus effects.</p><p class="bb_paragraph">• Demon Subquest - Sakura Cinders of the East - Additional subquest that allows players to recruit the demon “Konohana Sakuya” if they defeat her.</p><p class="bb_paragraph">• Demon Subquest - Holy Will and Profane Dissent - Additional subquest that allows players to recruit the demon “Dagda” if they defeat him.</p><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/2782f147a671386999f66bbf1763f2c2.webp?t=1763530264"></span></p><p class="bb_paragraph">Experience two complete story paths in Shin Megami Tensei V: Vengeance, both filled with conflicting and tragic choices, forcing you to confront which ideologies you are willing to fight for. As order and chaos crumble around you, forge your own path to dictate the fate of humanity. </p><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">"Canon of Vengeance" – a dramatic tale of revenge by the fallen, centered around new characters and an enigmatic cohort of demons, the Qadištu, who plot their own dark designs apart from the war of those who fight to maintain order and those who seek to defy it.</p></li></ul><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph">"Canon of Creation" – an eternal conflict between angels and demons, in which the protagonist fights for the world’s fate.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/9f9cb61153262b447e6a19576620d22f.poster.avif?t=1763530264"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/575be29d49b443d2a32b8baafc2ee7ae.webp?t=1763530264"></span></p><p class="bb_paragraph">Battle through a decimated Tokyo, reduced to an expansive wasteland and overrun by mythical demons. Roam across wide, open areas and explore new locations for life-saving items or encounter a multitude of demons to battle or befriend as allies, including dozens of newly added demons to this game. </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/c1873b07ae4f52e618fde3bb33d85bde.poster.avif?t=1763530264"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/7c295ea0acdf615dda79d651d501d8bd.webp?t=1763530264"></span></p><p class="bb_paragraph">Fully evolved with stunning visuals for modern consoles, the dark lore, unnerving atmosphere, and beautiful and monstrous demons are back and better than ever. Massively expanded with new areas, demons, and music, Shin Megami Tensei V: Vengeance features more accessible gameplay, an improved battle system, new demon experiences, and greater field exploration. </p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/96b794c1a63121a8da08cc3c7dea0e00.poster.avif?t=1763530264"></span></p><p class="bb_paragraph"></p><p class="bb_paragraph" style="text-align: center"><span class="bb_img_ctn"><img class="bb_img" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1875830/extras/7b04b7481ca4f5d6a29a724b74f2f558.webp?t=1763530264"></span></p><p class="bb_paragraph">Embark on this definitive version of the critically acclaimed Shin Megami Tensei V, massively expanded with a brand-new storyline featuring new locations, demons, and choices to make that will dictate the fate of all existence. </p><p class="bb_paragraph"></p><p class="bb_paragraph">• Intense, Turn-Based Combat System </p><p class="bb_paragraph">• Over 270 Demons to Recruit and Command </p><p class="bb_paragraph">• Explore a New Post-Apocalyptic Tokyo </p><p class="bb_paragraph">• Make New Allies Along Your Journey</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

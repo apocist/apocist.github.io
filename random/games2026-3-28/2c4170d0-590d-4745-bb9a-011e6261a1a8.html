@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Neverwinter Nights: Enhanced Edition</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Neverwinter Nights: Enhanced Edition</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:26:56</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 16:30:55</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Gog">Gog</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-GOG">GOG</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-3/27/2018">3/27/2018</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-65">65</a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-45">45</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Role-playing (RPG)">Role-playing (RPG)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-Beamdog">Beamdog</a><br/><a href="#quicklink-BioWare">BioWare</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-Beamdog">Beamdog</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://www.facebook.com/Beamdog" target="_blank">Facebook</a><br/><a href="https://twitter.com/BeamdogInc" target="_blank">Twitter</a><br/><a href="http://nwn.beamdog.com" target="_blank">Official Website</a><br/><a href="https://store.steampowered.com/app/704450" target="_blank">Steam</a><br/><a href="https://forgottenrealms.fandom.com/wiki/Neverwinter_Nights:_Enhanced_Edition" target="_blank">Community Wiki</a><br/><a href="https://play.google.com/store/apps/details?id=com.beamdog.nwnandroid" target="_blank">Google Play</a><br/><a href="https://www.reddit.com/r/neverwinternights" target="_blank">Subreddit</a><br/><a href="https://www.gog.com/game/neverwinter_nights_enhanced_edition_pack" target="_blank">GOG</a><br/><a href="https://www.youtube.com/channel/UCdWHePPoy8_-8kZs0X3_RQA" target="_blank">YouTube</a><br/><a href="https://apps.apple.com/us/app/id1466096721" target="_blank">App Store (iPad)</a><br/><a href="https://en.wikipedia.org/wiki/Neverwinter_Nights_(2002_video_game)" target="_blank">Wikipedia</a><br/><a href="http://itunes.apple.com/us/app/id1466096721#?platform=iphone" target="_blank">App Store (iPhone)</a><br/><a href="https://www.twitch.tv/directory/game/Neverwinter%20Nights:%20Enhanced%20Edition" target="_blank">Twitch</a><br/><a href="https://store.playstation.com/en-us/concept/233984" target="_blank">Playstation</a><br/><a href="https://www.nintendo.com/games/detail/neverwinter-nights-enhanced-edition-switch/" target="_blank">Nintendo</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<b>Multiplayer notice: In order to access the multiplayer portion of the game, you must first enter your unique cd-key. This CD key can be found in your account under More -> Serial Keys.</b><br>
+
+<b>Neverwinter Nights: Enhanced Edition</b> adds all-new enhanced features to the content of Neverwinter Nights Diamond Edition.
+<br><br>
+Slink through the shadows as a deadly half-elven rogue, wield fearsome magics as a powerful gnomish sorcerer, vanquish your foes as an armor-clad dwarven paladin... whatever hero you create, incredible adventures await.
+<br><br>
+Discover magic, wonder, and danger at every turn on your own or with friends in these classic Dungeons & Dragons adventures.
+
+<h4>Enhanced Features:</h4>
+<ul>
+<li class="description__cool-point"><u><b>Improved Display:</b></u> Your portrait, combat bar, inventory, and other UI elements adjust in size based on your chosen resolution including 1080p and 4k.</li>
+<li class="description__cool-point"><u><b>Advanced Graphics Options:</b></u> Pixel shaders and post-processing effects make for crisper, cleaner visuals. Enable contrast, vibrance, and depth of field options as preferred.</li>
+<li class="description__cool-point"><u><b>Community Endorsed:</b></u> Original developers have teamed with key members of the Neverwinter Nights community to curate important fan-requested improvements to support players, storytellers, and modders. </li>
+<li class="description__cool-point"><u><b>Backwards Compatibility:</b></u> Works with save games, modules, and mods from the original Neverwinter Nights. A galaxy of community created content awaits.</li>
+<li class="description__cool-point"><u><b>Restored Multiplayer:</b></u> A completely rebuilt multiplayer system makes it easy to find online persistent worlds and game with friends</li>
+<li class="description__cool-point"><u><b>More Modder Opportunities:</b></u> Toolset quality-of-life improvements, shaders, filters, texture maps, and a new material systems allow creators to make amazing looking models and modules.</li>
+</ul>
+
+<h4>All the content of Neverwinter Nights Diamond Edition:</h4>
+
+<b>The original Neverwinter Nights campaign:</b> Find yourself at the center of intrigue, betrayal, and dark magic in Neverwinter Nights. Journey through dangerous cities, monster filled dungeons and deep into uncharted wilderness in search of the cure for a cursed plague ravaging the city of Neverwinter. <br>
+<b>Two expansion packs:</b>
+<ul>
+<li class="description__cool-point">Shadows of Undrentide: Another adventure begins in Shadows of Undrentide! Charged by your master to recover four ancient artifacts, travel from the Silver Marches to unravel mysteries of a long-dead magical civilization. </li>
+<li class="description__cool-point">Hordes of the Underdark: Continue the adventure started in Shadows of Undrentide and journey into the ever-more bizarre and hostile depths of Undermountain to challenge a gathering evil.</li>
+</ul>
+<b>Three premium modules:</b> <br>
+Discover over 40 hours of new stories, then go on to sample the hundreds of modules created by community members just like you.
+<ul>
+<li class="description__cool-point">Kingmaker </li>
+<li class="description__cool-point">ShadowGuard</li>
+<li class="description__cool-point">Witch’s Wake</li>
+</ul>
+<b>The Aurora Toolset:</b> Build your own world full of unique monsters, items, traps, encounters, and settings, then share your creation with the rest of the Neverwinter Nights community. (Windows only)<br>
+<b>Dungeon Master Client:</b> Become the storyteller! Control monsters, creatures, and characters your players will meet over the course of an adventure.
+<br>
+<br>
+<br>
+<b>Downloadable HD Models & Textures Pack</b><br>
+Enjoy Neverwinter Nights with stunning upgrades to your heroes and equipment! The HD Models & Textures Pack for Neverwinter Nights: Enhanced Edition includes remade models of player characters and their items, like armor, weapons and shields. New models now support normal and spec information, and can be further modded by the community!<br>
+<br>
+Please note: 
+<ul>
+<li>The models & textures pack is not optimized for minimum spec machines, so using the pack on some lower-end devices could cause performance issues.</li>
+<li>A few models have visual glitches on character shadows. This is a known issue.</li>
+</ul>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

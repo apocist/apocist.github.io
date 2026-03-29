@@ -1,0 +1,268 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>Cave Digger 2: Dig Harder</title>
+		<meta name="viewport" content="width=device-width, initial-scale=0.55">
+		<style>
+body {
+  background: #24282f;                                /* main background color in case of no image */
+  font-family: 'Arial';                               /* font arial which should be readable */
+  Height:100%;                                        /* set width to 100% also needed for background */
+  margin:0px;                                         /* hide any margins */
+  background-size: cover;                             /* size background image without distortion along width and height */
+  background-repeat: no-repeat;                       /* no background repeat */
+  Background-attachment:fixed;                        /* needed to make background image behave properly */
+  overflow-y:hidden;                                  /* no normal overflow, only our containers (details & description) will overflow or have scrollbar * /
+}
+ 
+html {
+  height:100%;                                        /* need to set this to 100% to make the background behave propertly */
+}
+
+.title h2 {
+  padding-left: 25px;                                 /* left padding */
+  color: #ccc;                                        /* text color */
+  margin: 0;                                          /* no margins */
+  background-color: black;                            /* black background */
+  vertical-align: middle;                             /* align vertical middle */
+  height: 48px;
+}
+
+.title {
+	width: 100%;                                      /* title container width 100% */
+	grid-column: 1 / span 3;                          /* column 1 but spans 3 */
+    grid-row: 1;                                      /* row 1 */
+	height: 48px;
+}
+.cards {                                              /* empty not used here */
+}
+
+.card {
+	display: grid;                                    /* container which is the grid */
+	grid-template-columns: min-content;               /* size columns to minimum content */
+	grid-template-rows: min-content min-content;      /* size rows to minimum content */
+	height: 100vh;                                    /* 100% viewport height */
+}
+
+.detailstitle{
+  grid-column: 1;                                     /* 1st column */
+  grid-row: 2;                                        /* 2nd row */
+  width: 350px;                                       /* fixed width set to same size as details */
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+}
+
+.details {
+  padding-left: 10px;                                 /* some padding left */
+  padding-right: 10px;                                /* some padding right */
+  color: #ccc;
+  grid-column: 1;                                      /* 1st column */
+  grid-row: 3;                                         /* 3rd row of grid */
+  width: 350px;                                        /* fixed width of details */
+  overflow-y: auto;                                     /* add vertical scrollbar if needed */
+  overflow-x:hidden;                                   /* don't overflow on x axis (no horz scrollbar) */
+ }
+ 
+.detailstitle h3,
+.descriptiontitle h3 {
+	border-bottom: 1px solid #ccc;                     /* titles of description details should have line under it */
+	padding: 5px;                                      /* add some padding */
+	color: #ccc;                                       /* text color of the titles */
+}
+
+.detailstable th, td {
+  border: 0px;                                         /* no borders on td, th elements */
+  color: #ccc;                                         /* details table text color */
+}
+
+.detailstable td {
+  text-align: left;                                    /* align text left */
+  vertical-align: top;                                 /* align top */
+}
+
+.detailstable {
+  width: 100%;                                         /* set to full width of details */
+  padding: 5px;                                        /* add some padding */
+}
+
+.descriptiontitle {
+	grid-column: 2;                                    /* column 2 of grid */
+	grid-row: 2;                                       /* row 2 of grid */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+
+.description {
+	color: #ccc;                                       /* text color */
+	grid-column: 2;                                    /* 2nd column of grid */
+	grid-row: 3;                                       /* 3rd row of grid */
+	overflow-y: auto;                                  /* overflow-y automatic (for adding scrollbar) */
+	overflow-x:hidden;                                 /* prevent horizontal scrollbar */
+	padding-left: 10px;                                /* some padding left */
+	padding-right: 10px;                               /* some padding right */
+}
+
+.description img {
+	max-width: 100%;                                   /* make sure images don't overflow in width to prevent scrollbars */
+}
+
+.MenuButton {
+  border: none;                                        /* Remove borders */
+  outline: none;                                       /* Remove outline */
+  background-color: #888;                              /* Set a background color */
+  color: #000;                                         /* Text color */
+  padding: 5px;                                        /* Some padding */
+  border-radius: 4px;                                  /* Rounded corners, border */
+  font-size: 20px;                                     /* Increase font size */
+  cursor:pointer;                                         /* Add a mouse pointer on hover */
+  margin-right: 20px;                                  /* to have some space on right side before next element */
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+}
+
+.MenuButton:hover {
+  background-color: #777;                              /* Add a dark-grey background on hover */
+  color: #CCC;                                         /* Text color */
+}
+
+a {
+ text-decoration: none;                                /* no text underline in links */
+}
+a:link {
+  color: #CCC;                                         /* unvisited link color */
+}
+a:visited {
+  color: #CCC;                                         /* visited link color */
+}
+a:hover {
+  color: #EEE;                                         /* mouse over link color */
+  text-decoration: underline;                          /* add text underline in links when mouse over */
+}
+a:active {
+  color: #CCC;                                         /* selected link color */
+}
+
+                                                       /* scrollbars W3C standard that is currently Firefox-only */
+* {
+  scrollbar-width: thin;                               /* small width */
+  scrollbar-color: #888 transparent;                   /* trackbar color + transparant background */
+}
+
+                                                       /* scrollbars on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+  width: 12px;                                         /* small width */
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;                             /* background color track */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #AAA;                              /* background */
+  border-radius: 20px;                                 /* rounded corner, border */
+  border: 3px solid #888;                              /* add the border */
+}
+
+		</style>
+	</head>
+	<body style="background-image: linear-gradient(to bottom, #24282f, rgba(100,100,100,0.73))">
+		<div class="cards">
+			<div class="card">
+				<div class="title">
+					<h2><button onclick="window.history.back()" class="MenuButton">Back</button> Cave Digger 2: Dig Harder</h2>
+				</div>
+				<div class="detailstitle">
+				<H3>Details</H3>
+				</div>
+				<div class="details">
+					<div style="overflow: auto;">
+						<TABLE class="detailstable">
+							<col style="width:50%" />
+							<col style="width:50%" />							<TR>
+								<TD>Playtime</TD>
+								<TD>Not Played</TD>
+							</TR>
+							<TR>
+								<TD>Last Activity</TD>
+								<TD><a href="#quicklink-Never">Never</a> </TD>
+							</TR>
+							<TR>
+								<TD>Added</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:48:13</TD>
+							</TR>
+							<TR>
+								<TD>Modified</TD>
+								<TD><a href="#quicklink-3/28/2026">3/28/2026</a> 15:56:45</TD>
+							</TR>
+							<TR>
+								<TD>Completion Status</TD>
+								<TD><a href="#quicklink-Not Played">Not Played</a></TD>
+							</TR>
+							<TR>
+								<TD>Library</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_library_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Source</TD>
+								<TD><a href="default%20list%20text_source_ascending_name_ascending.html#quicklink-Steam">Steam</a></TD>
+							</TR>
+							<TR>
+								<TD>Platform</TD>
+								<TD><a href="default%20list%20text%20combobox%20quicklinks_platform_ascending_name_ascending.html#quicklink-PC (Windows)">PC (Windows)</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Release Date</TD>
+								<TD><a href="#quicklink-9/8/2022">9/8/2022</a> </TD>
+							</TR>
+							<TR>
+								<TD>Community Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Critic Score</TD>
+								<TD><a href="#quicklink-54">54</a></TD>
+							</TR>
+							<TR>
+								<TD>User Score</TD>
+								<TD><a href="#quicklink-"></a></TD>
+							</TR>
+							<TR>
+								<TD>Genre</TD>
+								<TD><a href="#quicklink-Adventure">Adventure</a><br/><a href="#quicklink-Indie">Indie</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Developer</TD>
+								<TD><a href="#quicklink-VRKiwi">VRKiwi</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Publisher</TD>
+								<TD><a href="#quicklink-VRKiwi">VRKiwi</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Feature</TD>
+								<TD><a href="#quicklink-Co-Operative">Co-Operative</a><br/><a href="#quicklink-Multiplayer">Multiplayer</a><br/><a href="#quicklink-Single Player">Single Player</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Links</TD>
+								<TD><a href="https://store.steampowered.com/app/1523510" target="_blank">Steam</a><br/><a href="https://vrkiwi.org/portfolio/cave-digger-2-dig-harder" target="_blank">Official Website</a><br/><a href="https://www.twitch.tv/vrkiwigaming" target="_blank">Twitch</a><br/><a href="https://www.youtube.com/c/VRKiwi" target="_blank">YouTube</a><br/><a href="https://www.facebook.com/cavediggergame" target="_blank">Facebook</a><br/><a href="https://twitter.com/vr_kiwi" target="_blank">Twitter</a><br/><a href="https://discord.gg/cavedigger" target="_blank">Discord</a><br/><a href="https://www.reddit.com/r/CaveDigger" target="_blank">Subreddit</a><br/><a href="https://store.playstation.com/en-us/concept/10002212" target="_blank">Playstation</a><br/></TD>
+							</TR>
+							<TR>
+								<TD>Tag</TD>
+								<TD></TD>
+							</TR>
+						</TABLE>
+					</div>
+				</div>
+				<div class="descriptiontitle">
+					<H3>Description</H3>
+				</div>
+				<div class="description">
+					<h2 class="bb_tag">Cave Digger 2: Dig Harder</h2><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph"><i>Start with a pickaxe in one hand and nothing in the other. Excavate the bedrock, reap the rewards of Mother Earth, and trade the mined valuables for new gadgets, travels, funky wild fashion, and more. Cave Digger 2: Dig Harder is a 1-4-player VR action-adventure game set in wildland valleys, where you discover old mines, nautical caves, and ruins of ancient civilizations inspired by Western, Dieselpunk and Lovecraftian themes. Explore the "pristine" lands, loot its riches, and unravel the mystery linked to a great explorer. As you go, it's best to keep a six-shooter nearby just in case.</i></p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1523510/extras/b35b53c9af2c060e2e0b508663a4fa93.poster.avif?t=1731055893"></span></p><h2 class="bb_tag">Tools and Progression</h2><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph">Get thrown right away into the deep end by being stuck in the mines as your drill machine broke. With a single pickaxe, work your way to the surface camp where your journey can begin in earnest. Your goal is simply to mine and carry loot back to the surface the best you can for your mission assigners. With the surplus reward that you get, you can buy new things like upgrading your dependable pickaxe with a shinier look! (And faster digging rate.) Or buy dynamites that work on pretty much anything that needs to be worked on. Maybe you fancy a shovel that works for both digging and moving through the caves like a spider-miner. Whatever your preferred loadout, you will be ready to go deeper into the ever-shifting caves than any miner before or after you! (At least that's what Merchant Trading Company says when selling their gear to any miner, which they must be 100% right about, right?... Right.)</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1523510/extras/f48397e6883a9f7f0b6cb8144cf4a4d0.poster.avif?t=1731055893"></span></p><h2 class="bb_tag">Story</h2><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph">The valleys have their mysteries and they hide them well. Step by step the player follows the same path where a great explorer has once wandered. Who is this hardy explorer? Why did he come to these valleys? And where is he now? The answers to these and more lie in the depths of the valleys. The story has multiple endings, each revealing a different side of it. Find the scattered comic pages to a tale of greed, eldritch power, and secrets beyond space and time. Who the wanderer is and why he did what he did in the valleys become clear in the end, but is it really the end?</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1523510/extras/10bdda95be2b4af5186a73a854306d39.poster.avif?t=1731055893"></span></p><h2 class="bb_tag">Co-op Multiplayer</h2><p class="bb_paragraph"></p><p class="bb_paragraph"></p><p class="bb_paragraph">Gather a party of up to 4 players. Your role in the mining team is totally up to you! As long as at least somebody is carrying their weight in gold back to the surface, you all get paid in official Merchant Dollars equally. Co-op crossplay supports public matchmaking and private groups, and you are very free to show your wildlands drip by combining things from a generous selection of clothes, hats and faces once you've bought them first.</p><p class="bb_paragraph"></p><p class="bb_paragraph"><span class="bb_img_ctn"><img src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1523510/extras/5b30ede25f3c5a254f7873346325e61d.poster.avif?t=1731055893"></span></p><p class="bb_paragraph">So, take a pickaxe (and your friends) with you and head to the wildlands for the riches it holds, find out the secrets it contains, and dig deeper into the valleys than any adventurer before or after you!</p><p class="bb_paragraph"></p><h2 class="bb_tag">CD2:DH Key Features</h2><p class="bb_paragraph"></p><ul class="bb_ul"><li><p class="bb_paragraph"> Discoveries, dangers, and digging.</p></li><li><p class="bb_paragraph"> Mine your way with the dependable pickaxe, versatile dynamites, hi-tech hammer, and more!</p></li><li><p class="bb_paragraph"> Procedurally generated partially destructible cave and mine networks.</p></li><li><p class="bb_paragraph"> Grab the six-shooter, chain-shovel, and the gold-pan-turned-to-a-shield if things get rough. TNT works fine too, just mind your team members if you aren't lone-wolfing! Gadgets evolve with upgrades.</p></li><li><p class="bb_paragraph"> 1-4 player crossplay co-op of private groups or public matchmaking, also between VR and non-VR.</p></li><li><p class="bb_paragraph"> Collectable comic book <i>Clayton - The Greed</i> reveals the history of the Valley throughout the player’s journey.</p></li><li><p class="bb_paragraph"> Multiple discoverable endings of the story, each revealing a different angle to it.</p></li><li><p class="bb_paragraph"> Player avatar customization with dozens of things from clothes to faces to hats. Wildlands fashion is a wildly funky fashion that has something for every taste.</p></li></ul><p class="bb_paragraph"></p><p class="bb_paragraph">For the latest updates, exclusive sneaky-peeks, and 24/7 Saloon talks (<i>memes</i>),﻿ join our Discord community!</p><p class="bb_paragraph"></p><p class="bb_paragraph"><strong>Good to know</strong> - Game progress transfers automatically between the VR, standard, and demo editions.</p><p class="bb_paragraph"></p><h2 class="bb_tag">Also check out the first <i>Cave Digger</i> available in both VR and non-VR games</h2><h2 class="bb_tag"></h2>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
